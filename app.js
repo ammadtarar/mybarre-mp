@@ -1,6 +1,6 @@
 //app.js
 
-
+const locale = require('./utils/locale.js');
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -34,6 +34,13 @@ App({
         }
       }
     })
+    
+    const lang = wx.getStorageSync('lang') || 'en';
+    if(lang === 'zh'){
+      wx.setStorageSync('locale', locale.localList['zh'])
+    }else{
+      wx.setStorageSync('locale', locale.localList['en'])
+    }
   },
   globalData: {
     userInfo: null,

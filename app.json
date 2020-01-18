@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/landing/landing"
+    "pages/landing/landing",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

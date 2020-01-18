@@ -1,39 +1,36 @@
 <!--pages/landing/landing.wxml-->
-<wxs module="langUtils" src="../../utils/langUtils.wxs"></wxs>
 <view class="container">
 
-
+    
     <image  class="cover" src="../../resources/images/bg_landing.png"></image>
 
     <view class="card" id="card">
-      <label class="welcome light_text">{{langUtils.getString(lang , "welcomeTo")}}</label>
+      <label class="welcome light_text">{{locale.welcomeTo}}</label>
       <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
       <view class="underline"></view>
-      <label class="intro light_text">
-        {{langUtils.getString(lang , "landingCardDescription")}}
-      </label>
-      <view class="bt_register bold_text" bindtap="goToRegister">{{langUtils.getString(lang , "becomeInstructor")}}</view>
+      <label class="intro light_text"  >{{locale.landingCardDescription}}</label>
+      <view class="bt_register bold_text" bindtap="goToRegister">{{locale.becomeInstructor}}</view>
     </view>
 
 
     <view class="login_container" bindtap="goToLogin">
-      <label class="already light_text">{{langUtils.getString(lang , "alreadyMember")}}</label>
-      <label class="login bold_text">{{langUtils.getString(lang , "login")}}</label>
+      <label class="already light_text">{{locale.alreadyMember}}</label>
+      <label class="login bold_text">{{locale.login}}</label>
      </view>
 
     
   <view class="bottom">
   
-    <label class="heading medium_text">{{langUtils.getString(lang , "willRecieve")}}</label>
+    <label class="heading medium_text">{{locale.willRecieve}}</label>
     <view class="offering" wx:for="{{recieve}}" wx:key="{{item}}">
       <view class="bolt"></view>
-      <label class="text light_text">{{langUtils.getString(lang , item)}}</label>
+      <label class="text light_text">{{locale[item]}}</label>
     </view>
 
-    <label class="heading medium_text vertical_spacing_30">{{langUtils.getString(lang , "courseCovers")}}</label>
+    <label class="heading medium_text vertical_spacing_30">{{locale.courseCovers}}</label>
     <view class="offering" wx:for="{{includes}}" wx:key="{{item}}">
       <view class="bolt"></view>
-      <label class="text light_text">{{langUtils.getString(lang , item)}}</label>
+      <label class="text light_text">{{locale[item]}}</label>
     </view>
   
   </view>

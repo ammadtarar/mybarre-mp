@@ -5,15 +5,23 @@ Page({
   data: {
     recieve: ['recieveOne' , 'recieveTwo', 'recieveThree'],
     includes: ['includesOne', 'includesTwo', 'includesThree', 'includesFour', 'includesFive', 'includesSix', 'includesSeven' ],
-    lang: app.globalData.lang
+    locale: wx.getStorageSync('locale')
   },
   onLoad: function (options) {
-    
+    wx.setNavigationBarTitle({
+      title: '',
+    })
   },
   goToRegister: function(e){
     console.log("goToRegister tapped")
+    wx.navigateTo({
+      url: '/pages/register/register',
+    })
   },
   goToLogin: function (e) {
     console.log("getToLogin tapped")
+  },
+  getName: function(){
+    return "Ammad";
   },
 })
