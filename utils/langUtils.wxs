@@ -1,0 +1,18 @@
+
+// var locale =  getLocale from './locale.js'
+
+
+
+function getString(lang , key) {
+  if (lang === 'en') {
+    return require('./en.wxs')[key];
+  } else {
+    return require('./zh.wxs')[key] || key;
+  }
+}
+
+
+
+module.exports = {
+  getString: getString
+}

@@ -1,0 +1,3 @@
+module.exports = {
+  "welcomeTo": "欢迎来到"
+}

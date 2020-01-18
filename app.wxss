@@ -1,0 +1,29 @@
+/**app.wxss**/
+@font-face {
+    font-family: 'Avenir';
+    src: url(./resources/fonts/AEH.ttf) format('truetype');
+}
+
+.light_text {
+  font-family: 'Avenir';
+  font-weight: 300;
+}
+
+.regular_text {
+  font-family: 'Avenir';
+  font-weight: 450;
+}
+
+.medium_text {
+  font-family: 'Avenir';
+  font-weight: 600;
+}
+
+.bold_text {
+  font-family: 'Avenir';
+  font-weight: 800;
+}
+
+.vertical_spacing_30{
+  margin-top: 30px;
+}
