@@ -1,0 +1,19 @@
+<!--components/popup/popup.wxml-->
+<view  style="top: {{newOffsetTop}}">
+  <view class="cover" >
+
+    <view class="card">
+      <label class="title">{{title}}</label>
+
+      <label class="msg">{{msg}}</label>
+
+      <view class="buttons_container">
+        <view class="bt negative" bindtap="onClickNegativeButton">Abort</view>
+        <view class="bt positive" bindtap="onClickPositiveButton">Continue</view>
+      
+      </view>
+    </view>
+  
+  </view>
+  
+</view>

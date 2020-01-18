@@ -35,4 +35,12 @@
   
   </view>
 
+  <popup 
+  wx:if="{{showPricePopup}}" 
+  bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
+  bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
+  title="{{locale.notice}}"
+  msg="{{locale.preRegistrationFeeNotice}}">
+  </popup>
+
 </view>

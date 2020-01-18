@@ -21,7 +21,9 @@ let localList = {
     "includesFive": "Using MYbarre props and studio equipment",
     "includesSix": "How to format and design a MYbarre Class",
     "includesSeven": "Teaching advancements,modifications and giving corrections.",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "preRegistrationFeeNotice": "MYBaree membership costs ¥2000 per year. You would be charged this amount after you fill in all your details on the next page.",
+    "notice" : "Notice"
   }
 }
 

@@ -5,7 +5,8 @@ Page({
   data: {
     recieve: ['recieveOne' , 'recieveTwo', 'recieveThree'],
     includes: ['includesOne', 'includesTwo', 'includesThree', 'includesFour', 'includesFive', 'includesSix', 'includesSeven' ],
-    locale: wx.getStorageSync('locale')
+    locale: wx.getStorageSync('locale'),
+    showPricePopup : false
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -13,15 +14,20 @@ Page({
     })
   },
   goToRegister: function(e){
-    console.log("goToRegister tapped")
-    wx.navigateTo({
-      url: '/pages/register/register',
-    })
+    this.setData({ showPricePopup : true});
   },
   goToLogin: function (e) {
     console.log("getToLogin tapped")
   },
-  getName: function(){
-    return "Ammad";
+  onClickPopupNegativeButton: function(){
+    console.log("onClickPopupNegativeButton")
+    this.setData({ showPricePopup: false })
   },
+  onClickPopupPositiveButton: function(){
+    console.log("onClickPopupPositiveButton")
+    this.setData({showPricePopup : false})
+    wx.navigateTo({
+      url: '/pages/register/register',
+    })
+  }
 })
