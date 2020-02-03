@@ -1,2 +1,230 @@
 <!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
+<view class="container">
+
+  <view class="top">
+    <view class="help bold_text">{{locale.needHelp}}</view>
+    <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
+    <view class="progress_container">
+      <view class="bubble bold_text {{stage===1?'active':'inactive'}}" >1</view>
+      <view class="line"></view>
+      <view class="bubble bold_text {{stage===2?'active':'inactive'}}" >2</view>
+      <view class="line"></view>
+      <view class="bubble bold_text {{stage===3?'active':'inactive'}}" >3</view>
+      <view class="line"></view>
+      <view class="bubble bold_text {{stage===4?'active':'inactive'}}" >4</view>
+      <view class="line"></view>
+      <view class="bubble bold_text {{stage===5?'active':'inactive'}}" >5</view>
+    </view>
+  </view>
+
+
+
+  <view class="content">
+
+    <view class="section_title_container">
+      <view class="title_container">
+        <image wx:if="{{stage !== 1}}" bindtap="onClickSectionBack" class="back" src="../../resources/icons/ic_back_red.png"></image>
+        <label class="title bold_text">{{sectionTitle}}</label>
+      </view>
+      <label class="description medium_text">{{sectionDescription}}</label>
+    </view>
+
+    <view >
+
+
+      <!-- SECTION 1 -->
+      <view wx:if="{{stage == 1}}" class="section">
+        <textview class="tv"  key="studioName" title="{{locale.name}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <singleOptionView
+        class="tv"
+        title="{{locale.gender}}"
+        key="gender"
+        items="{{genderValues}}"
+        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+        </singleOptionView>
+
+        <textview class="tv" key="studioAddress" title="{{locale.email}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="managerName" title="{{locale.phone}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="studioPhone" title="{{locale.dob}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="studioWebsite" title="{{locale.nationality}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+        <textview class="tv" key="studioWebsite" title="{{locale.occupation}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="studioWebsite" title="{{locale.prefLang}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+
+        <singleOptionView
+        class="tv"
+        title="{{locale.prefLang}}"
+        key="language"
+        items="{{languageValues}}"
+        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+        </singleOptionView>
+
+        <textview class="tv" key="studioWebsite" title="{{locale.address}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="studioWebsite" title="{{locale.city}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+      </view>
+
+      <!-- SECTION 2 -->
+      <view wx:if="{{stage == 2}}" class="section">
+        <textview class="tv"  key="studioName" title="{{locale.studioName}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="studioAddress" title="{{locale.studioAddress}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="managerName" title="{{locale.managerName}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="studioPhone" title="{{locale.studioPhone}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="studioWebsite" title="{{locale.studioWebsite}}" bind:onTextViewUpdated="onTextViewUpdated" />
+      </view>
+
+
+      <!-- SECTION 3 -->
+      <view wx:if="{{stage == 3}}">
+      
+     
+       <label class="key">{{locale.s3q1}}</label>
+       <view class="xinxi">
+        <textarea 
+          value="{{form.discover}}"
+          wx-if="{{!showingCertificateModal}}"
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="discover">
+        </textarea>
+      </view>
+
+
+      <label class="key">{{locale.s3q2}}</label>
+       <view class="xinxi">
+        <textarea
+          value="{{form.motivation}}"  
+          wx-if="{{!showingCertificateModal}}"
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="motivation">
+        </textarea>
+      </view>
+
+
+      <label class="key">{{locale.s3q3}}</label>
+       <view class="xinxi">
+        <textarea
+          value="{{form.current}}"    
+          wx-if="{{!showingCertificateModal}}"
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="current">
+        </textarea>
+      </view>
+
+
+
+      <label class="key">{{locale.s3q4}}</label>
+       <view class="xinxi">
+        <textarea
+          value="{{form.goal}}" 
+          wx-if="{{!showingCertificateModal}}"
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="goal">
+        </textarea>
+      </view>
+
+
+       <label class="key">{{locale.s3q5}}</label>
+       <view class="xinxi">
+        <textarea
+          value="{{form.past}}"  
+          wx-if="{{!showingCertificateModal}}"
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="past">
+        </textarea>
+      </view>
+
+
+      <cerifcationsView class="tv"  key="certifications" title="{{locale.s3q8}}" bind:onMultiLineTextViewUpdated="onTextViewUpdated" bind:onToggleModal="onToggleCertificateModal"/>
+
+
+      <label class="key">{{locale.s3q6}}</label>
+       <view class="xinxi">
+        <textarea
+          value="{{form.experience}}"  
+          wx-if="{{!showingCertificateModal}}"
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="experience">
+        </textarea>
+      </view>
+
+
+      <label class="key">{{locale.s3q7}}</label>
+       <view class="xinxi">
+        <textarea
+          value="{{form.other}}"  
+          wx-if="{{!showingCertificateModal}}"
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="other">
+        </textarea>
+      </view>
+
+
+      </view>
+
+
+      <view wx:if="{{stage == 4}}" class="section">
+
+       <singleOptionView
+        class="tv"
+        title="{{locale.s4q1}}"
+        key="heartCondition"
+        items="{{yesNoValues}}"
+        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+        </singleOptionView>
+
+         <singleOptionView
+        class="tv"
+        title="{{locale.s4q2}}"
+        key="pain"
+        items="{{yesNoValues}}"
+        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+        </singleOptionView>
+
+         <singleOptionView
+        class="tv"
+        title="{{locale.s4q3}}"
+        key="bp"
+        items="{{yesNoValues}}"
+        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+        </singleOptionView>
+
+
+        <label class="disclaimer medium_text" style="margin-top : 10px;">{{locale.s4q4}}</label>
+
+      </view>
+
+
+      <view wx:if="{{stage == 5}}" class="section">
+
+        <label class="tc">
+          Please read the document below and mark the box to agree to the terms and conditions.
+
+Non-compete MYbarre Education, Training & Licence: You are agreeing to a “non compete” to the Instructor Training, meaning that the Recipient shall not own, manage, operate, consult or instruct a business utilising or delivering training for a barre workout program in a manner substantially similar to, or competitive with, the present business of the (MYbarre) Company during the term of this Agreement. On completion of the MYbarre course, passing exam you agree to purchase the annual license purchase where you will become a MYbarre Licenced Instructor. The license grants you the non transferable right to teach MYbarre classes for up to one year (12 months from the date of issue) During this time you will be issued with continued education class plans, choreography and digital training guides that can only be used to deliver the MYbarre core format, this is only to be viewed and used by the Licence Trainer, sharing videos and training information will be seen as a breach of contract. You will not use any materials or teaching principles you have learned or receive to teach anything except MYbarre class. While a qualified and licensed MYbarre instructor you are not allowed to teach any other barre/ballet fitness class or barre fitness programme.
+Use of name/brand/logo: As a licensed MYbarre instructor you can use the word ‘MYbarre' on studio class schedules and class/marketing communications. It must be displayed using capital ‘MY’ and lowercase ‘barre’. You must pay your Instructor License Fee to MYbarre to keep the license current, if the annual payment is outstanding longer than 30 days the licence will be revoked and all rights to teach MYbarre as above and access to the logo, name, trademarks is revoked.
+Non Disclosure & Confidential Information: 1. That all rights of copyright in and to the material contained in the Company curriculum documents, lesson plans, training material, marketing materials, audiovisual components, emails, handouts, workshop presentations (oral and written) and anything else with the Company logo will vest exclusively in the Company (MYbarre Fitness) 2. That all rights of ownership in or to any other written or audio-visual material, trademarks, know-how, techniques, devices as well as other intellectual property relating directly or indirectly to MYbarre or the MYbarre method of instructing and teaching, will vest exclusively in the Company. 3. The Material contains confidential and proprietary information of the Company. 4. Recipient hereby agrees that all Materials will be used solely for the purpose of instructing the MYbarre under the MYbarre name , and that such information will be
+kept confidential by Recipient. Recipient agrees to receive and hold the Materials in strict confidence and, except as contemplated herein, not to ever disclose, disseminate, publish, copy, reproduce or otherwise use the Materials in any manner whatsoever.
+Representation: You are not permitted to represent MYbarre in the press without prior written approval from MYbarre Head Office and may not teach or present MYbarre at a conference or fitness convention where continuing education credits are offered or prior approval from the MYbarre Head Office.
+Medical & Health Waiver: I understand and acknowledge that participation in the MYbarre Instructor Training (the “Activity”) may result in injury. I understand that there are risks involved in the use of any equipment/props used for the Activity (the “Equipment”), and that injuries may occur as a result of my use of the Equipment. In recognition of the inherent risks of the Activity that I will engage in, I confirm that I am physically and mentally capable of participating in the Activity and/or using the Equipment. I participate willingly and voluntarily and assume full responsibility for personal injury, accidents, or illness, including death. I also assume responsibility for damage to or loss of personal property as the result of an accident. I assume the risk(s) of personal injury, accidents and/or illness, and acknowledge that during the Activity I may experience fatigue and/or other issues that may increase the risk of an injury. I hereby authorise all medical treatment deemed necessary in the event of any injury while participating in the Activity. I either have appropriate insurance or, in its absence, agree to pay all costs of rescue and/or medical services as may be incurred on my/our behalf.
+Photograph/Media/Use of Images: I acknowledge that during the in person course of the Activity, MYbarre / Z&B Fitness may take my photograph or video. I hereby grant MYbarre permission to use any such photograph or video in materials promoting MYbarre. Such use may include publication in program, general advertising, posters, flyers, television, internet, WeChat and any other media that may be distributed or shown to or otherwise seen by large numbers of individuals and potential patrons of MYbarre. I waive all rights to any financial remuneration of any kind. In consideration of the Activity provided, I, for myself and my heirs, personal representatives or assigns, do hereby waive, release, discharge, hold harmless, and indemnify Z&B Fitness, MYbarre Fitness, MYbarre Training Group, any related entities, and their shareholders, officers, directors, members, managers, agents, employees, and volunteers (the “Releasees”), from any and all liability, claims, cause(s) of action, present or future, and waive any claims for economic damages, personal injury damages, emotional distress damages and all other damages arising from my participation in the Activity, even if they arise from or are increased as a result of the negligence of the Releasees.
+I have had sufficient opportunity to read this entire agreement. I understand it and agree to be bound by its terms. I understand that by signing this document, i may be waiving legal rights. I further agree that i am bound by this agreement by signing it in person or electronically.
+        </label>
+
+      </view>
+
+
+
+    </view>
+
+
+
+
+  <view class="bottom">
+    <view class="bt bold_text" bindtap="next">Next</view>
+  </view>
+
+
+
+  </view>
+
+
+
+  
+
+
+
+
+</view>

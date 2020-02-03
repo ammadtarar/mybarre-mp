@@ -20,14 +20,12 @@ Page({
     console.log("getToLogin tapped")
   },
   onClickPopupNegativeButton: function(){
-    console.log("onClickPopupNegativeButton")
     this.setData({ showPricePopup: false })
   },
   onClickPopupPositiveButton: function(){
-    console.log("onClickPopupPositiveButton")
     this.setData({showPricePopup : false})
     wx.navigateTo({
-      url: '/pages/register/register',
+      url: '/pages/register/register'
     })
   }
 })

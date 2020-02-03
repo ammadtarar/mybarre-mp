@@ -1,0 +1,16 @@
+<!--components/singleOptionView/singleOptionView.wxml-->
+<view class="option_view">
+  <label class="title">{{title}}</label>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <view class="options">
+      <view class="option">
+        <radio color="#D57578"  checked="{{index === 0}}" value="0"></radio>
+        <label>{{items[0].key}}</label>
+      </view>
+      <view class="option">
+        <radio color="#D57578" checked="{{index ===  1}}" value="1"></radio>
+        <label>{{items[1].key}}</label>
+      </view>
+    </view>
+   </radio-group>
+</view>

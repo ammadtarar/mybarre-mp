@@ -1,0 +1,147 @@
+/* components/cerifcationsView/cerifcationsView.wxss */
+.certificationsView{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.certificationsView .key{
+  color: #000000;
+  font-family: 'Avenir';
+  font-weight: 600;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.certificationsView .tags_container{
+  color: #2A2828;
+  min-height: 50px;
+  width: calc(100% - 8px);
+  padding: 4px;
+  margin-top: 4px;
+  border-bottom: 0.5px solid #CAC8C8;
+}
+
+.certificationsView .tags_container .tags{
+  display: block;
+}
+
+.certificationsView .tags_container .tags .tag{
+  float: left;
+  margin-top: 10px;
+  display: relative;
+}
+
+.certificationsView .tags_container .tags .tag label{
+  background: rgba(236, 222, 222, 0.404);
+  padding: 4px 10px 4px 10px;
+  color: #D57578;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Avenir';  
+  height: 40px;
+  line-height: 30px;
+  border-radius: 25px;
+  z-index: 1;
+  position: relative;
+}
+
+.certificationsView .tags_container .tags .tag .del{
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  position: relative;
+  top: -8px;
+  left: -24px;
+}
+
+.certificationsView .tags_container .add{
+  width: 40px;
+  height: 40px;
+  margin-top: 4px;
+}
+
+.modal{
+   position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.cover{
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.card{
+  width: calc(100% - 60px);
+  background: white;
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 30px);
+  transform: translate(-50%, -50%);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.title{
+  color: #342F2F;
+  font-size: 16px;
+  margin: 26px;
+  font-family: 'Avenir';
+  font-weight: 800;
+}
+
+.msg{
+  margin-left: 26px;
+  margin-right: 26px;
+  color: #1C1C1C;
+  font-size: 14px;
+  font-family: 'Avenir';
+  font-weight: 300;
+}
+
+.buttons_container{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 26px;
+}
+
+.bt{
+  width: 50%;
+  height: 100%;
+  font-size: 16px;
+  font-family: 'Avenir';
+  font-weight: 800;
+  line-height: 50px;
+  text-align: center;
+}
+
+.negative{
+  color: #342F2F;
+  background: #D8D8D8;
+}
+
+.positive{
+  color: white;
+  background: #D57578;
+}
+
+.tv{
+  width: calc(100% - 52px);
+  margin-left: 26px;
+  margin-bottom: 20px;
+}

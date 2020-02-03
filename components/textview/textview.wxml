@@ -1,0 +1,7 @@
+<!--components/textview/textview.wxml-->
+<view class="textview">
+
+  <label class="key">{{title}}</label>
+  <input class="val" type="text" placeholder="tap to enter text" bindinput="onValueUpdated"></input>
+
+</view>

@@ -1,0 +1,40 @@
+<!--components/cerifcationsView/cerifcationsView.wxml-->
+<view class="certificationsView">
+
+  <label class="key">{{title}}</label>
+  <view class="tags_container">
+    <view class="tags" wx:for="{{certificates}}">
+      <view class="tag">
+        <label>{{item.discipline}}</label>
+        <image class="del" bindtap="delCertificate" id="{{index}}" src="../../resources/icons/ic_cross_white.png"></image>
+      </view>
+    </view>
+    <image bindtap="showModal" class="add" src="../../resources/icons/ic_add_white_pink.png"></image>
+    
+  </view>
+
+</view>
+
+
+<view wx-if="{{showAddModal}}" class="modal">
+  <view class="cover" >
+
+    <view class="card">
+      <label class="title">{{locale.addCertification}}</label>
+
+      <label class="msg">{{msg}}</label>
+
+      <textview class="tv" key="discipline" title="{{locale.discipline}}" bind:onTextViewUpdated="onTextViewUpdated" />
+      <textview class="tv" key="level" title="{{locale.certAndLevel}}" bind:onTextViewUpdated="onTextViewUpdated" />
+      <textview class="tv" key="years" title="{{locale.yearOfExp}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+      <view class="buttons_container">
+        <view class="bt negative" bindtap="hideModal">{{locale.cancel}}</view>
+        <view class="bt positive" bindtap="saveCertification">{{locale.add}}</view>
+      </view>
+    </view>
+  
+  </view>
+  
+</view>
+

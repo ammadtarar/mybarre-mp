@@ -1,5 +1,5 @@
 <!--components/popup/popup.wxml-->
-<view  style="top: {{newOffsetTop}}">
+<view >
   <view class="cover" >
 
     <view class="card">

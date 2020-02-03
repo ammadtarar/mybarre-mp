@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "textview" : "../../components/textview/textview",
+    "singleOptionView": "../../components/singleOptionView/singleOptionView",
+    "cerifcationsView": "../../components/cerifcationsView/cerifcationsView"
+  }
 }
