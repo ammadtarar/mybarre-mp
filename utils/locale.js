@@ -85,7 +85,9 @@ let localList = {
     "videos": "Videos",
     "images": "Images",
     "documents": "Documents",
-    "seeAll": "SEE ALL"
+    "seeAll": "SEE ALL",
+    "myBundles" : "My Bundles",
+    "bundlesGallery" : "Bundles Gallery"
   }
 }
 

@@ -4,6 +4,7 @@ view{
   height: 50px;
   text-align: center;
   line-height: 50px;
+  transition: all 0.3s;
 }
 
 .active{

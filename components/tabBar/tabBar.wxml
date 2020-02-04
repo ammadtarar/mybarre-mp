@@ -1,0 +1,6 @@
+<!--components/tabBar/tabBar.wxml-->
+<view class="tabBar">
+  <view class="tab {{tabIndex === index ? 'active' : 'inactive'}}" wx:for="{{tabs}}" wx:key="index" id="{{index}}" bindtap="onClick">
+    {{item}}
+  </view>
+</view>

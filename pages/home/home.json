@@ -1,7 +1,8 @@
 {
   "usingComponents": {
-    "tab" : "../../components/tab/tab",
+    "tab" : "../../components/navTab/navTab",
     "profile" : "../../components/profile/profile",
-    "training": "../../components/training/training"
+    "training": "../../components/training/training",
+    "ce": "../../components/ce/ce"
   }
 }

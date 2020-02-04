@@ -9,7 +9,7 @@
 .home .content{
   width: 100%;
   height: calc(100% - 50px);
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .home .tabs_container{

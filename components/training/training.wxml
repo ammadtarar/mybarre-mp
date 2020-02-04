@@ -1,5 +1,7 @@
 <!--components/training/training.wxml-->
-<view class="training">
+<view class="cont">
+
+  <view class="training">
 
   <view class="section">
     <label class="title">{{locale.videos}}</label>
@@ -37,6 +39,9 @@
   <view class="items">
     <itemCard class="item" wx:for="{{docs}}" wx:key="{{item}}" type="doc" mimeType="PDF" thumb="../../resources/images/ph_mybarre.png"/>
   </view>
+
+
+</view>
 
 
 </view>

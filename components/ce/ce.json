@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tabBar" : "../tabBar/tabBar",
+    "bundleItem" : "../bundleItem/bundleItem"
+  }
+}

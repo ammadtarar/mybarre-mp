@@ -1,3 +1,0 @@
-<!--components/tab/tab.wxml-->
-<view class="active" wx:if="{{isActive}}">{{title}}</view>
-<view class="inactive" wx:if="{{!isActive}}">{{title}}</view>

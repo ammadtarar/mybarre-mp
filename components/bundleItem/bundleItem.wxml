@@ -1,0 +1,38 @@
+<!--components/bundleItem/bundleItem.wxml-->
+<view class="bi">
+  <view class="top">
+    <image class="cover"></image>
+    
+    <view class="medias">
+      
+      <view class="media" wx-if="{{vidCount > 0}}">
+        <image  src="../../resources/icons/ic_play.png"></image>
+        <label>{{vidCount}}</label>
+      </view>
+
+      <view class="media"  wx-if="{{imgCount > 0}}">
+        <image  src="../../resources/icons/ic_img.png"></image>
+        <label>{{imgCount}}</label>
+      </view>
+
+      <view class="media" wx-if="{{docsCount > 0}}">
+        <view class="doc">DOC</view>
+        <label>{{docsCount}}</label>
+      </view>
+
+    </view>
+
+    <label wx-if="{{!isPurchased}}" class="price">$ 2,000</label>
+
+  </view>
+
+  <view class="bottom">
+    <label class="title">This is the title. This is the title. This is the title. This is the title. This is the title. </label>
+    <label class="desc">This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. </label>
+  
+  </view>
+  
+
+
+</view>
+
