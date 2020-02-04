@@ -1,0 +1,18 @@
+<!--pages/home/home.wxml-->
+<view class="home">
+
+  <view class="content">
+  
+    <profile wx:if="{{index === 1}}"/>
+  </view>
+
+
+  <view class="tabs_container">
+    <tab title="{{locale.profile}}" isActive="{{index === 1}}" id="tabOne" bindtap="onClickTab"></tab>
+    <tab title="{{locale.training}}" isActive="{{index === 2}}" id="tabTwo" bindtap="onClickTab"></tab>
+    <tab title="{{locale.ce}}" isActive="{{index === 3}}" id="tabThree" bindtap="onClickTab"></tab>
+    <tab title="{{locale.store}}" isActive="{{index === 4}}" id="tabFour" bindtap="onClickTab"></tab>
+  </view>
+
+
+</view>

@@ -74,7 +74,14 @@ let localList = {
     "s4q4": "In case you have answered any of the above questions positively (with “yes”), please make sure to get cleared by a doctor before attending the MYbarre Instructor Training Course.",
     "t&cTitle": "MYbarre Intructor Training & Licence Terms and Conditions.",
     "t&cDesc": "Please read and accept MYBARRE terms and conditions below",
-    "termsAndConditions" : ""
+    "profile" : "PROFILE",
+    "training" : "TRAINING",
+    "ce" : "CE",
+    "store" : "STORE",
+    "trainingStatus" : "TRAINING STATUS",
+    "courseDate": "COURSE DATE",
+    "vidSubDate": "VIDEO SUBMISSION DATE",
+    "notifications": "NOTIFICATIONS"
   }
 }
 

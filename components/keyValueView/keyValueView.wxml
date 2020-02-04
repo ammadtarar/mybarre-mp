@@ -1,0 +1,5 @@
+<!--components/keyValueView/keyValueView.wxml-->
+<view class="kvv">
+  <label class="key">{{key}}</label>
+  <label class="val">{{value}}</label>
+</view>

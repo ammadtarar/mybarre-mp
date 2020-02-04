@@ -1,0 +1,8 @@
+<!--components/notificationItem/notificationItem.wxml-->
+<view class="nv">
+
+  <view wx:if="{{isNew}}" class="fullBubble"></view>
+  <view wx:if="{{!isNew}}" class="halfBubble"></view>
+  <label class="text">{{text}}</label>
+
+</view>

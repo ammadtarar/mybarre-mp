@@ -1,0 +1,24 @@
+/* components/keyValueView/keyValueView.wxss */
+.kvv{
+  width: 100%;
+  height: 50px;
+  border-bottom: 0.5px solid #D8D8D8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.kvv .key{
+  font-size: 12px;
+  font-weight: 600;
+  color: #776F6F;
+  line-height: 50px;
+  height: 50px;
+}
+
+.kkv .val{
+  font-size: 14px;
+  font-weight: bold;
+  color: #292824;
+  line-height: 50px;
+  height: 50px;
+}

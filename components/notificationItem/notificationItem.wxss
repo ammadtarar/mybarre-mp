@@ -1,0 +1,36 @@
+/* components/notificationItem/notificationItem.wxss */
+
+.nv{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.fullBubble{
+  width: 10px;
+  height: 10px;
+  background: #DDBFC0;
+  border: 2px solid #DDBFC0;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.halfBubble{
+  width: 10px;
+  height: 10px;
+  border: 2px solid #DDBFC0;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.text{
+  width: calc(100% - 25px);
+  margin-left: 10px;
+  text-align: left;
+  line-height: 20px;
+  font-size: 14px;
+  color: #1C1C1C;
+  font-weight: 300;
+}

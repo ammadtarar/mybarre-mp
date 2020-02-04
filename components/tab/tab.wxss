@@ -1,0 +1,20 @@
+/* components/tab/tab.wxss */
+view{
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.active{
+  background: #fff;
+  color: #A19999;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.inactive{
+  background: #EAE3E3;
+  color: #A19999;
+  font-size: 12px;
+}

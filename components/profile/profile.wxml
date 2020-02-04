@@ -1,0 +1,22 @@
+<!--components/profile/profile.wxml-->
+<view class="profile">
+
+  <view class="top">
+    <image class="avatar"></image>
+    <view class="card_top">
+      <label class="title">Ammad Amjad Tarar</label>
+      <keyValueView key="{{locale.trainingStatus}}"> </keyValueView>
+      <keyValueView key="{{locale.courseDate}}"> </keyValueView>
+      <keyValueView key="{{locale.vidSubDate}}"> </keyValueView>
+    </view>
+  </view>
+
+  <view class="notifications_card">
+    <label class="title">{{locale.notifications}}</label>
+    <view style="height : 30px;" wx:for="{{notifications}}">
+      <notificationItem isNew="{{item.isNew}}" text="{{item.text}}" ></notificationItem>
+    </view>
+    
+  </view>
+
+</view>
