@@ -1,0 +1,10 @@
+<!--components/itemCard/itemCard.wxml-->
+<view class="card">
+  <view class="top">
+    <image class="img" src="{{thumb}}"></image>
+    <image wx:if="{{type === 'vid'}}" class="play" src="../../resources/icons/ic_play.png"></image>
+    <label wx:if="{{type === 'doc'}}" class="tag">{{mimeType}}</label>
+  </view>
+  <label class="title">{{title}}</label>
+  
+</view>

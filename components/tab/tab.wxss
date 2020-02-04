@@ -17,4 +17,5 @@ view{
   background: #EAE3E3;
   color: #A19999;
   font-size: 12px;
+  box-shadow: 0px 0px 4px 0px  rgba(128, 128, 128, 0.384);
 }

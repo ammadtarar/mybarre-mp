@@ -13,7 +13,7 @@
 
   <view class="notifications_card">
     <label class="title">{{locale.notifications}}</label>
-    <view style="height : 30px;" wx:for="{{notifications}}">
+    <view style="height : 30px;" wx:for="{{notifications}}" wx:key="item">
       <notificationItem isNew="{{item.isNew}}" text="{{item.text}}" ></notificationItem>
     </view>
     

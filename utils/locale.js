@@ -81,7 +81,11 @@ let localList = {
     "trainingStatus" : "TRAINING STATUS",
     "courseDate": "COURSE DATE",
     "vidSubDate": "VIDEO SUBMISSION DATE",
-    "notifications": "NOTIFICATIONS"
+    "notifications": "NOTIFICATIONS",
+    "videos": "Videos",
+    "images": "Images",
+    "documents": "Documents",
+    "seeAll": "SEE ALL"
   }
 }
 

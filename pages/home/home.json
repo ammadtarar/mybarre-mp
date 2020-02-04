@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "tab" : "../../components/tab/tab",
-    "profile" : "../../components/profile/profile"
+    "profile" : "../../components/profile/profile",
+    "training": "../../components/training/training"
   }
 }

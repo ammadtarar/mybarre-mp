@@ -1,0 +1,42 @@
+<!--components/training/training.wxml-->
+<view class="training">
+
+  <view class="section">
+    <label class="title">{{locale.videos}}</label>
+    <view class="all_container">
+        <label class="see_all">{{locale.seeAll}}</label>
+        <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
+    </view>
+  </view>
+
+  <view class="items">
+    <itemCard class="item" wx:for="{{videos}}" wx:key="{{item}}" type="vid" thumb="../../resources/images/ph_mybarre.png"/>
+  </view>
+
+
+  <view class="section">
+    <label class="title">{{locale.images}}</label>
+    <view class="all_container">
+        <label class="see_all">{{locale.seeAll}}</label>
+        <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
+    </view>
+  </view>
+
+  <view class="items">
+    <itemCard class="item" wx:for="{{images}}" wx:key="{{item}}" type="img" thumb="../../resources/images/ph_mybarre.png"/>
+  </view>
+
+  <view class="section">
+    <label class="title">{{locale.documents}}</label>
+    <view class="all_container">
+        <label class="see_all">{{locale.seeAll}}</label>
+        <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
+    </view>
+  </view>
+
+  <view class="items">
+    <itemCard class="item" wx:for="{{docs}}" wx:key="{{item}}" type="doc" mimeType="PDF" thumb="../../resources/images/ph_mybarre.png"/>
+  </view>
+
+
+</view>

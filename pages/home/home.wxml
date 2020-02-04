@@ -4,6 +4,7 @@
   <view class="content">
   
     <profile wx:if="{{index === 1}}"/>
+    <training wx:if="{{index === 2}}"/>
   </view>
 
 
