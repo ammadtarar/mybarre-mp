@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/landing/landing",
     "pages/register/register",
-    "pages/bundleDetail/bundleDetail"
+    "pages/bundleDetail/bundleDetail",
+    "pages/moreMedia/moreMedia"
   ],
   "window": {
     "backgroundTextStyle": "light",

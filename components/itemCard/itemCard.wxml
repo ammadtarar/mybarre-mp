@@ -1,5 +1,5 @@
 <!--components/itemCard/itemCard.wxml-->
-<view class="card">
+<view class="card" style="width : {{width}}px ; height : {{height}}px">
   <view class="top">
     <image class="img" src="{{thumb}}"></image>
     <image wx:if="{{type === 'vid'}}" class="play" src="../../resources/icons/ic_play.png"></image>

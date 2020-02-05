@@ -5,7 +5,7 @@
 
   <view class="section">
     <label class="title">{{locale.videos}}</label>
-    <view class="all_container">
+    <view class="all_container" bindtap="onMore" id="vid">
         <label class="see_all">{{locale.seeAll}}</label>
         <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
     </view>
@@ -18,7 +18,7 @@
 
   <view class="section">
     <label class="title">{{locale.images}}</label>
-    <view class="all_container">
+    <view class="all_container" bindtap="onMore" id="img">
         <label class="see_all">{{locale.seeAll}}</label>
         <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
     </view>
@@ -30,7 +30,7 @@
 
   <view class="section">
     <label class="title">{{locale.documents}}</label>
-    <view class="all_container">
+    <view class="all_container" bindtap="onMore" id="doc">
         <label class="see_all">{{locale.seeAll}}</label>
         <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
     </view>

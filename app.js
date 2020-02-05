@@ -3,6 +3,15 @@
 const locale = require('./utils/locale.js');
 App({
   onLaunch: function () {
+    const that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.screenWidth = res.windowWidth;
+        that.screenHeight = res.windowHeight;
+        that.pixelRatio = res.pixelRatio;
+      }
+    });
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

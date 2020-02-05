@@ -19,6 +19,10 @@ Component({
     title : {
       type : String,
       value : '--'
+    },
+    width : {
+      type : Number,
+      value : 125
     }
   },
 
@@ -26,7 +30,7 @@ Component({
    * Component initial data
    */
   data: {
-
+    height : '125px'
   },
 
   /**
@@ -35,7 +39,11 @@ Component({
   methods: {
     
   },
-  attached: function () { }, 
+  attached: function () { 
+    var width = this.properties.width;
+    var height = 1.44 * width;
+    this.setData({height : height})
+  }, 
   ready: function () {},
 
 })

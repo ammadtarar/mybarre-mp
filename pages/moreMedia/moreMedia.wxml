@@ -1,0 +1,10 @@
+<!--pages/moreMedia/moreMedia.wxml-->
+<view class="store">
+  <view class="container">
+    <view class="col" wx:for="{{columns}}" wx:key="index">
+      <view class="item-container" style="height : {{height}}px" wx:for="{{item}}" wx:key="index">
+        <itemCard type="{{type}}"  width="{{cardWidth}}"/>
+      </view>
+    </view>
+  </view>
+</view>

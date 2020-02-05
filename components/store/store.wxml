@@ -1,18 +1,13 @@
 <!--components/store/store.wxml-->
-
-
-
-
-  <view class="store">
-    <view class="container">
-  <view class="col" wx:for="{{columns}}" wx:key="index">
-    <view class="item-container" wx:for="{{item}}" wx:key="index">
-      <!-- {{item}} -->
-      <storeItem/>
+<view class="store">
+  <view class="container">
+    <view class="col" wx:for="{{columns}}" wx:key="index">
+      <view class="item-container" wx:for="{{item}}" wx:key="index">
+        <storeItem/>
+      </view>
     </view>
   </view>
-  </view>
-  </view>
+</view>
   
 
 

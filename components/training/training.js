@@ -21,6 +21,11 @@ Component({
    * Component methods
    */
   methods: {
-
+    onMore: function(e){
+      var type = e.currentTarget.id;
+      wx.navigateTo({
+        url: '/pages/moreMedia/moreMedia?type=' + type,
+      })
+    }
   }
 })
