@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "keyValueView": "../../components/keyValueView/keyValueView",
+    "itemCard": "../../components/itemCard/itemCard"
+  }
+}

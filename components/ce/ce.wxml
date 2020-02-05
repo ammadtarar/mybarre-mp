@@ -4,10 +4,10 @@
     <tabBar tabs="{{tabs}}" bind:onTabSelected="onTabSelected"></tabBar>
 
     <view class="items">
-      <bundleItem wx:for="{{myBundles}}" wx-if="{{tabIndex === 0}}" isPurchased="{{true}}" json="{{item}}"  wx:key="index" >{{index}}</bundleItem>
+      <bundleItem bindtap="onClickMyBundle" id="index"  wx:for="{{myBundles}}" wx-if="{{tabIndex === 0}}" isPurchased="{{true}}" json="{{item}}"  wx:key="index" >{{index}}</bundleItem>
 
 
-      <bundleItem wx:for="{{bundlesGallery}}" wx-if="{{tabIndex === 1}}" isPurchased="{{false}}" json="{{item}}"  wx:key="index" >{{index}}</bundleItem>
+      <bundleItem bindtap="onClickBundle" id="index" wx:for="{{bundlesGallery}}" wx-if="{{tabIndex === 1}}" isPurchased="{{false}}" json="{{item}}"  wx:key="index" >{{index}}</bundleItem>
 
     </view>
 

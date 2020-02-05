@@ -1,0 +1,135 @@
+/* pages/bundleDetail/bundleDetail.wxss */
+
+.container{
+  width: 100vw;
+  position: relative;
+}
+
+.upper{
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  padding-bottom: 120px;
+}
+
+.detail{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail .top{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail .top .cover{
+  width: 100%;
+  height: 200px;
+  background: lightgray;
+}
+
+.detail .top .title{
+  padding: 10px 22px 0px 22px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #292824;
+  text-align: left;
+}
+
+.detail .top .desc{
+  padding: 10px 22px 0px 22px;
+  color: #292824;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: left;
+}
+
+
+.detail .attrs{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 22px 0px 22px;
+}
+
+
+.detail .section{
+  margin: 22px 20px 0px 22px;
+  height: 22px;
+  width: calc(100% - 44px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail .section .title{
+  font-size: 16px;
+  font-weight: bold;
+  color: #A19999;
+  height: 22px;
+  line-height: 22px;
+}
+
+.detail .section .all_container{
+  height: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.detail .section .all_container .see_all{
+  color: #746767;
+  font-size: 10px;
+  font-weight: 500;
+  height: 22px;
+  line-height: 22px; 
+}
+
+.detail .section .all_container .arrow{
+  width: 10px;
+  height: 10px;
+  margin-left: 4px;
+}
+
+.detail .items{
+  width: calc(100% - 30px);
+  height: 200px;
+  padding-left: 10px;
+  padding-right: 15px;
+  margin-top: 10px;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: row;
+}
+
+.detail .items .item{
+  padding-right: 10px;
+}
+
+.bottom{
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom .bt{
+  width: calc(100% - 44px);
+  height: 50px;
+  background: #D57578;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px 0px gray;
+}

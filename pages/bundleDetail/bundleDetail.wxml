@@ -1,0 +1,62 @@
+<!--pages/bundleDetail/bundleDetail.wxml-->
+<view class="container">
+
+  <view class="upper">
+    <view class="detail">
+    <view class="top">
+      <image class="cover"></image>
+    <label class="title">{{title}}</label>
+    <label class="desc">{{desc}}</label>
+    </view>
+
+    <view class="attrs">
+      <keyValueView key="{{locale.price}}"> </keyValueView>
+      <keyValueView key="{{locale.validity}}"> </keyValueView>
+    </view>
+
+
+    <view class="section">
+      <label class="title">{{locale.videos}}</label>
+      <view class="all_container">
+          <label class="see_all">{{locale.seeAll}}</label>
+          <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
+      </view>
+    </view>
+
+    <view class="items">
+      <itemCard class="item" wx:for="{{videos}}" wx:key="{{item}}" type="vid" thumb="../../resources/images/ph_mybarre.png"/>
+    </view>
+
+    <view class="section">
+      <label class="title">{{locale.images}}</label>
+      <view class="all_container">
+          <label class="see_all">{{locale.seeAll}}</label>
+          <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
+      </view>
+    </view>
+
+    <view class="items">
+      <itemCard class="item" wx:for="{{images}}" wx:key="{{item}}" type="img" thumb="../../resources/images/ph_mybarre.png"/>
+    </view>
+
+    <view class="section">
+      <label class="title">{{locale.documents}}</label>
+      <view class="all_container">
+          <label class="see_all">{{locale.seeAll}}</label>
+          <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
+      </view>
+    </view>
+
+    <view class="items">
+      <itemCard class="item" wx:for="{{docs}}" wx:key="{{item}}" type="doc" mimeType="PDF" thumb="../../resources/images/ph_mybarre.png"/>
+    </view>
+
+  </view>
+  </view>
+
+  <view class="bottom">
+    <view class="bt">BUY THIS PACKAGE</view>
+  </view>
+
+
+</view>

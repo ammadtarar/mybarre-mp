@@ -87,7 +87,10 @@ let localList = {
     "documents": "Documents",
     "seeAll": "SEE ALL",
     "myBundles" : "My Bundles",
-    "bundlesGallery" : "Bundles Gallery"
+    "bundlesGallery" : "Bundles Gallery",
+    "bundleDetail" : "Bundle Detail",
+    "price" : "Price",
+    "validity" : "Validity"
   }
 }
 

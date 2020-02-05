@@ -13,7 +13,9 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: 'MYBARRE'
+    });
     this.selectComponent("#tabOne").activate()
   },
   onClickTab: function(e){

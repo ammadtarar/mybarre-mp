@@ -25,6 +25,18 @@ Component({
       this.setData({
         tabIndex: e.detail.tabIndex
       })
+    },
+    onClickMyBundle: function(e){
+      console.log("onClickMyBundle");
+      wx.navigateTo({
+        url: '/pages/bundleDetail/bundleDetail',
+      })
+    },
+    onClickBundle: function(e){
+      console.log("onClickBundle")
+      wx.navigateTo({
+        url: '/pages/bundleDetail/bundleDetail',
+      })
     }
   },
   attached: function () { 

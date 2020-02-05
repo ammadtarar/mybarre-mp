@@ -5,6 +5,7 @@
   border-bottom: 0.5px solid #D8D8D8;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .kvv .key{
