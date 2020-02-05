@@ -3,6 +3,7 @@
     "tab" : "../../components/navTab/navTab",
     "profile" : "../../components/profile/profile",
     "training": "../../components/training/training",
-    "ce": "../../components/ce/ce"
+    "ce": "../../components/ce/ce",
+    "store": "../../components/store/store"
   }
 }
