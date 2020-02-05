@@ -11,6 +11,7 @@ Component({
    * Component initial data
    */
   data: {
+    locale: wx.getStorageSync('locale'),
     items: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
     cols: 2
   },
@@ -18,7 +19,11 @@ Component({
    * Component methods
    */
   methods: {
-
+    goToOrders: function(e){
+      wx.navigateTo({
+        url: '/pages/orders/orders',
+      })
+    }
   },
   attached: function () {
     let columns = []

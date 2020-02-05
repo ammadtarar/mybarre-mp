@@ -1,11 +1,20 @@
 <!--components/store/store.wxml-->
-<view class="store">
-  <view class="container">
-    <view class="col" wx:for="{{columns}}" wx:key="index">
-      <view class="item-container" wx:for="{{item}}" wx:key="index">
-        <storeItem/>
+<view class="main">
+  <view class="store">
+    <view class="container">
+      <view class="col" wx:for="{{columns}}" wx:key="index">
+        <view class="item-container" wx:for="{{item}}" wx:key="index">
+          <storeItem/>
+        </view>
       </view>
     </view>
+  </view>
+
+  <view class="buttons">
+  
+    <view class="bt" bindtap="goToOrders">{{locale.myOrders}}</view>
+    <view class="bt">Cart (10)</view>
+  
   </view>
 </view>
   

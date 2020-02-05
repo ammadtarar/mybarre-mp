@@ -4,7 +4,8 @@
     "pages/landing/landing",
     "pages/register/register",
     "pages/bundleDetail/bundleDetail",
-    "pages/moreMedia/moreMedia"
+    "pages/moreMedia/moreMedia",
+    "pages/orders/orders"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,26 @@
+<!--pages/orders/orders.wxml-->
+<view class="orders" wx:for="{{orders}}" wx:key="index">
+
+  <view class="order">
+    <view class="top">
+      <label class="key">{{locale.orderNo}}</label>
+      <label class="val">{{index}}</label>
+    </view>
+    <view class="center">
+      <keyValueView key="{{locale.trainingStatus}}"> </keyValueView>
+      <keyValueView key="{{locale.trainingStatus}}"> </keyValueView>
+      <keyValueView key="{{locale.trainingStatus}}"> </keyValueView>
+    
+    </view>
+    <view class="bottom">
+      <label class="status">{{locale.shipped}}</label>
+      <view class="price_container">
+        <label class="key">{{locale.total}}</label>
+      <label class="val">$500</label>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>

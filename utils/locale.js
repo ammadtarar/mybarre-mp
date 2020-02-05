@@ -90,7 +90,14 @@ let localList = {
     "bundlesGallery" : "Bundles Gallery",
     "bundleDetail" : "Bundle Detail",
     "price" : "Price",
-    "validity" : "Validity"
+    "validity" : "Validity",
+    "orderNo" : "Order #",
+    "total" : "Total :",
+    "shipped" : "SHIPPED",
+    "delivered": "DELIVERED",
+    "PAID": "PAID",
+    "orderHistory": "Orders History",
+    "myOrders" : "My Orders"
   }
 }
 

@@ -1,0 +1,91 @@
+/* pages/orders/orders.wxss */
+.orders{
+  width: 100vw;
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.order{
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  margin-top: 10p;
+  margin-bottom: 10px;
+  background: white;
+  box-shadow: 0px 0px 10px 0px lightgray;
+  border-radius: 8px;
+}
+
+.top{
+  width: calc(100% - 20px);
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.top .key{
+  font-size: 14px;
+  color: #A19999;
+  font-weight: 500;
+  height: 30px;
+  line-height: 30px;
+}
+
+.top .val{
+  font-size: 16px;
+  color: #342F2F;
+  font-weight: 800;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 4px;
+}
+
+.center{
+  width: 80%;
+  margin-left: 10%;
+  height: auto;
+}
+
+.bottom{
+  width: calc(100% - 20px);
+  height: 30px;
+  padding: 10px;
+}
+
+.bottom .status{
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  color: #D57578;
+  font-weight: 800;
+  float: left;
+}
+
+.bottom .price_container{
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  float: right;
+  width: 100px;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+
+.bottom .price_container .key{
+  font-size: 14px;
+  color: #A19999;
+  font-weight: 500;
+  height: 30px;
+  line-height: 30px;
+}
+
+.bottom .price_container .val{
+  font-size: 18px;
+  color: #342F2F;
+  font-weight: 800;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 4px;
+}
