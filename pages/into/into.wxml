@@ -1,0 +1,24 @@
+<!--pages/into/into.wxml-->
+<view class="intro">
+  <!-- <view class="bg" >
+    <image class="background" src="../../resources/images/intro.png"></image>
+  </view> -->
+  <!-- <view class="overlay">
+    <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
+    <view class="bt" >Loading ...</view>
+  </view> -->
+
+  <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
+    <view class="bt" >{{locale.wait}}</view>
+
+  <popup 
+    wx:if="{{showPopup}}" 
+    negativeTitle="{{popupNegText}}"
+    showNegativeBtn="{{showPopupNegBtn}}"
+    bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
+    bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
+    title="{{popupTitle}}"
+    msg="{{popupMsg}}">
+  </popup>
+
+</view>

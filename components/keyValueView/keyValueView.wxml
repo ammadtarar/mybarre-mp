@@ -1,5 +1,12 @@
 <!--components/keyValueView/keyValueView.wxml-->
 <view class="kvv">
   <label class="key">{{key}}</label>
-  <label class="val">{{value}}</label>
+  <view class="valCont">
+    <label class="kkvvalContval" wx:if="{{!formatText}}"style="color : {{showWarning ? 'red' : '#292824'}} ; font-weight : bold">{{value}}</label>
+    <label class="kkvvalContval" wx:if="{{formatText}}" style="color : {{showWarning ? 'red' : '#292824'}} ; font-weight : bold">{{formattedValue}}</label>
+    
+    
+    <image wx-if="{{showInfoIcon}}" class="kkvvalContinfoIcon" src="../../resources/icons/ic_info.png"></image>
+  </view>
+  
 </view>

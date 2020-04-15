@@ -1,6 +1,9 @@
 {
   "component": true,
   "usingComponents": {
-    "storeItem" : "../storeItem/storeItem"
+    "tabBar": "../tabBar/tabBar",
+    "shop": "../shop/shop",
+    "cart": "../cart/cart",
+    "orders": "../orders/orders"
   }
 }

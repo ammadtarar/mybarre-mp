@@ -1,0 +1,15 @@
+<!--pages/videoplayer/videoplayer.wxml-->
+<view class='video-item'>
+    <!-- <video 
+    show-fullscreen-btn="false" autoplay='{{true}}' show-center-play-btn="{{true}}" src='{{videoUrl}}' controls="true" objectFit="cover">
+    </video> -->
+
+
+
+     <video id="myvideo" bindplay='playVideo' autoplay='true' src="{{videoUrl}}" bindfullscreenchange="fullScreen"  bindended="closeVideo"  controls poster="" >
+  </video> 
+
+    <!-- <image class='video-cover' wx:if='{{idx!=playIndex}}' mode='widthFix' src='{{course.coverUrl}}'></image>
+    <image class='video-play-btn' wx:if='{{idx!=playIndex}}' mode='widthFix' data-index='{{idx}}' bindtap='videoPlay' src='/images/play.png'></image> -->
+    <!-- <text wx:if='{{idx!=playIndex}}' class='video-duration fs-28'>{{course.duration}}</text> -->
+  </view>

@@ -1,11 +1,18 @@
 {
   "pages": [
-    "pages/home/home",
+    "pages/into/into",
     "pages/landing/landing",
+    "pages/home/home",
+    "pages/videoplayer/videoplayer",
     "pages/register/register",
     "pages/bundleDetail/bundleDetail",
     "pages/moreMedia/moreMedia",
-    "pages/orders/orders"
+    "pages/orderAddress/orderAddress",
+    "pages/checkout/checkout",
+    "pages/coursesList/coursesList",
+    "pages/uploadTrainingVideos/uploadTrainingVideos",
+    "pages/membershipStatusRoadmap/membershipStatusRoadmap",
+    "pages/orderDetail/orderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

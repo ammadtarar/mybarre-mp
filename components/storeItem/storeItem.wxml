@@ -1,17 +1,26 @@
 <!--components/storeItem/storeItem.wxml-->
 <view class="si">
 
-  <view class="inner">
-  
-    <image class="cover"></image>
-    <view class="bottom">
-      <label class="desc">Hello this is a product Hello this is a product Hello this is a product</label>
-      <view class="priceContainer">
-        <label class="price">$150</label>
-        <image class="cart" src="../../resources/icons/ic_cart.png"></image>
-      </view>
+  <!-- <image class="thumb" src="{{json.thumbnail_url}}"></image>  -->
+
+  <view
+   class="thumb"
+   style="background-image : url({{json.thumbnail_url}})"
+  ></view>
+
+
+  <view class="info_container">
+    <view class="inner">
+      <label class="name">{{json.name}}</label>
+      <label class="desc">{{json.description}}</label>
+    </view>
+    <view class="price_container">
+      <label class="rmb">¥</label>
+      <label class="price">{{json.price}}</label>
+      <image class="cart" src="../../resources/icons/ic_cart.png" bindtap="addToCart"></image>
     </view>
   
   </view>
+
 
 </view>

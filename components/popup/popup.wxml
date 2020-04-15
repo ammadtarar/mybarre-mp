@@ -8,8 +8,8 @@
       <label class="msg">{{msg}}</label>
 
       <view class="buttons_container">
-        <view class="bt negative" bindtap="onClickNegativeButton">Abort</view>
-        <view class="bt positive" bindtap="onClickPositiveButton">Continue</view>
+        <view class="bt negative" bindtap="onClickNegativeButton" wx:if="{{showNegativeBtn}}">{{negativeTitle}}</view>
+        <view class="bt positive" bindtap="onClickPositiveButton"  >{{positiveTitle}}</view>
       
       </view>
     </view>

@@ -1,8 +1,11 @@
 <!--pages/register/register.wxml-->
 <view class="container">
 
+  <!-- <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">Get Phone</button> -->
+
   <view class="top">
-    <view class="help bold_text">{{locale.needHelp}}</view>
+    <!-- <view class="help bold_text">{{locale.needHelp}}</view> -->
     <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
     <view class="progress_container">
       <view class="bubble bold_text {{stage===1?'active':'inactive'}}" >1</view>
@@ -34,44 +37,43 @@
 
       <!-- SECTION 1 -->
       <view wx:if="{{stage == 1}}" class="section">
-        <textview class="tv"  key="studioName" title="{{locale.name}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv"  key="one.name" title="{{locale.name}}" bind:onTextViewUpdated="onTextViewUpdated" />
         <singleOptionView
         class="tv"
         title="{{locale.gender}}"
-        key="gender"
+        key="one.gender"
         items="{{genderValues}}"
         bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
         </singleOptionView>
 
-        <textview class="tv" key="studioAddress" title="{{locale.email}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="managerName" title="{{locale.phone}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="studioPhone" title="{{locale.dob}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="studioWebsite" title="{{locale.nationality}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="one.email" title="{{locale.email}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="one.phone" title="{{locale.phone}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="one.dob" title="{{locale.dob}}" bind:onTextViewUpdated="onTextViewUpdated" type="date"/>
+        <textview class="tv" key="one.nationality" title="{{locale.nationality}}" bind:onTextViewUpdated="onTextViewUpdated" />
 
-        <textview class="tv" key="studioWebsite" title="{{locale.occupation}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="studioWebsite" title="{{locale.prefLang}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="one.occupation" title="{{locale.occupation}}" bind:onTextViewUpdated="onTextViewUpdated" />
 
 
         <singleOptionView
         class="tv"
         title="{{locale.prefLang}}"
-        key="language"
+        key="one.preffered_language"
         items="{{languageValues}}"
         bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
         </singleOptionView>
 
-        <textview class="tv" key="studioWebsite" title="{{locale.address}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="studioWebsite" title="{{locale.city}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="one.address" title="{{locale.address}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="one.city" title="{{locale.city}}" bind:onTextViewUpdated="onTextViewUpdated" />
 
       </view>
 
       <!-- SECTION 2 -->
       <view wx:if="{{stage == 2}}" class="section">
-        <textview class="tv"  key="studioName" title="{{locale.studioName}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="studioAddress" title="{{locale.studioAddress}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="managerName" title="{{locale.managerName}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="studioPhone" title="{{locale.studioPhone}}" bind:onTextViewUpdated="onTextViewUpdated" />
-        <textview class="tv" key="studioWebsite" title="{{locale.studioWebsite}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv"  key="two.studio_name" title="{{locale.studioName}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="two.studio_address" title="{{locale.studioAddress}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="two.studio_manager_name" title="{{locale.managerName}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="two.studio_phone" title="{{locale.studioPhone}}" bind:onTextViewUpdated="onTextViewUpdated" />
+        <textview class="tv" key="two.studio_website" title="{{locale.studioWebsite}}" bind:onTextViewUpdated="onTextViewUpdated" />
       </view>
 
 
@@ -82,9 +84,9 @@
        <label class="key">{{locale.s3q1}}</label>
        <view class="xinxi">
         <textarea 
-          value="{{form.discover}}"
+          value="{{three.find_out}}"
           wx-if="{{!showingCertificateModal}}"
-          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="discover">
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="three.find_out">
         </textarea>
       </view>
 
@@ -92,9 +94,9 @@
       <label class="key">{{locale.s3q2}}</label>
        <view class="xinxi">
         <textarea
-          value="{{form.motivation}}"  
+          value="{{three.motivation}}"  
           wx-if="{{!showingCertificateModal}}"
-          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="motivation">
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="three.motivation">
         </textarea>
       </view>
 
@@ -102,9 +104,9 @@
       <label class="key">{{locale.s3q3}}</label>
        <view class="xinxi">
         <textarea
-          value="{{form.current}}"    
+          value="{{three.current_status}}"    
           wx-if="{{!showingCertificateModal}}"
-          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="current">
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="three.current_status">
         </textarea>
       </view>
 
@@ -113,9 +115,9 @@
       <label class="key">{{locale.s3q4}}</label>
        <view class="xinxi">
         <textarea
-          value="{{form.goal}}" 
+          value="{{three.goals}}" 
           wx-if="{{!showingCertificateModal}}"
-          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="goal">
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="three.goals">
         </textarea>
       </view>
 
@@ -123,22 +125,22 @@
        <label class="key">{{locale.s3q5}}</label>
        <view class="xinxi">
         <textarea
-          value="{{form.past}}"  
+          value="{{three.mybarre_before}}"  
           wx-if="{{!showingCertificateModal}}"
-          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="past">
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="three.mybarre_before">
         </textarea>
       </view>
 
 
-      <cerifcationsView class="tv"  key="certifications" title="{{locale.s3q8}}" bind:onMultiLineTextViewUpdated="onTextViewUpdated" bind:onToggleModal="onToggleCertificateModal"/>
+      <cerifcationsView class="tv"  key="three.certifications" title="{{locale.s3q8}}" bind:onMultiLineTextViewUpdated="onTextViewUpdated" bind:onToggleModal="onToggleCertificateModal" bind:onCertificatesUpdated="onCertificatesUpdated"/>
 
 
       <label class="key">{{locale.s3q6}}</label>
        <view class="xinxi">
         <textarea
-          value="{{form.experience}}"  
+          value="{{three.prior_experience}}"  
           wx-if="{{!showingCertificateModal}}"
-          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="experience">
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="three.prior_experience">
         </textarea>
       </view>
 
@@ -146,22 +148,22 @@
       <label class="key">{{locale.s3q7}}</label>
        <view class="xinxi">
         <textarea
-          value="{{form.other}}"  
+          value="{{three.anything_else}}"  
           wx-if="{{!showingCertificateModal}}"
-          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="other">
+          minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" id="three.anything_else">
         </textarea>
       </view>
 
 
       </view>
 
-
+      <!-- SECTION 4 -->
       <view wx:if="{{stage == 4}}" class="section">
 
        <singleOptionView
         class="tv"
         title="{{locale.s4q1}}"
-        key="heartCondition"
+        key="four.heart_condition"
         items="{{yesNoValues}}"
         bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
         </singleOptionView>
@@ -169,7 +171,7 @@
          <singleOptionView
         class="tv"
         title="{{locale.s4q2}}"
-        key="pain"
+        key="four.chest_pain_or_blackouts"
         items="{{yesNoValues}}"
         bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
         </singleOptionView>
@@ -177,7 +179,7 @@
          <singleOptionView
         class="tv"
         title="{{locale.s4q3}}"
-        key="bp"
+        key="four.meds_for_bp"
         items="{{yesNoValues}}"
         bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
         </singleOptionView>
@@ -213,7 +215,7 @@ I have had sufficient opportunity to read this entire agreement. I understand it
 
 
   <view class="bottom">
-    <view class="bt bold_text" bindtap="next">Next</view>
+    <view class="bt bold_text" bindtap="next">{{stage === 5 ? locale.acceptAndPay :  locale.next}}</view>
   </view>
 
 
@@ -224,7 +226,15 @@ I have had sufficient opportunity to read this entire agreement. I understand it
 
   
 
-
+  <popup 
+    wx:if="{{showPopup}}" 
+    negativeTitle="{{popupNegText}}"
+    showNegativeBtn="{{showPopupNegBtn}}"
+    bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
+    bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
+    title="{{popupTitle}}"
+    msg="{{popupMsg}}">
+  </popup>
 
 
 </view>

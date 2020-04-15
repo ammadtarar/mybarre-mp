@@ -2,54 +2,33 @@
 .main{
   width: 100%;
   height: 100%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-.store{
+
+
+.topTabs{
   width: 100%;
-  height: 100%;
+  height: 51px;
+  padding-bottom: 2px;
+  position:fixed;
+  top: 0;
+  background: white;
+}
+
+.container{
+  width: 100%;
+  height: calc(100% - 51px);
   overflow-y: scroll;
   position: relative;
-}
-.container {
-  display: flex;
-  width: 99%;
-  height: auto;
-}
-.col {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.item-container {
-  height: 280px;
+  /* position:fixed; */
+  top: 53px;
 }
 
-.buttons{
-  position: fixed;
-  bottom: 50px;
-  width: 150px;
-  height: 110px;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 10px;
+.order_list{
+  width: 100%;
+  height: calc(100% - 51px);
 }
 
-.buttons .bt{
-  width: 100px;
-  height: 50px;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-  box-shadow: 0px 0px 10px 0px gray;
-  line-height: 50px;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  background: #D57578;
-  margin-top: 10px;
-  margin-right: -10px;
-  padding-left: 10px;
-}
+
+

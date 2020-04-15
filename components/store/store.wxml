@@ -1,21 +1,14 @@
 <!--components/store/store.wxml-->
 <view class="main">
-  <view class="store">
-    <view class="container">
-      <view class="col" wx:for="{{columns}}" wx:key="index">
-        <view class="item-container" wx:for="{{item}}" wx:key="index">
-          <storeItem/>
-        </view>
-      </view>
-    </view>
+
+  <tabBar class="topTabs" tabs="{{tabs}}" bind:onTabSelected="onTabSelected"></tabBar>
+
+  <view class="container" >
+    <shop wx:if="{{tabIndex === 0}}" />
+    <cart wx:if="{{tabIndex === 1}}" />
+    <orders wx:if="{{tabIndex === 2}}" />
   </view>
 
-  <view class="buttons">
-  
-    <view class="bt" bindtap="goToOrders">{{locale.myOrders}}</view>
-    <view class="bt">Cart (10)</view>
-  
-  </view>
 </view>
   
 

@@ -31,6 +31,9 @@
   width: 100%;
   height: 200px;
   background: lightgray;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
 }
 
 .detail .top .title{

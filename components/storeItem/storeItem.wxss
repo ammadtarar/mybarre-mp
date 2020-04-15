@@ -1,71 +1,101 @@
 /* components/storeItem/storeItem.wxss */
 .si{
-  width: 100%;
-  height: 280px;
-  padding-top: 5px;
-}
-
-.inner{
-  width: calc(100% - 15px);
-  height: calc(100% - 10px);
-  margin-left: 10px;
+  width: calc(100% - 40px);
+  height: 140px;
+  margin-left: 20px;
+  background: rgba(219, 197, 198, 0.40);
+  box-shadow: 0px 0px 6px 0px rgba(174, 174, 174, 0.4);
+  margin-top: 10px;
+  margin-bottom: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  overflow: hidden;
   border-radius: 8px;
-  overflow: hidden;
-  background: rgba(221, 191, 192, 0.40);
-  box-shadow: 0px 0px 10px 0px lightgray;
 }
 
-.cover{
-  width: 100%;
-  height: 60%;
-  background: gray;
+.thumb{
+  width: 140px;
+  height: 140px;
+  background-position: center;
+  background-size: cover;
   overflow: hidden;
 }
 
-.bottom{
-  width: calc(100% - 20px);
-  height: calc(40% - 10px) ;
-  padding: 5px 10px 5px 10px;
+.info_container{
+  width: calc(100% - 120px);
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.info_container .inner{
+  height: 85px;
+  width: calc(100% - 16px);
+  padding-left: 8px;
+  padding-right: 8px;
   display: flex;
   flex-direction: column;
 }
 
-.desc{
-  font-size: 12px;
-  color: #292824;
-  font-weight: 600;
+.info_container .inner .name{
   width: 100%;
-  height: 44px;
-  line-height: 22px;
+  max-height: 36px;
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  overflow: hidden;
+  text-align: left;
+}
+
+.info_container .inner .desc{
+  width: 100%;
+  height: 45px;
+  line-height: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: gray;
+  overflow: hidden;
   text-align: left;
   margin-top: 4px;
+}
+
+.info_container .price_container{
+  width: calc(100% - 16px);
+  margin-left: 8px;
+  height: 50px;
+  margin-top: 2px;
   overflow: hidden;
 }
 
-.priceContainer{
-  width: 100%;
-  height: 40px;
-  margin-top: 10px;
-}
 
-.priceContainer .price{
-  font-size: 16px;
+.info_container .price_container .rmb{
+  font-size: 12px;
+  height: 15px;
+  line-height: 15px;
   font-weight: bold;
-  color: #000000;
-  text-align: left;
-  width: auto;
-  height: 40px;
-  line-height: 40px;
-  overflow: hidden;
+  color: #333333;
+  float: left;
+  margin-top: 20px;
+  margin-right: 4px;
+}
+
+.info_container .price_container .price{
+  font-size: 20px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  color: #333333;
   float: left;
 }
 
-.priceContainer .cart{
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+.info_container .price_container .cart{
+  width: 30px;
+  height: 30px;
   float: right;
-  margin-top: 4px;
+  margin-top: 10px;
+  border-radius: 20px;
+  box-shadow: 0xp 0px 8px 0px lightgray;
 }

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "keyValueView": "../../components/keyValueView/keyValueView",
-    "itemCard": "../../components/itemCard/itemCard"
+    "itemCard": "../../components/itemCard/itemCard",
+    "popup": "../../components/popup/popup"
   }
 }

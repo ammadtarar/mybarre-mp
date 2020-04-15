@@ -1,8 +1,12 @@
 <!--components/bundleItem/bundleItem.wxml-->
 <view class="bi">
   <view class="top">
-    <image class="cover"></image>
-    
+    <!-- <image class="cover" src="{{json.cover_url}}"></image> -->
+
+    <view
+        class="cover"
+        style="background-image : url({{json.cover_url}})"
+    ></view>  
     <view class="medias">
       
       <view class="media" wx-if="{{vidCount > 0}}">
@@ -22,13 +26,13 @@
 
     </view>
 
-    <label wx-if="{{!isPurchased}}" class="price">$ 2,000</label>
+    <label wx-if="{{!isPurchased}}" class="price">¥ {{json.price}}</label>
 
   </view>
 
   <view class="bottom">
-    <label class="title">This is the title. This is the title. This is the title. This is the title. This is the title. </label>
-    <label class="desc">This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. This is the desc. </label>
+    <label class="title">{{json.name}} </label>
+    <label class="desc">{{json.description}}</label>
   
   </view>
   

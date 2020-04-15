@@ -1,0 +1,59 @@
+<!--pages/checkout/checkout.wxml-->
+<view class="main">
+
+  <label class="section_title">{{locale.shippingAddress}}</label>
+  <view class="address_container" bindtap="goToAddress">
+    <image class="address_icon" src="../../resources/icons/ic_loc_gray.png"></image>
+    <view class="address_inner">
+      <label class="select_address" wx:if="{{!address}}">{{locale.clickToEnterAddress}}</label>
+      <label class="user" wx:if="{{address}}">{{address.reciepient_name}}</label>
+      <label class="user" wx:if="{{address}}">{{address.phone}}</label>
+      <label class="address" wx:if="{{address}}">{{address.address}}</label>
+      <label class="address" wx:if="{{address}}">{{address.city}} , {{address.zip_code}}</label>
+    </view>
+    <image class="address_icon" src="../../resources/icons/ic_arrow_right_gray.png"></image>
+  </view>
+
+  <view class="remarksContainer">
+    <label class="title">{{locale.remarks}}</label>
+    <textarea value="{{address.remarks}}" bindinput="onUpdateRemarks" class="remarks" placeholder="{{locale.remakrsPlaceholder}}" placeholder-class="placeholder"></textarea>
+  </view>
+
+  <label class="section_title" style="margin-top : 20px">{{locale.orderDetails}}</label>
+  <view style="padding-bottom: 70px;">
+    <view class="item"  wx:for="{{items}}" wx:key="index">
+      <!-- <image class="thumb" src="{{item.product.thumbnail_url}}"></image> -->
+
+      <view
+        class="thumb"
+        style="background-image : url({{item.product.thumbnail_url}})"
+    ></view>  
+      <label class="title">{{item.product.name}}</label>
+      <label class="count">x{{item.count}}</label>
+      <label class="price">¥{{item.product.price}}</label>
+    </view>
+    
+  </view>
+
+
+  <view class="bottom">
+    <view class="price_container">
+      <label class="total">{{locale.total}}</label>
+      <view class="price_inner">
+        <label class="sign">¥</label>
+        <label class="total_amount">{{total}}</label>
+      </view>
+    </view>
+    <view class="bt" bindtap="createOrder">{{locale.pay}}</view>
+  </view>
+
+  <popup 
+    wx:if="{{showPopup}}" 
+    negativeTitle="{{popupNegText}}"
+    showNegativeBtn="{{showPopupNegBtn}}"
+    bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
+    bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
+    title="{{popupTitle}}"
+    msg="{{popupMsg}}">
+  </popup>
+</view>

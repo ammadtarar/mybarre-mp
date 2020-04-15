@@ -5,27 +5,21 @@ Page({
   data: {
     recieve: ['recieveOne' , 'recieveTwo', 'recieveThree'],
     includes: ['includesOne', 'includesTwo', 'includesThree', 'includesFour', 'includesFive', 'includesSix', 'includesSeven' ],
-    locale: wx.getStorageSync('locale'),
-    showPricePopup : false
+    locale: wx.getStorageSync('locale')
   },
   onLoad: function (options) {
+    wx.hideHomeButton();
     wx.setNavigationBarTitle({
-      title: '',
+      title: 'MYBARRE',
     })
   },
   goToRegister: function(e){
-    this.setData({ showPricePopup : true});
+    wx.navigateTo({
+      url: '/pages/coursesList/coursesList?needRegistration=true'
+    })
   },
   goToLogin: function (e) {
     console.log("getToLogin tapped")
   },
-  onClickPopupNegativeButton: function(){
-    this.setData({ showPricePopup: false })
-  },
-  onClickPopupPositiveButton: function(){
-    this.setData({showPricePopup : false})
-    wx.navigateTo({
-      url: '/pages/register/register'
-    })
-  }
+  
 })

@@ -1,0 +1,4 @@
+<!--components/shop/shop.wxml-->
+<view class="shop" wx:for="{{items}}" wx:key="{{index}}" style="padding-top : {{index === 0 ? '10px' : '0px'}}">
+  <storeItem json="{{item}}"/>
+</view>

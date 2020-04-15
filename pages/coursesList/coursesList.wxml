@@ -1,0 +1,36 @@
+<!--pages/coursesList/coursesList.wxml-->
+<view class="courses">
+  <label class="notice">{{locale.pickCourseNotice}}</label>
+
+
+  <view class="courseView" wx:for="{{courses}}" wx:key="index" id="{{index}}" bindtap="onClickCourse">
+
+    <view class="info">
+      <label class="key">{{locale.start}}</label>
+    <label class="val">{{item.start}}</label>
+
+
+    <label class="key">{{locale.end}}</label>
+    <label class="val">{{item.end}}</label>
+
+
+    <label class="key">{{locale.priceCap}}</label>
+    <label class="val">¥ {{item.price}}</label>
+    </view>
+    
+    <view class="soldout_cont" wx-if="{{item.seats <= 0}}">
+      <image class="soldout" src="../../resources/images/img_soldout.png"></image>
+    </view>
+    
+  
+  </view>
+
+   <popup 
+  wx:if="{{showPricePopup}}" 
+  bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
+  bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
+  title="{{popupTitle}}"
+  msg="{{msg}}">
+  </popup>
+
+</view>

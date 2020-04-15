@@ -1,18 +1,27 @@
-/* pages/orders/orders.wxss */
+/* components/orders/orders.wxss */
 .orders{
   width: 100vw;
   height: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  /* padding-bottom: 10px; */
+}
+
+.nothing{
+  width: 100vw;
+  height: 80vh;
+  line-height: 80vh;
+  font-size: 12px;
+  color: gray;
+  text-align: center;
 }
 
 .order{
   width: calc(100% - 40px);
+  height: auto;
   margin-left: 20px;
-  margin-top: 10p;
-  margin-bottom: 10px;
-  background: white;
-  box-shadow: 0px 0px 10px 0px lightgray;
+  margin-bottom: 5px;
+  background: rgba(219, 197, 198, 0.40);
+  box-shadow: 0px 0px 6px 0px rgba(174, 174, 174, 0.4);
   border-radius: 8px;
 }
 
@@ -22,6 +31,7 @@
   display: flex;
   flex-direction: row;
   padding: 10px;
+  align-items: center
 }
 
 .top .key{
@@ -51,12 +61,13 @@
   width: calc(100% - 20px);
   height: 30px;
   padding: 10px;
+  margin-top: 10px;
 }
 
 .bottom .status{
   height: 30px;
   line-height: 30px;
-  font-size: 16px;
+  font-size: 14px;
   color: #D57578;
   font-weight: 800;
   float: left;
@@ -72,9 +83,14 @@
   align-items: flex-end;
 }
 
+.address_icon{
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+}
 
 .bottom .price_container .key{
-  font-size: 14px;
+  font-size: 12px;
   color: #A19999;
   font-weight: 500;
   height: 30px;
@@ -82,10 +98,24 @@
 }
 
 .bottom .price_container .val{
-  font-size: 18px;
+  font-size: 14px;
   color: #342F2F;
   font-weight: 800;
   height: 30px;
   line-height: 30px;
   margin-left: 4px;
 }
+
+.btPay{
+  width: 80px;
+  height: 30px;
+  background: #D57578;
+  margin-left: auto;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 20px;
+  font-size: 14px;
+  box-shadow: 0px 0px 8px 0px gray
+}
+

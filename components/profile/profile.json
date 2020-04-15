@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "keyValueView" : "../keyValueView/keyValueView",
-    "notificationItem" : "../notificationItem/notificationItem"
+    "notificationItem" : "../notificationItem/notificationItem",
+    "popup" : "../popup/popup"
   }
 }

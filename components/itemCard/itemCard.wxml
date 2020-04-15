@@ -1,7 +1,20 @@
 <!--components/itemCard/itemCard.wxml-->
-<view class="card" style="width : {{width}}px ; height : {{height}}px">
+<view class="card" style="width : {{width}}px ; height : {{height}}px" bindtap="onClick">
   <view class="top">
-    <image class="img" src="{{thumb}}"></image>
+    <!-- <image class="img" src="{{thumb}}" wx:if="{{type !== 'doc'}}"></image> -->
+
+    <view
+        wx:if="{{type !== 'doc'}}"
+        class="img"
+        style="background-image : url({{thumb}}) !important"
+    ></view>
+
+    <image class="img" src="../../resources/images/ph_mybarre.png" wx:if="{{type === 'doc'}}"></image>
+
+
+    
+    
+    
     <image wx:if="{{type === 'vid'}}" class="play" src="../../resources/icons/ic_play.png"></image>
     <label wx:if="{{type === 'doc'}}" class="tag">{{mimeType}}</label>
   </view>

@@ -1,0 +1,39 @@
+<!--pages/uploadTrainingVideos/uploadTrainingVideos.wxml-->
+<view class="uploader">
+
+  <view class="top">
+    <label class="desc">{{locale.upload_tip}}</label>
+    <view class="btsCont">
+      <view class="btSelectFies" bindtap="selectFile">{{locale.select_file}}</view>
+      <view class="btUpload" bindtap="uploadFiles">{{locale.upload}}</view>
+    </view>
+  </view>
+
+
+  <view class="files">
+  
+    <view class="file" wx:for="{{files}}">
+      
+      <image class="thumb" src="{{item.file.thumbTempFilePath}}"></image>
+      <view class="info">
+        <textarea class="name" placeholder="Enter file name" bindinput="onValueUpdated" id="{{index}}"></textarea>
+        <view class="bts">
+          <view class="remove" style="padding-right: 10px;" bindtap="preview" id="{{index}}">Preview</view>
+          <view class="remove" style="margin-left : auto; padding-left: 10px;" bindtap="removeFile" id="{{index}}">Remove</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <popup 
+  wx:if="{{showPopup}}" 
+  negativeTitle="{{popupNegText}}"
+  negativeTitle="{{showPopupNegBtn}}"
+  bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
+  bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
+  title="{{popupTitle}}"
+  msg="{{popupMsg}}">
+  </popup>
+
+</view>

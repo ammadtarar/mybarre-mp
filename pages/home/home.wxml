@@ -1,19 +1,50 @@
 <!--pages/home/home.wxml-->
 <view class="home">
 
-  <view class="content">
+  <view class="content" style="height: calc(100% - {{diff + 64}}px)">
     <profile wx:if="{{index === 1}}"/>
     <training wx:if="{{index === 2}}"/>
     <ce wx:if="{{index === 3}}"/>
-    <store wx:if="{{index === 4}}"/>
+    <store wx:if="{{index === 4}}" bind:onShowCart="onShowCart"/>
   </view>
 
 
-  <view class="tabs_container">
-    <tab title="{{locale.profile}}" isActive="{{index === 1}}" id="tabOne" bindtap="onClickTab"></tab>
-    <tab title="{{locale.training}}" isActive="{{index === 2}}" id="tabTwo" bindtap="onClickTab"></tab>
-    <tab title="{{locale.ce}}" isActive="{{index === 3}}" id="tabThree" bindtap="onClickTab"></tab>
-    <tab title="{{locale.store}}" isActive="{{index === 4}}" id="tabFour" bindtap="onClickTab"></tab>
+  <view class="tabs_container" style="padding-bottom : {{diff}}px">
+    <tab 
+      activeIcon="../../resources/icons/ic_profile_active.png"
+      inActiveIcon="../../resources/icons/ic_profile_inactive.png"
+      title="{{locale.profile}}" 
+      isActive="{{index === 1}}" 
+      id="tabOne" 
+      bindtap="onClickTab">
+    </tab>
+
+    <tab 
+      activeIcon="../../resources/icons/ic_exercise_active.png"
+      inActiveIcon="../../resources/icons/ic_exercise_inactive.png"
+      title="{{locale.training}}" 
+      isActive="{{index === 2}}" 
+      id="tabTwo" 
+      bindtap="onClickTab">
+    </tab>
+
+    <tab 
+      activeIcon="../../resources/icons/ic_ce_active.png"
+      inActiveIcon="../../resources/icons/ic_ce_inactive.png"
+      title="{{locale.ce}}" 
+      isActive="{{index === 3}}" 
+      id="tabThree" 
+      bindtap="onClickTab">
+    </tab>
+    
+    <tab 
+      activeIcon="../../resources/icons/ic_shop_active.png"
+      inActiveIcon="../../resources/icons/ic_shop_inactive.png"
+      title="{{locale.store}}" 
+      isActive="{{index === 4}}" 
+      id="tabFour" 
+      bindtap="onClickTab">
+    </tab>
   </view>
 
 

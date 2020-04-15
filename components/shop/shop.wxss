@@ -1,0 +1,5 @@
+/* components/shop/shop.wxss */
+.shop{
+  width: 100vw;
+  height: auto;
+}

@@ -2,6 +2,41 @@
 <view class="textview">
 
   <label class="key">{{title}}</label>
-  <input class="val" type="text" placeholder="tap to enter text" bindinput="onValueUpdated"></input>
+  <input wx:if="{{type !== 'date'}}" class="val" type="text" placeholder-style="color:lightgray ;font-weight : 400" bindinput="onValueUpdated" value="{{val}}" ></input>
+
+
+  <label wx:if="{{type === 'date'}}" class="val" type="text" placeholder-style="color:lightgray ;font-weight : 400" bindinput="onValueUpdated" value="{{val}}" bindtap="onClickInput">
+    {{year}} /  {{month}} / {{day}}
+  
+  </label>
+
+    <view class="cover" wx:if="{{type === 'date' && showPicker}}">
+
+      <view class="picker-container">
+
+         <view class="picker-title-container">
+              <label class="title">{{locale.pickDob}}</label>
+              <image class="btClose" src="../../resources/icons/ic_cross_white.png" bindtap="closePicker"></image>
+          </view>
+          <view class="picker">
+              <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+            <picker-view-column>
+              <view wx:for="{{years}}" class="picker-item">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column>
+              <view wx:for="{{months}}" class="picker-item">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column>
+              <view wx:for="{{days}}" class="picker-item">{{item}}</view>
+            </picker-view-column>
+          </picker-view>
+          </view>
+
+          <view class="line">line</view>
+          <view class="btSave" bindtap="onSave">Save</view>
+      
+      </view>
+
+    </view>
 
 </view>

@@ -1,4 +1,5 @@
 /* pages/register/register.wxss */
+/* D57578 */
 .container{
   width: 100vw;
   height: 100vh;
@@ -24,6 +25,8 @@
   margin-top: 8px;
   font-size: 12px;
 }
+
+
 
 .progress_container{
   width: 100%;

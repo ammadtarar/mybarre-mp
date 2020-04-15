@@ -8,20 +8,26 @@
 
 .home .content{
   width: 100%;
-  height: calc(100% - 50px);
+  height: calc(100% - 60px);
   overflow-y: hidden;
+  padding-bottom: 10px;
 }
 
 .home .tabs_container{
-  background: purple;
-  width: 100%;
-  height: 50px;
+  height: 60px;
   display: flex;
   flex-direction: row;
-  z-index: 100;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  left:0;
+  right:0;
+  border-top: 0.5px solid lightgrey;
+  background: white;
+
 }
 
 .home .tabs_container > tab{
-  height: 50px;
+  height: 60px;
   width: 25%;
 }

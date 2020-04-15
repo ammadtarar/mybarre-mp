@@ -1,7 +1,8 @@
 /* components/keyValueView/keyValueView.wxss */
 .kvv{
   width: 100%;
-  height: 50px;
+  min-height: 50px;
+  height: auto;
   border-bottom: 0.5px solid #D8D8D8;
   display: flex;
   justify-content: space-between;
@@ -12,14 +13,27 @@
   font-size: 12px;
   font-weight: 600;
   color: #776F6F;
-  line-height: 50px;
-  height: 50px;
+  height: auto;
+  text-align: left;
 }
 
-.kkv .val{
+.valCont{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.kkvvalContval{
   font-size: 14px;
   font-weight: bold;
   color: #292824;
-  line-height: 50px;
-  height: 50px;
+  height: auto;
+  text-align: right;
+  text-transform: capitalize
+}
+
+.kkvvalContinfoIcon{
+  width: 20px !important;
+  height: 20px !important;
+  margin-left: 4px;
 }

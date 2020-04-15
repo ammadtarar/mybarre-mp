@@ -1,0 +1,29 @@
+<!--pages/membershipStatusRoadmap/membershipStatusRoadmap.wxml-->
+<view class="roadmap">
+
+  <label class="desc">{{locale.status_roadmap_desc }}</label>
+  <view class="statuses">
+
+    <view class="status" wx:for="{{statues}}">
+      <view class="titleCont" wx:if="{{currentStatus !== item.status}}">
+        <label class="no">{{index + 1}}</label>
+        <label 
+        class="title">{{item.title}}</label>
+      </view>
+
+      <view class="titleCont" wx:if="{{currentStatus === item.status}}">
+        <label class="redBubble">{{index + 1}}</label>
+        <label 
+        class="active">{{item.title}} <label class="here">{{locale.you}}</label></label>
+      </view>
+
+
+      <label 
+      class="detail"
+      style="border-left : {{index < statues.length - 1 ? '1px dashed gray;' : '1px dashed transparent;'}}"
+      >{{item.detail}}</label>
+    </view>
+  
+  </view>
+
+</view>

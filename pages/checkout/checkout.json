@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "textview": "../../components/textview/textview",
+    "popup": "../../components/popup/popup"
+  }
+}

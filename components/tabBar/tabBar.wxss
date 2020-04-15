@@ -1,5 +1,5 @@
 /* components/tabBar/tabBar.wxss */
-.tabBar{
+.top_tab_bar{
   width: 100%;
   height: 50px;
   border-bottom: 0.5px solid #C4BEBE;
@@ -8,21 +8,22 @@
   justify-content: space-between;
 }
 
-.tabBar .tab{
-  color: #A19999;
+.top_tab_bar .tab_bar{
+  color: #D57578;
   text-align: center;
   line-height: 49px;
   height: 49px;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
-.tabBar .active{
+.top_tab_bar .active{
   font-size: 16px;
   font-weight: bold;
-  border-bottom: 4px solid #A19999;
+  border-bottom: 4px solid #D57578;
 }
 
-.tabBar .inactive{
+.top_tab_bar .inactive{
+  color: #A19999;
   font-size: 12px;
   font-weight: 500;
 }

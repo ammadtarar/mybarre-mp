@@ -1,22 +1,30 @@
 /* components/tab/tab.wxss */
-view{
+.navTab{
   width: 100%;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
+  height: 60px;
   transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon{
+  width: 30px;
+  height: 30px;
+  margin-bottom: 4px;
 }
 
 .active{
-  background: #fff;
-  color: #A19999;
+  color: #D57578;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 11px;
+  transition: all 0.3s;
 }
 
 .inactive{
-  background: #EAE3E3;
   color: #A19999;
-  font-size: 12px;
-  box-shadow: 0px 0px 4px 0px  rgba(128, 128, 128, 0.384);
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.3s;
 }

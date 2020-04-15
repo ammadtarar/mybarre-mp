@@ -5,6 +5,8 @@ Component({
    */
   properties: {
     title : String,
+    activeIcon: String,
+    inActiveIcon: String
   },
 
   /**

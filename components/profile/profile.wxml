@@ -1,22 +1,133 @@
 <!--components/profile/profile.wxml-->
 <view class="profile">
-
+  
   <view class="top">
-    <image class="avatar"></image>
+    <!-- <image class="avatar"></image> -->
+    <view class="avatar">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
     <view class="card_top">
-      <label class="title">Ammad Amjad Tarar</label>
-      <keyValueView key="{{locale.trainingStatus}}"> </keyValueView>
-      <keyValueView key="{{locale.courseDate}}"> </keyValueView>
-      <keyValueView key="{{locale.vidSubDate}}"> </keyValueView>
+      <label class="title">{{name}}</label>
+
+      <keyValueView 
+      key="{{locale.membershipStart}}"
+      value="{{membership.start}}"/>
+
+
+      <keyValueView 
+      key="{{locale.membershipEnd}}"
+      value="{{membership.end}}"/>
+
+      <keyValueView 
+      bindtap="onClickStatus"
+      showInfoIcon="true"
+      formatText="true"
+      key="{{locale.trainingStatus}}"
+      value="{{membership.status}}"/>
+
+      <keyValueView 
+      wx:if="{{membership.status === 'pre-instructor' || membership.status === 'pre-instructor-tbc'}}"
+      key="{{locale.courseDate}}"
+      value="{{membership.course.start}}"/>
+
+      <!-- SHOW VIDEO SUBMISSION DEADLINE  -->
+      <keyValueView
+      showWarning="{{showVideoUploadDueWarning}}"
+      wx:if="{{membership.status === 'instructor-in-training'}}"
+      key="{{locale.vidSubDate}}"
+      value="{{membership.video_submission_date}}"/>
+
+
     </view>
   </view>
 
-  <view class="notifications_card">
-    <label class="title">{{locale.notifications}}</label>
-    <view style="height : 30px;" wx:for="{{notifications}}" wx:key="item">
-      <notificationItem isNew="{{item.isNew}}" text="{{item.text}}" ></notificationItem>
+  <view class="notifications_card" style="margin-bottom : 20px !important" wx:if="{{membership.status === 'instructor-in-training' && showVideoUploadDueWarning}}">
+    <view class="titleCont">
+    <label 
+    class="title">{{locale.videos_overdue_notice}}</label>
+    </view>
+  </view>
+
+  <!-- PRE INSTRUCTOR CARD -->
+  <view class="notifications_card" wx:if="{{membership.status === 'pre-instructor'}}">
+    <view class="titleCont">
+    <label 
+    class="title">{{locale.notif_pre_instructor}}</label>
+    </view>
+    <view class="btCheckIn" bindtap="scanTrainingQR" >
+        <image class="ic_qr" src="../../resources/icons/ic_scan_white.png"></image>
+        <label>{{locale.training_check_in}}</label>
+      </view>
+  </view>
+
+  <!-- INSTRUCTOR IN TRAINING CARD -->
+  <view class="notifications_card" wx:if="{{membership.status === 'instructor-in-training' || membership.status === 'training-videos-submitted'}}">
+    
+    <view class="titleCont">
+      <label 
+      wx:if="{{membership.status === 'instructor-in-training'}}"
+      class="title">{{locale.notif_in_training}}</label>
+      <label 
+      wx:if="{{membership.status === 'training-videos-submitted'}}"
+      class="title">{{locale.notif_videos_submitted}}</label>
+      
+      <label class="title vertical_spacing_small">{{locale.notif_in_training_two}}</label>
     </view>
     
+    <view class="btCheckIn" bindtap="uploadFiles" >
+      <image class="ic_qr" src="../../resources/icons/ic_upload.png"></image>
+      <label>{{locale.upload_vids}}</label>
+    </view>
   </view>
+
+
+  <view class="notifications_card" wx:if="{{membership.status === 'exam-failed'}}">
+    <view class="titleCont">
+      <label class="title">{{locale.notif_exam_failed}}</label>
+    </view>
+  </view>
+
+
+  <view class="notifications_card" wx:if="{{membership.status === 'license-fee-paid'}}">
+     <view class="titleCont">
+      <label class="title">{{locale.notif_license_fee_paid}}</label>
+    </view>
+  </view>
+
+  <view class="notifications_card" wx:if="{{membership.status === 'exam-passed'}}">
+
+  <view class="titleCont">
+    <label 
+    class="title">{{locale.notif_exam_passed}}</label>
+    <label class="title vertical_spacing_small">{{locale.notif_exam_passed_two}}</label>
+  </view>
+    <view class="btCheckIn" bindtap="payFee" >
+      <image class="ic_qr" src="../../resources/icons/ic_pay.png"></image>
+      <label>{{locale.pay_membership_fee}}</label>
+    </view>
+  </view>
+
+  <!-- LICENSE INSTRUCTOR CARD -->
+  <view class="notifications_card" wx:if="{{membership.status === 'licensed-instructor'}}">
+    <view class="titleCont">
+    <label 
+    class="title">{{locale.notif_licensed_instructor}}</label>
+    </view>
+    <view class="btCheckIn" bindtap="downoadLicense" >
+        <image class="ic_qr" src="../../resources/icons/ic_download.png"></image>
+        <label>{{locale.download_license}}</label>
+      </view>
+  </view>
+
+  <popup 
+  wx:if="{{showPopup}}" 
+  positiveTitle="{{popupPosText}}"
+  negativeTitle="{{popupNegText}}"
+  showNegativeBtn="{{showPopupNegBtn}}"
+  bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
+  bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
+  title="{{popupTitle}}"
+  msg="{{popupMsg}}">
+  </popup>
 
 </view>

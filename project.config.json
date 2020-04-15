@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -14,7 +14,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.4",
-	"appid": "wx762bfb13ac5c2b65",
+	"appid": "wx6aa74ef446457fe1",
 	"projectname": "MYBARRE",
 	"debugOptions": {
 		"hidedInDevtools": []

@@ -34,14 +34,19 @@ Page({
       cardWidth: (screenWidth / 2) - 20
     });
     
+    const data = options.data;
+    const d = JSON.parse(data);
+    this.setData({ items: d })
+
+
     let columns = []
     let mid = Math.ceil(this.data.items.length / this.data.cols)
-    console.log(mid)
     for (let col = 0; col < this.data.cols; col++) {
       columns.push(this.data.items.slice(col * mid, col * mid + mid))
     }
-    console.log(columns)
     this.setData({ columns: columns });
+
+
   },
   /**
    * Lifecycle function--Called when page is initially rendered

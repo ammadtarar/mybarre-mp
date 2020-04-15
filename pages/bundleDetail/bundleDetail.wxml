@@ -4,18 +4,23 @@
   <view class="upper">
     <view class="detail">
     <view class="top">
-      <image class="cover"></image>
-    <label class="title">{{title}}</label>
-    <label class="desc">{{desc}}</label>
+      <!-- <image class="cover" src="{{bundle.cover_url}}"></image> -->
+
+      <view
+        class="cover"
+        style="background-image : url({{bundle.cover_url}})"
+    ></view>  
+    <label class="title">{{bundle.name}}</label>
+    <label class="desc">{{bundle.description}}</label>
     </view>
 
     <view class="attrs">
-      <keyValueView key="{{locale.price}}"> </keyValueView>
-      <keyValueView key="{{locale.validity}}"> </keyValueView>
+      <keyValueView key="{{locale.price}}" wx:if="{{buyable}}" value="{{price}}"/>
+      <keyValueView key="{{locale.validity}}" showInfoIcon="true" value="{{expiry}}" bindtap="onClickExpiry"/>
     </view>
 
 
-    <view class="section">
+    <view class="section" wx:if="{{videos.length > 0}}" bindtap="onMore" id="vid">
       <label class="title">{{locale.videos}}</label>
       <view class="all_container">
           <label class="see_all">{{locale.seeAll}}</label>
@@ -23,11 +28,22 @@
       </view>
     </view>
 
-    <view class="items">
-      <itemCard class="item" wx:for="{{videos}}" wx:key="{{item}}" type="vid" thumb="../../resources/images/ph_mybarre.png"/>
+    <view class="items" wx:if="{{videos.length > 0}}">
+      <itemCard 
+        class="item" 
+        wx:if="{{index < 3}}"
+        wx:for="{{videos}}" 
+        wx:key="index" 
+        type="vid" 
+        thumb="{{item.thumb_url}}" 
+        title="{{item.name}}" 
+        url="{{item.url}}"
+        allowClick="{{!buyable}}"
+        bind:onClickLockedItem="onClickLockedItem"
+        />
     </view>
 
-    <view class="section">
+    <view class="section" wx:if="{{images.length > 0}}" bindtap="onMore" id="img">
       <label class="title">{{locale.images}}</label>
       <view class="all_container">
           <label class="see_all">{{locale.seeAll}}</label>
@@ -35,11 +51,23 @@
       </view>
     </view>
 
-    <view class="items">
-      <itemCard class="item" wx:for="{{images}}" wx:key="{{item}}" type="img" thumb="../../resources/images/ph_mybarre.png"/>
+    <view class="items" wx:if="{{images.length > 0}}">
+      <itemCard 
+        class="item" 
+        wx:if="{{index < 3}}"
+        wx:for="{{images}}" 
+        wx:key="index" 
+        type="img" 
+        thumb="{{item.url}}" 
+        title="{{item.name}}" 
+        url="{{item.url}}"
+        allowClick="{{!buyable}}"
+        bind:onClickLockedItem="onClickLockedItem"
+        />
+
     </view>
 
-    <view class="section">
+    <view class="section" wx:if="{{docs.length > 0}}" bindtap="onMore" id="doc">
       <label class="title">{{locale.documents}}</label>
       <view class="all_container">
           <label class="see_all">{{locale.seeAll}}</label>
@@ -47,16 +75,40 @@
       </view>
     </view>
 
-    <view class="items">
-      <itemCard class="item" wx:for="{{docs}}" wx:key="{{item}}" type="doc" mimeType="PDF" thumb="../../resources/images/ph_mybarre.png"/>
+    <view class="items" wx:if="{{docs.length > 0}}">
+       <itemCard 
+        class="item" 
+        wx:if="{{index < 3}}"
+        wx:for="{{docs}}" 
+        wx:key="index" 
+        type="doc" 
+        mimeType="{{item.mime}}" 
+        thumb="../../resources/images/ph_mybarre.png"
+        title="{{item.name}}" 
+        url="{{item.url}}"
+        allowClick="{{!buyable}}"
+        bind:onClickLockedItem="onClickLockedItem"
+        />
+
     </view>
 
   </view>
   </view>
 
-  <view class="bottom">
-    <view class="bt">BUY THIS PACKAGE</view>
+  <view class="bottom" wx:if="{{buyable}}">
+    <view class="bt" bindtap="buyBundle">{{locale.buy}}</view>
   </view>
+
+
+  <popup 
+  wx:if="{{showPopup}}" 
+  negativeTitle="{{popupNegText}}"
+  showNegativeBtn="{{showPopupNegBtn}}"
+  bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
+  bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
+  title="{{popupTitle}}"
+  msg="{{popupMsg}}">
+  </popup>
 
 
 </view>

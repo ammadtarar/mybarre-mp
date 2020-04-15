@@ -1,0 +1,61 @@
+<!--components/cart/cart.wxml-->
+<view class="cart">
+
+
+  <view class="nothing" wx:if="{{items.length <= 0}}">{{locale.emptyCart}}</view>
+
+  <view class="items" wx:if="{{items.length > 0}}">
+  
+    <view class="item" wx:for="{{items}}" wx:key="index" >
+
+      <view class="info">
+        <!-- <image class="thumb" src="{{item.product.thumbnail_url}}"></image> -->
+        <view
+        class="thumb"
+        style="background-image : url({{item.product.thumbnail_url}})"
+        ></view>
+        <view class="details">
+          <label class="name">{{item.product.name}}</label>
+          <label class="desc">{{item.product.description}}</label>
+        </view>
+      </view>
+
+      <view class="price_container">
+        <label class="sign" >¥</label>
+        <label class="price">{{item.product.price}}</label>
+        <label class="times">x{{item.count}}</label>
+        <view class="counter">
+          <label class="bt_small" bindtap="decreaseItem" id="{{item.product.id}}">-</label>
+          <label class="count">{{item.count}}</label>
+          <label wx:if="{{item.count < item.product.count}}" class="bt_small" bindtap="increaseItem" id="{{item.product.id}}">+</label>
+          <label wx:if="{{item.count >= item.product.count}}" class="bt_small neg" >+</label>
+
+        </view>
+      
+      </view>
+
+    </view>
+
+    
+  
+  
+  
+  </view>
+  
+
+  <view class="bottom" wx:if="{{items.length > 0}}">
+    <view class="price_container_bottom">
+      <label class="bottom_total_cart">{{locale.total}}</label>
+      <view class="cart_total_inner">
+        <label class="sign-bottom">¥</label>
+        <label class="total_amount">{{total}}</label>
+      </view>
+    </view>
+    <view class="bt" bindtap="order">{{locale.checkout}}</view>
+  </view>
+
+
+
+
+
+</view>

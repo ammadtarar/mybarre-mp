@@ -2,6 +2,7 @@
   "usingComponents": {
     "textview" : "../../components/textview/textview",
     "singleOptionView": "../../components/singleOptionView/singleOptionView",
-    "cerifcationsView": "../../components/cerifcationsView/cerifcationsView"
+    "cerifcationsView": "../../components/cerifcationsView/cerifcationsView",
+    "popup": "../../components/popup/popup"
   }
 }

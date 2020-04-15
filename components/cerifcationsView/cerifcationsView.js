@@ -36,6 +36,7 @@ Component({
       var certs = this.data.certificates;
       certs.splice(index , 1);
       this.setData({certificates : certs});
+      this.triggerEvent('onCertificatesUpdated', { key: this.properties.key, value: certs });
     },
     saveCertification: function(e){
       if (Object.keys(this.data.certificate).length < 3){
@@ -44,6 +45,8 @@ Component({
       var certs = this.data.certificates;
       certs.push(this.data.certificate);
       this.setData({ certificates : certs , certificate : {} , showAddModal : false})
+
+      this.triggerEvent('onCertificatesUpdated', { key: this.properties.key, value: certs });
     }
   }
 })

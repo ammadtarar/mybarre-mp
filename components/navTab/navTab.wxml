@@ -1,3 +1,11 @@
 <!--components/tab/tab.wxml-->
-<view class="{{isActive ? 'active' : 'inactive'}}">{{title}}</view>
+<view class="navTab">
+
+  <image class="icon" src="{{activeIcon}}" wx:if="{{isActive}}"></image>
+  <image class="icon" src="{{inActiveIcon}}" wx:if="{{!isActive}}"></image>
+
+
+  <label class="{{isActive ? 'active' : 'inactive'}}" >{{title}}</label>
+
+</view>
 

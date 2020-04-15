@@ -1,16 +1,25 @@
 <!--components/ce/ce.wxml-->
 <view class="ce">
 
-    <tabBar tabs="{{tabs}}" bind:onTabSelected="onTabSelected"></tabBar>
-
-    <view class="items">
-      <bundleItem bindtap="onClickMyBundle" id="index"  wx:for="{{myBundles}}" wx-if="{{tabIndex === 0}}" isPurchased="{{true}}" json="{{item}}"  wx:key="index" >{{index}}</bundleItem>
+    <tabBar class="topTabs" tabs="{{tabs}}" bind:onTabSelected="onTabSelected"></tabBar>
 
 
-      <bundleItem bindtap="onClickBundle" id="index" wx:for="{{bundlesGallery}}" wx-if="{{tabIndex === 1}}" isPurchased="{{false}}" json="{{item}}"  wx:key="index" >{{index}}</bundleItem>
-
+    <view class="items" wx-if="{{tabIndex === 0 && myBundles.length > 0}}">
+      <bundleItem bindtap="onClickMyBundle" id="{{item.id}}"  wx:for="{{myBundles}}" isPurchased="{{true}}" json="{{item}}"  wx:key="index" >{{index}}</bundleItem>
     </view>
 
+    <view class="empty" wx-if="{{tabIndex === 0 && myBundles.length <= 0}}">
+      {{locale.nothing_to_show}}
+    </view>
+
+
+    <view class="items" wx-if="{{tabIndex === 1 && bundlesGallery.length > 0}}">
+      <bundleItem bindtap="onClickBundle" id="{{item.id}}" wx:for="{{bundlesGallery}}"  isPurchased="{{false}}" json="{{item}}"  wx:key="index" >{{index}}</bundleItem>
+    </view>
+
+    <view class="empty" wx-if="{{tabIndex === 1 && bundlesGallery.length <= 0}}">
+      {{locale.nothing_to_show}}
+    </view>
 
 
    

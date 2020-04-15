@@ -6,17 +6,35 @@ Page({
    */
   data: {
     locale: wx.getStorageSync('locale'),
-    index : 1
+    index : 1,
+    diff : 0
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    wx.hideHomeButton();
+    const ctx = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        var diff = res.safeArea.bottom - res.safeArea.height;
+        if (diff > 20) {
+          ctx.setData({ diff: diff - 20})
+        }
+        console.log(diff)
+      }
+    });
     wx.setNavigationBarTitle({
       title: 'MYBARRE'
     });
     this.selectComponent("#tabOne").activate()
+  },
+  onShowCart: function(e){
+    this.setData({showCart : true})
+  },
+  onCloseCart: function(e){
+    this.setData({ showCart: false })
   },
   onClickTab: function(e){
     var id = e.currentTarget.id;

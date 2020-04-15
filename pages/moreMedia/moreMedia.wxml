@@ -3,7 +3,14 @@
   <view class="container">
     <view class="col" wx:for="{{columns}}" wx:key="index">
       <view class="item-container" style="height : {{height}}px" wx:for="{{item}}" wx:key="index">
-        <itemCard type="{{type}}"  width="{{cardWidth}}"/>
+        <itemCard 
+        type="{{type}}"  
+        width="{{cardWidth}}"
+        mimeType="{{item.mime}}" 
+        thumb="{{item.thumb_url || item.url}}" 
+        title="{{item.name}}" 
+        url="{{item.url}}" 
+        />
       </view>
     </view>
   </view>

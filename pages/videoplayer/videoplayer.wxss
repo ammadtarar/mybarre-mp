@@ -1,0 +1,31 @@
+/* pages/videoplayer/videoplayer.wxss */
+.video-item{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+video{
+  width: 100%;
+  height: 100%; 
+}
+.video-cover{
+  position: absolute;
+  left: 0;
+  top: 0
+}
+.video-play-btn{
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto
+}
+.video-duration{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #fff;
+}

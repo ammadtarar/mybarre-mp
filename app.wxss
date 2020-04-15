@@ -1,7 +1,11 @@
 /**app.wxss**/
 @font-face {
     font-family: 'Avenir';
-    src: url(./resources/fonts/AEH.ttf) format('truetype');
+    src: url('http://localhost:3001/app/font') format('truetype');
+}
+
+label , view , button {
+  font-family: 'Avenir';
 }
 
 .light_text {

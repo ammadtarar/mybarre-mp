@@ -2,7 +2,8 @@
 <view class="container">
 
     
-    <image  class="cover" src="../../resources/images/bg_landing.png"></image>
+    <image  class="cover" 
+    style="background-image : url(../../resources/images/bg_landing.png)"></image>
 
     <view class="card" id="card">
       <label class="welcome light_text">{{locale.welcomeTo}}</label>
@@ -13,10 +14,10 @@
     </view>
 
 
-    <view class="login_container" bindtap="goToLogin">
+    <!-- <view class="login_container" bindtap="goToLogin">
       <label class="already light_text">{{locale.alreadyMember}}</label>
       <label class="login bold_text">{{locale.login}}</label>
-     </view>
+     </view> -->
 
     
   <view class="bottom">
@@ -35,12 +36,6 @@
   
   </view>
 
-  <popup 
-  wx:if="{{showPricePopup}}" 
-  bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
-  bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
-  title="{{locale.notice}}"
-  msg="{{locale.preRegistrationFeeNotice}}">
-  </popup>
+ 
 
 </view>
