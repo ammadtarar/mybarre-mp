@@ -14,11 +14,16 @@ Component({
   data: {
     locale: wx.getStorageSync('locale'),
     items: [],
-    total : 0.00
+    total : 0.00,
+    isEnglish: true
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
     show: function () {
+      const lang = wx.getStorageSync('lang');
+      this.setData({
+        isEnglish: lang === 'en' ? true : false
+      })
       this.getCart()
     },
     hide: function () { },
@@ -28,8 +33,12 @@ Component({
    * Component methods
    */
   methods: {
+    goToDetail(e){
+      wx.navigateTo({
+        url: '/pages/productDetail/productDetail?productId=' + e.currentTarget.id,
+      })
+    },
     order: function(e){
-      console.log("order")
       wx.navigateTo({
         url: '/pages/checkout/checkout',
       })
@@ -38,17 +47,33 @@ Component({
       this.triggerEvent('onCloseCart');
     },
     increaseItem: function(e){
+      
       const ctx = this;
+      const item = this.getItemById(e.target.id) || null;
+      if (item === null) {
+        return;
+      }
+      var url = urls.getUrl('ADD_TO_CART').replace(":id", item.product.id);
+      if (item.colorId) {
+        url = url + '/' + item.colorId;
+      } else {
+        url = url + "/-1"
+      }
+
+      if (item.sizeId) {
+        url = url + '/' + item.sizeId;
+      } else {
+        url = url + "/-1"
+      }
+      
       wx.showLoading({})
       wx.request({
-        url: urls.getUrl('ADD_TO_CART').replace(":id", e.target.id),
+        url: url,
         method: "POST",
         header: {
           Authorization: wx.getStorageSync('token')
         },
         success: res => {
-          console.log(res)
-          console.log(res.statusCode)
           wx.hideLoading()
           if (res.statusCode === 411){
             wx.showToast({
@@ -67,17 +92,42 @@ Component({
 
       })
     },
+    getItemById(id){
+      var obj = null;
+      this.data.items.forEach(function(item){
+        if (item.id === parseInt(id)){
+          obj = item;
+        }
+      })
+      return obj;
+    },
     decreaseItem: function (e) {
       const ctx = this;
+      const item = this.getItemById(e.target.id) || null;
+      if(item === null){
+        return;
+      }
+      var url = urls.getUrl('REDUCE_CART_COUNT').replace(":id", item.product.id);
+      if(item.colorId){
+        url = url + '/' + item.colorId;
+      }else{
+        url = url + "/-1"
+      }
+
+      if (item.sizeId) {
+        url = url + '/' + item.sizeId;
+      } else {
+        url = url + "/-1"
+      }
+
       wx.showLoading({})
       wx.request({
-        url: urls.getUrl('REDUCE_CART_COUNT').replace(":id", e.target.id),
+        url:  url,
         method : "POST",
         header: {
           Authorization: wx.getStorageSync('token')
         },
         success: res => {
-          console.log(res.data.data)
           wx.showToast({})
           wx.hideLoading()
           ctx.getCart()
@@ -97,7 +147,6 @@ Component({
           Authorization: wx.getStorageSync('token')
         },
         success: res => {
-          console.log(res.data.data)
           var items = res.data.data;
           var total = 0.00;
           items.forEach(function(item){

@@ -6,12 +6,13 @@ Page({
    */
   data: {
     locale: wx.getStorageSync('locale'),
-    address : {},
+    address: { insideShanghai: true },
     showPopup: false,
     popupNegText: "",
     showPopupNegBtn: "",
     popupTitle: "",
-    popupMsg: ""
+    popupMsg: "",
+    preSelectedIndex: 0
   },
 
   /**
@@ -19,12 +20,24 @@ Page({
    */
   onLoad: function (options) {
     var address = wx.getStorageSync("address");
+    console.log(address)
+    console.log(address.insideShanghai ? 0 : 1)
     this.setData({
-      address : address
+      address : address,
+      yesNoValues: [{ key: this.data.locale.yes, value: true }, { key: this.data.locale.no, value: false }],
+      preSelectedIndex: address.insideShanghai ? 0 : 1
     })
     wx.setNavigationBarTitle({
       title: this.data.locale.enterAddress,
     })
+  },
+  onSingleOptionViewUpdated: function (e) {
+    const key = e.detail.key;
+    const value = e.detail.value;
+    this.setData({
+      ['address.insideShanghai']: value
+    });
+    console.log(this.data.address)
   },
   onClickPopupPositiveButton: function () {
     this.resetAndHideModal()
@@ -42,15 +55,22 @@ Page({
       popupType: ''
     })
   },
+  onCnAddUpdated: function(e){
+    this.setData({
+      ['address.address_cn']: e.detail.value
+    })
+    console.log(this.data.address)
+  },
   onTextViewUpdated: function (e) {
     const value = e.detail.value || "";
     const key = e.detail.key;
     this.setData({
       ['address.' + key]: value
     })
+    console.log(this.data.address)
   },
   save: function(e){
-    if (Object.keys(this.data.address).length < 5){
+    if (Object.keys(this.data.address).length < 6){
       this.setData({
         showPopupNegBtn: false,
         popupType: 'warning',

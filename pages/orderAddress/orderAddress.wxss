@@ -11,6 +11,43 @@
   color: gray;
 }
 
+.xinxi {
+  width: 100%;
+  height: 200rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: rgba(236, 222, 222, 0.404);
+  margin-bottom: 80px;
+}
+.xinxi >textarea {
+  width: 100%;
+  height: 200rpx;
+  padding: 4px;
+
+
+
+   color: #2A2828;
+  
+  font-size: 14px;
+  
+  font-weight: 600;
+  background: rgba(236, 222, 222, 0.404);
+  
+}
+
+
+.key{
+
+  color: #A19999;
+
+font-weight: 400;
+font-size: 12px;
+
+margin-bottom: 4px;
+  margin-top: 10px;
+  float: left;
+}
+
 .red{
   color: rgba(194, 47, 47, 0.712);
   font-weight: bold;
@@ -35,14 +72,14 @@
 .bottom .bt{
   width: calc(100% - 44px);
   height: 50px;
-  background: #D57578;
+  background: #d9bdbb;
   color: white;
   font-weight: bold;
   font-size: 16px;
   text-align: center;
   line-height: 50px;
   border-radius: 25px;
-  box-shadow: 0px 0px 10px 0px gray;
+  box-shadow: 0px 0px 10px 0px #a6a6a6;
 }
 
 

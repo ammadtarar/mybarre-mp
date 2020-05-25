@@ -3,7 +3,9 @@
 
     
     <image  class="cover" 
-    style="background-image : url(../../resources/images/bg_landing.png)"></image>
+    style="background-image : url({{coverImgUrl}})"></image>
+
+
 
     <view class="card" id="card">
       <label class="welcome light_text">{{locale.welcomeTo}}</label>
@@ -23,13 +25,13 @@
   <view class="bottom">
   
     <label class="heading medium_text">{{locale.willRecieve}}</label>
-    <view class="offering" wx:for="{{recieve}}" wx:key="{{item}}">
+    <view class="offering" wx:for="{{recieve}}" wx:key="item">
       <view class="bolt"></view>
       <label class="text light_text">{{locale[item]}}</label>
     </view>
 
     <label class="heading medium_text vertical_spacing_30">{{locale.courseCovers}}</label>
-    <view class="offering" wx:for="{{includes}}" wx:key="{{item}}">
+    <view class="offering" wx:for="{{includes}}" wx:key="item">
       <view class="bolt"></view>
       <label class="text light_text">{{locale[item]}}</label>
     </view>

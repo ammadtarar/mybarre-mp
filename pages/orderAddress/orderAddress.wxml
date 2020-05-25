@@ -1,28 +1,31 @@
 <!--pages/orderAddress/orderAddress.wxml-->
 <view class="cont">
-  <label class="notice">{{locale.addressNotice}}</label>
-  <label class="notice red">{{locale.allFiledsRequired}}</label>
 
-  <textview style="margin-top : 30px;" class="tv" key="reciepient_name" title="{{locale.reciName}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.reciepient_name}}"/>
-  <textview class="tv" key="phone" title="{{locale.phoneNo}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.phone}}"/>
-  <textview class="tv" key="address" title="{{locale.address}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.address}}"/>
-  <textview class="tv" key="city" title="{{locale.city}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.city}}"/>
-  <textview class="tv" key="zip_code" title="{{locale.zip}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.zip_code}}"/>
-  
+  <label class="notice" style="color : #545454 ; margin-bottom : 4px">{{locale.onlyInChina}}</label>
+
+  <textview style="margin-top : 30px;" class="tv" key="reciepient_name" title="{{locale.reciName}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.reciepient_name}}" />
+  <textview class="tv" key="phone" title="{{locale.phoneNo}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.phone}}" />
+  <textview class="tv" key="address" title="{{locale.address}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.address}}" />
+  <textview class="tv" key="city" title="{{locale.city}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.city}}" />
+  <textview class="tv" key="zip_code" title="{{locale.zip}}" bind:onTextViewUpdated="onTextViewUpdated" val="{{address.zip_code}}" />
+
+  <singleOptionView class="tv" title="{{locale.insideShanghai}}" key="insideShanghai" items="{{yesNoValues}}" preSelectedIndex="{{preSelectedIndex}}" bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+  </singleOptionView>
+
+  <label class="key">{{locale.cnAdd}}</label>
+  <view class="xinxi">
+    <textarea value="{{address.address_cn}}" minlength="{{min}}" maxlength="{{max}}" bindinput="onCnAddUpdated" id="address.address_cn">
+    </textarea>
+  </view>
+
+
 
   <view class="bottom">
     <view class="bt" bindtap="save">{{locale.save}}</view>
   </view>
 
 
-  <popup 
-    wx:if="{{showPopup}}" 
-    negativeTitle="{{popupNegText}}"
-    showNegativeBtn="{{showPopupNegBtn}}"
-    bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
-    bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
-    title="{{popupTitle}}"
-    msg="{{popupMsg}}">
+  <popup wx:if="{{showPopup}}" negativeTitle="{{popupNegText}}" showNegativeBtn="{{showPopupNegBtn}}" bind:onClickPopupPositiveButton="onClickPopupPositiveButton" bind:onClickPopupNegativeButton="onClickPopupNegativeButton" title="{{popupTitle}}" msg="{{popupMsg}}">
   </popup>
-  
+
 </view>

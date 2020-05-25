@@ -7,6 +7,12 @@
         class="cover"
         style="background-image : url({{json.cover_url}})"
     ></view>  
+    
+
+    <label wx-if="{{!isPurchased}}" class="price">¥ {{json.price}}</label>
+
+    <view class="overlay"></view>
+
     <view class="medias">
       
       <view class="media" wx-if="{{vidCount > 0}}">
@@ -24,10 +30,9 @@
         <label>{{docsCount}}</label>
       </view>
 
+    
+    
     </view>
-
-    <label wx-if="{{!isPurchased}}" class="price">¥ {{json.price}}</label>
-
   </view>
 
   <view class="bottom">

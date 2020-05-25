@@ -8,8 +8,8 @@
 }
 
 .option_view .title{
-  color: #A19999;
-  font-family: 'Avenir';
+  color: #545454;
+  
   font-weight: 400;
   font-size: 12px;
 }
@@ -26,8 +26,8 @@
 }
 
 .option_view .options .option label{
-  color: #A19999;
+  color: #545454;
   font-size: 14px;
-  font-family: 'Avenir';
+  
   font-weight: 600;
 }

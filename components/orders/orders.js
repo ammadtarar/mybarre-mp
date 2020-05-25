@@ -41,7 +41,6 @@ Component({
           Authorization: wx.getStorageSync('token')
         },
         success: res =>{
-          console.log(res.data.data.rows)
           var orders = res.data.data.rows;
           orders.forEach(function(order){
             const status = order.status;
@@ -93,8 +92,6 @@ Component({
             signType: 'MD5',
             paySign: payRes.paySign,
             success: function (successRes) {
-              console.log("successRes")
-              console.log(successRes)
               ctx.updateOrderStatus(order.id, out_trade_no)
             },
             fail: function (payErr) {
@@ -102,7 +99,6 @@ Component({
               console.log(payErr)
             }
           })
-          console.log(res.statusCode)
           wx.hideLoading()
         },
         fail: err => {

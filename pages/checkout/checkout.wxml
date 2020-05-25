@@ -19,6 +19,14 @@
     <textarea value="{{address.remarks}}" bindinput="onUpdateRemarks" class="remarks" placeholder="{{locale.remakrsPlaceholder}}" placeholder-class="placeholder"></textarea>
   </view>
 
+
+  <keyValueView 
+      style="margin-left : 20px; margin-right : 20px"
+      formatText="true"
+      key="{{locale.shippingFee}}"
+      value="¥{{shippingFee}}"/>
+
+
   <label class="section_title" style="margin-top : 20px">{{locale.orderDetails}}</label>
   <view style="padding-bottom: 70px;">
     <view class="item"  wx:for="{{items}}" wx:key="index">
@@ -28,7 +36,14 @@
         class="thumb"
         style="background-image : url({{item.product.thumbnail_url}})"
     ></view>  
-      <label class="title">{{item.product.name}}</label>
+      <view class="itemDetails">
+        <label class="title">{{item.product.name}}</label>
+        <view class="attrsContainer">
+          <label class="attr" wx:if="{{item.color}}">{{isEnglish ? item.color.name_en : item.color.name_zh}}</label>
+          <label class="attr" wx:if="{{item.size}}" style="margin-left : 4px">{{isEnglish ? item.size.name_en : item.size.name_zh}}</label>
+        </view>
+      </view>
+      
       <label class="count">x{{item.count}}</label>
       <label class="price">¥{{item.product.price}}</label>
     </view>

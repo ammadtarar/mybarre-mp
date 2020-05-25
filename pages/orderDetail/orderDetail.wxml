@@ -1,5 +1,8 @@
 <!--pages/orderDetail/orderDetail.wxml-->
-<view class="cont" style="height : {{ order.status === 'pending_payment' ? 'calc(100vh - 70px)' : '100%'}}">
+
+<view class="container">
+
+<view class="upper" >
 
 <view class="top">
   <label class="orderIdKey">{{locale.orderNo}}</label>
@@ -37,26 +40,58 @@
   </view>
 </view>
 
-<label class="section_title" style="margin-top : 20px">{{locale.orderDetails}}</label>
-  <view style="padding-bottom: 70px;">
-    <view class="item"  wx:for="{{order.items}}" wx:key="index">
-      <!-- <image class="thumb" src="{{item.product.thumbnail_url}}"></image> -->
 
-      <view
-        class="thumb"
-        style="background-image : url({{item.product.thumbnail_url}})"
-    ></view>  
-      <label class="title">{{item.product.name}}</label>
+
+
+<label class="section_title" style="margin-top : 20px">{{locale.orderDetails}}</label>
+  <view>
+
+
+    <view class="item"  wx:for="{{order.items}}" wx:key="index" id="{{item.product.id}}" bindtap="goToDetail">
+      <view class="thumb" style="background-image : url({{item.product.thumbnail_url}})"></view>  
+      <view class="itemDetails">
+        <label class="title">{{item.product.name}}</label>
+        <view class="attrsContainer">
+          <label class="attr" wx:if="{{item.color}}">{{isEnglish ? item.color.name_en : item.color.name_zh}}</label>
+          <label class="attr" wx:if="{{item.size}}" style="margin-left : 4px">{{isEnglish ? item.size.name_en : item.size.name_zh}}</label>
+        </view>
+      </view>
       <label class="count">x{{item.count}}</label>
       <label class="price">¥{{item.product.price}}</label>
+      <label class="price">¥{{(item.product.price * item.count)}}</label>
     </view>
-    
   </view>
 
+  <keyValueView 
+      style="margin-left : 20px; margin-right : 20px; margin-top : 20px"
+      formatText="true"
+      key="{{locale.subTotal}}"
+      value="¥{{order.amount || 0.0}}"/>
 
-  
+  <keyValueView 
+      style="margin-left : 20px; margin-right : 20px; margin-top : 0px"
+      formatText="true"
+      key="{{locale.shippingFee}}"
+      value="¥{{order.shipping_fee || 0.0}}"/>
+     
+  <keyValueView 
+      style="margin-left : 20px; margin-right : 20px; margin-top : 0px; margin-bottom : 100px"
+      formatText="true"
+      key="{{locale.total}}"
+      value="¥{{(order.amount + order.shipping_fee) || 0.0}}"/>   
 
 </view>
 
-<view wx:if="{{order.status === 'pending_payment'}}" bindtap="pay" class="btPay">{{locale.pay}}</view>
+   <view class="bottom" wx:if="{{order.status === 'pending_payment'}}">
+    <view class="bt" bindtap="pay">{{locale.pay}}</view>
+  </view>
+
+  <view class="bottom" wx:if="{{order.status === 'dispatched'}}">
+    <view class="bt" bindtap="confirm">{{locale.recieved}}</view>
+  </view>
+
+</view>
+
+
+
 

@@ -9,7 +9,7 @@
     </view>
 
     <view class="empty" wx-if="{{tabIndex === 0 && myBundles.length <= 0}}">
-      {{locale.nothing_to_show}}
+      <label>{{locale.nothing_to_show}}</label>
     </view>
 
 
@@ -18,7 +18,7 @@
     </view>
 
     <view class="empty" wx-if="{{tabIndex === 1 && bundlesGallery.length <= 0}}">
-      {{locale.nothing_to_show}}
+      <label>{{locale.nothing_to_show}}</label>
     </view>
 
 

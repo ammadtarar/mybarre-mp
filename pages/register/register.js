@@ -21,26 +21,104 @@ Page({
     popupNegText: "",
     showPopupNegBtn: "",
     popupTitle: "",
-    popupMsg: ""
+    popupMsg: "",
+    sockSizes: [{ key: '35-38', value: '35-38' }, { key: '39-40', value: '39-40' }],
+    headShot: '../../resources/images/user_placeholder.png',
+    sholderShot: '../../resources/images/user_placeholder.png',
+    headShortUrl: null,
+    shoulderShotUrl : null,
+    extraManualFee : 199,
+    showRedeemCouponPopup: false
+
   },
   getSettingInfo: function () {
-    console.log("lm-------getSettingInfo")
     // 登录
     wx.login({
       success: res => {
         //todo 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log("lm-------getSettingInfo---login", res)
 
       }
     })
   },
   bindGetUserInfo(e) {
-    console.log(e.detail.userInfo)
+
   },
   getPhoneNumber(e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
+    
+  },
+  onClickShoulderShotInfo(){
+    this.setData({
+      showPopup: true,
+      popupTitle: this.data.locale.shoulderShot,
+      popupMsg: this.data.locale.shoulderShotInfo,
+      showPopupNegBtn: false,
+      popupNegText: '',
+      popupType: ''
+    })
+  },
+  showRedeemPopup(){
+    this.setData({
+      showRedeemCouponPopup: true
+    });
+  },
+  onDismissRedeemPopup(){
+    console.log("onDismissRedeemPopup")
+    this.setData({
+      showRedeemCouponPopup : false
+    });
+  },
+  onCodeAccepted(e){
+    const coupon = e.detail.coupon;
+    const value = coupon.value;
+    var couponValue = "";
+    var payableAmount = "";
+    var originalAmount = this.data.payableAmount;
+    if(coupon.type === 'percentage'){
+      couponValue = value + "%" + this.data.locale.discount;
+      payableAmount = originalAmount - (originalAmount * value) / 100;
+    }else{
+      couponValue = "¥" + value + this.data.locale.discount;
+      payableAmount = originalAmount - value;
+      if (payableAmount < 0 ){
+        payableAmount = 0;
+      }
+    }
+
+    this.setData({
+      coupon : coupon,
+      couponValue: couponValue,
+      payableAmount: payableAmount,
+    })
+  },
+  onClickHeadShotInfo() {
+    this.setData({
+      showPopup: true,
+      popupTitle: this.data.locale.headShot,
+      popupMsg: this.data.locale.headShotInfo,
+      showPopupNegBtn: false,
+      popupNegText: '',
+      popupType: ''
+    })
+  },
+  onClickHeadShot(){
+    const ctx = this;
+    wx.chooseImage({
+      success: function(res) {
+        ctx.setData({
+          headShot: res.tempFilePaths[0]
+        })
+      },
+    })
+  },
+  onClickShoulderShot() {
+    const ctx = this;
+    wx.chooseImage({
+      success: function (res) {
+        ctx.setData({
+          sholderShot: res.tempFilePaths[0]
+        })
+      },
+    })
   },
   /**
    * Lifecycle function--Called when page load
@@ -76,11 +154,14 @@ Page({
 
       
       courseId : options.courseId,
-      genderValues: [{ key: this.data.locale.male, value: 'male' }, { key: this.data.locale.female, value: 'female' }],
-      languageValues: [{ key: this.data.locale.english, value: 'en' }, { key: this.data.locale.mandarin, value: 'zh' }],
+      genderValues: [{ key: this.data.locale.female, value: 'female' }, { key: this.data.locale.male, value: 'male' }],
+      shirtSizes: [{ key: this.data.locale.small, value: 'small' }, { key: this.data.locale.medium, value: 'medium' }, { key: this.data.locale.large, value: 'large' }],
+      manualValues: [{ key: this.data.locale.english, value: 'english' }, { key: this.data.locale.mandarin, value: 'mandarin' }, { key: this.data.locale.both, value: 'both' }],
       yesNoValues: [{key: this.data.locale.yes , value: true} , {key: this.data.locale.no , value: false}],
-      ['form.one.gender']: 'male',
-      ['form.one.preffered_language']: 'en',
+      ['form.one.gender']: 'female',
+      ['form.one.top_size']: 'small',
+      ['form.one.sock_size']: '35-38',
+      ['form.one.manual_lang']: 'english',
       ['form.three.certifications']: [],
       ['form.four.heart_condition']: true,
       ['form.four.chest_pain_or_blackouts']: true,
@@ -91,12 +172,11 @@ Page({
     
     this.processSectionTitleAndDescription();
     this.getCourse()
+    this.getConfigs()
   },
   inputs: function (e) {
     const value = e.detail.value || "";
     const key = e.currentTarget.id;
-    console.log(value)
-    console.log(key)
     if (value === null || value === undefined || value === "") {
       var currentForm = this.data.form;
       delete currentForm[key.split('.')[0]][key.split('.')[1]];
@@ -123,10 +203,10 @@ Page({
       })
     }
   },
-  next: function(e){
+  next:  function(e){
     const ctx = this;
     var stage = this.data.stage;
-    if(stage === 5){
+    if(stage === 6){
       wx.showLoading();
       var form = {};
       for (let mainKey in this.data.form) {
@@ -136,36 +216,46 @@ Page({
           form[innerKey] = innerOject
         }
       }
-      wx.request({
-        url: urls.getUrl('UPDATE_PROFILE'),
-        method: 'POST',
-        header : {
-          Authorization : wx.getStorageSync('token')
-        },
-        data : form,
-        success: regRes => {
-          wx.hideLoading()
-          console.log(regRes)
-          wx.setStorageSync('name', form.name);
-          wx.setStorageSync('email', form.email);
-          wx.setStorageSync('gender', form.gender);
-          wx.setStorageSync('phone', form.phone);
-          ctx.pay();
-        },
-        fail: failRes => {
-          ctx.setData({
-            showPopupNegBtn: false,
-            popupType: 'warning',
-            popupTitle: this.data.locale.error,
-            popupMsg: failRes.errMsg,
-            showPopup: true
-          })
-          console.log(failRes)
-          wx.hideLoading()
-        }
+
+      ctx.uploadPhoto(ctx.data.headShot)
+      .then(function(headUrl){
+        form['avatar_url'] = headUrl;
+
+        wx.request({
+          url: urls.getUrl('UPDATE_PROFILE'),
+          method: 'POST',
+          header: {
+            Authorization: wx.getStorageSync('token')
+          },
+          data: form,
+          success: regRes => {
+            wx.hideLoading()
+            wx.setStorageSync('name', form.name);
+            wx.setStorageSync('email', form.email);
+            wx.setStorageSync('gender', form.gender);
+            wx.setStorageSync('phone', form.phone);
+            ctx.pay();
+          },
+          fail: failRes => {
+            ctx.setData({
+              showPopupNegBtn: false,
+              popupType: 'warning',
+              popupTitle: this.data.locale.error,
+              popupMsg: failRes.errMsg,
+              showPopup: true
+            })
+            wx.hideLoading()
+          }
+        })
+
       })
+
+   
+
+
+      
     }else{
-      var keys = { 1: ['one', 10], 2: ['two', 5], 3: ['three', 8], 4: ['four', 3], 5: ['five', 0] };
+      var keys = { 1: ['one', 15], 2: ['two', 0], 3: ['three', 0], 4: ['four', 3], 5: ['five', 0] };
       if (!this.allValuesEntered(keys[stage][0], keys[stage][1])) {
         ctx.setData({
           showPopupNegBtn: false,
@@ -176,22 +266,70 @@ Page({
         })
         return;
       }
+      if (ctx.data.stage === 1 && ctx.data.headShot === "../../resources/images/user_placeholder.png"){
+        ctx.setData({
+          showPopupNegBtn: false,
+          popupType: 'warning',
+          popupTitle: this.data.locale.warning,
+          popupMsg: this.data.locale.headShotInfo,
+          showPopup: true
+        })
+        return
+      }
+
+      var amount = ctx.data.course.price;
+
+      if(stage === 5){
+        var manualStr = "";
+        if (ctx.data.form.one.manual_lang === "both") {
+          manualStr = ctx.data.locale.engCn;
+          amount = amount + ctx.data.extraManualFee;
+        } else if (ctx.data.form.one.manual_lang === "english") {
+          manualStr = ctx.data.locale.english
+        } else if (ctx.data.form.one.manual_lang === "mandarin") {
+          manualStr = ctx.data.locale.mandarin
+        }
+        
+        ctx.setData({
+          manualStr: manualStr,
+          payableAmount: amount
+        })
+      }
+
       stage = stage + 1;
       this.setData({ stage: stage })
       this.processSectionTitleAndDescription();
     }
   },
+  uploadPhoto(tempUrl){
+    return new Promise(function (resolve, reject) {
+      var url = urls.getUrl('UPLOAD') + "?type=others";
+      wx.uploadFile({
+        header: {
+          Authorization: wx.getStorageSync('token')
+        },
+        url: url,
+        filePath: tempUrl,
+        name: 'file',
+        success(res) {
+          var d = JSON.parse(res.data)
+          console.log(d)
+          resolve(d.url)
+        },
+        fail(err) {
+          resolve(err)
+        }
+      })
+    })
+  },
   allValuesEntered: function(stage , len){
-    if (stage === 5){
-      return truel
+    if (stage === 'five'){
+      return true
     }
     const form = this.data.form[stage] || null;
     if(form === null){
       return false
     }
-    console.log(Object.keys(form))
-    console.log(Object.keys(form).length)
-    console.log(form);
     if (Object.keys(form).length < len){
       return false;
     }else{
@@ -215,11 +353,19 @@ Page({
     const key = e.detail.key;
     const value = e.detail.value;
     var f = 'form.' + key;
-    console.log(f);
     this.setData({
       [f]: value
     })
-    console.log(this.data.form);
+    if (key === "one.manual_lang" && value === "both"){
+      this.setData({
+        showPopup: true,
+        popupTitle: this.data.locale.info,
+        popupMsg: this.data.locale.manualInfo,
+        showPopupNegBtn: false,
+        popupNegText: '',
+        popupType: ''
+      })
+    }
   },
   onClickSectionBack: function(e){
     console.log("onClickSectionBack");
@@ -233,6 +379,23 @@ Page({
     this.setData({ stage: stage })
     this.processSectionTitleAndDescription();
 
+  },
+  getConfigs: function(){
+    const ctx = this;
+    wx.request({
+      url: urls.getUrl('CONFIGS'),
+      header: {
+        Authorization: wx.getStorageSync('token')
+      },
+      success: function (res) {
+        var manual_fee = res.data.data.manual_fee || 199;
+        ctx.setData({
+          extraManualFee : manual_fee
+        })
+      },
+      fail: function (e) {
+      }
+    })
   },
   processSectionTitleAndDescription: function(){
     const stage = this.data.stage;
@@ -259,6 +422,10 @@ Page({
         title = "t&cTitle";
         desc = "t&cDesc";
         break;
+      case 6:
+        title = "payTitle";
+        desc = "payDesc";  
+        break;
     }
     this.setData({
       sectionTitle: this.data.locale[title],
@@ -273,31 +440,35 @@ Page({
         ctx.setData({
           course: res.data.data
         });
-        console.log("course")
-        console.log(ctx.data.course)
       },
       fail: function(e){
-        console.log(e)
       }
     })
   },
   pay: function(){
+    var price = this.data.payableAmount;
+    if(price <= 0){
+      this.createMembership(null , 0);
+      return;
+    }
     var today = new Date();
     var out_trade_no = "MybMbrUsr" + wx.getStorageSync("user_id") + "Crs" + this.data.course.id + "" + today.getMilliseconds();
     const ctx = this;
     wx.showLoading({})
+
+    
+    
     wx.request({
       url: urls.getUrl('PAY'),
       method: "POST",
       header: {
         Authorization: wx.getStorageSync('token')
       },
-      data: { orderCode: out_trade_no, money: this.data.course.price },
+      data: { orderCode: out_trade_no, money: price },
       success: res => {
         
 
         if (res.statusCode !== 200) {
-          console.log(this.data)
           wx.hideLoading()
           ctx.setData({
             showPopupNegBtn: false,
@@ -318,27 +489,22 @@ Page({
           signType: 'MD5',
           paySign: payRes.paySign,
           success: function (successRes) {
-            console.log("successRes")
-            console.log(successRes)
-            ctx.createMembership(out_trade_no);
+            ctx.createMembership(out_trade_no , price);
           },
           fail: function (payErr) {
-            console.log("payErr")
-            console.log(payErr)
           }
         })
-        console.log(res.statusCode)
         wx.hideLoading()
       },
       fail: err => {
-        console.log(err)
         wx.hideLoading()
       }
 
     })
   },
-  createMembership: function (out_trade_no){
+  createMembership: function (out_trade_no , price){
     const ctx = this;
+
     wx.showLoading();
     wx.request({
       url: urls.getUrl('CREATE_MEMBERSHIP'),
@@ -347,13 +513,13 @@ Page({
         Authorization: wx.getStorageSync('token')
       },
       data: {
-        courseId : ctx.data.course.id,
-        out_trade_no : out_trade_no
+        courseId: ctx.data.course.id,
+        out_trade_no: out_trade_no || null,
+        price: price,
+        couponId: this.data.coupon ? this.data.coupon.id : null
       },
       success: regRes => {
         wx.hideLoading()
-        console.log("MBR SHIP RES")
-        console.log(regRes)
         ctx.setData({
           showPopupNegBtn: false,
           popupType: 'success',

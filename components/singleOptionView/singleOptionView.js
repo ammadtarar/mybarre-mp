@@ -6,7 +6,8 @@ Component({
   properties: {
     title: String,
     items : Array,
-    key: String
+    key: String,
+    preSelectedIndex: Number
   },
 
   /**
@@ -21,8 +22,18 @@ Component({
    */
   methods: {
     radioChange: function (e) {
+      
       const val = e.detail.value;
       this.triggerEvent('onSingleOptionViewUpdated', { key: this.properties.key, value: this.properties.items[val].value });
+    }
+  },
+  observers: {
+    'preSelectedIndex': function (preSelectedIndex) {
+      console.log("preSelectedIndex = ", preSelectedIndex);
+      this.setData({
+        index: preSelectedIndex
+      })
+
     }
   }
 })

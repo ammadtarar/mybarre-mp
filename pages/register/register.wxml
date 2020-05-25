@@ -17,6 +17,8 @@
       <view class="bubble bold_text {{stage===4?'active':'inactive'}}" >4</view>
       <view class="line"></view>
       <view class="bubble bold_text {{stage===5?'active':'inactive'}}" >5</view>
+      <view class="line"></view>
+      <view class="bubble bold_text {{stage===6?'active':'inactive'}}" >6</view>
     </view>
   </view>
 
@@ -30,6 +32,9 @@
         <label class="title bold_text">{{sectionTitle}}</label>
       </view>
       <label class="description medium_text">{{sectionDescription}}</label>
+      <label class="description medium_text" wx:if="{{stage == 6}}">{{locale.couponTopDesc}}</label>
+
+      
     </view>
 
     <view >
@@ -37,7 +42,31 @@
 
       <!-- SECTION 1 -->
       <view wx:if="{{stage == 1}}" class="section">
-        <textview class="tv"  key="one.name" title="{{locale.name}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+        
+        <view class="photoContainer" >
+            <view class="titleCont" bindtap="onClickHeadShotInfo">
+              <label class="title">{{locale.headShot}}</label>
+              <image class="info" src="../../resources/icons/ic_info.png"></image>
+            </view>
+            <view class="imgContainer" bindtap="onClickHeadShot">
+              <image class="photo" src="{{headShot}}"></image>
+              <view class="btnOverlay">
+                <image class="upload" src="../../resources/icons/ic_upload.png"></image>
+              </view>
+            </view>
+          </view>
+
+           <textview class="tv"  key="one.first_name" title="{{locale.firstName}}" info="{{locale.enterInPinYin}}" bind:onTextViewUpdated="onTextViewUpdated" />
+            <textview class="tv"  key="one.last_name" title="{{locale.lastName}}"  info="{{locale.enterInPinYin}}" bind:onTextViewUpdated="onTextViewUpdated" />
+             <textview class="tv"  key="one.nickname" title="{{locale.nickname}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+       
+       
+        <textview class="tv"  key="one.certificate_name" title="{{locale.cert_name}}" bind:onTextViewUpdated="onTextViewUpdated" />
+       
+       
+        
         <singleOptionView
         class="tv"
         title="{{locale.gender}}"
@@ -53,17 +82,37 @@
 
         <textview class="tv" key="one.occupation" title="{{locale.occupation}}" bind:onTextViewUpdated="onTextViewUpdated" />
 
-
-        <singleOptionView
-        class="tv"
-        title="{{locale.prefLang}}"
-        key="one.preffered_language"
-        items="{{languageValues}}"
-        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
-        </singleOptionView>
+       
+        
 
         <textview class="tv" key="one.address" title="{{locale.address}}" bind:onTextViewUpdated="onTextViewUpdated" />
         <textview class="tv" key="one.city" title="{{locale.city}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+        <textview class="tv" key="one.wechat_id" title="{{locale.wechatId}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+         <singleOptionView
+        class="tv"
+        title="{{locale.manualLang}}"
+        key="one.manual_lang"
+        items="{{manualValues}}"
+        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+        </singleOptionView>
+        
+        <singleOptionView
+        class="tv"
+        title="{{locale.sock_size}}"
+        key="one.sock_size"
+        items="{{sockSizes}}"
+        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+        </singleOptionView>
+
+         <singleOptionView
+        class="tv"
+        title="{{locale.shirt_size}}"
+        key="one.top_size"
+        items="{{shirtSizes}}"
+        bind:onSingleOptionViewUpdated="onSingleOptionViewUpdated">
+        </singleOptionView>
 
       </view>
 
@@ -185,29 +234,68 @@
         </singleOptionView>
 
 
-        <label class="disclaimer medium_text" style="margin-top : 10px;">{{locale.s4q4}}</label>
+        <label class="disclaimer" style="margin-top : 10px;">{{locale.s4q4}}</label>
 
       </view>
 
 
       <view wx:if="{{stage == 5}}" class="section">
 
-        <label class="tc">
-          Please read the document below and mark the box to agree to the terms and conditions.
+        <view class="tc">
+          <label class="la">{{locale.la1}}</label>
+          <label class="la">{{locale.la2}}</label>
+          <label class="la">{{locale.la3}}</label>
+          <label class="la">{{locale.la4}}</label>
+          <label class="la">{{locale.la5}}</label>
+          <label class="la">{{locale.la6}}</label>
+          <label class="la">{{locale.la7}}</label>
+          <label class="la">{{locale.la8}}</label>
+        </view>
 
-Non-compete MYbarre Education, Training & Licence: You are agreeing to a “non compete” to the Instructor Training, meaning that the Recipient shall not own, manage, operate, consult or instruct a business utilising or delivering training for a barre workout program in a manner substantially similar to, or competitive with, the present business of the (MYbarre) Company during the term of this Agreement. On completion of the MYbarre course, passing exam you agree to purchase the annual license purchase where you will become a MYbarre Licenced Instructor. The license grants you the non transferable right to teach MYbarre classes for up to one year (12 months from the date of issue) During this time you will be issued with continued education class plans, choreography and digital training guides that can only be used to deliver the MYbarre core format, this is only to be viewed and used by the Licence Trainer, sharing videos and training information will be seen as a breach of contract. You will not use any materials or teaching principles you have learned or receive to teach anything except MYbarre class. While a qualified and licensed MYbarre instructor you are not allowed to teach any other barre/ballet fitness class or barre fitness programme.
-Use of name/brand/logo: As a licensed MYbarre instructor you can use the word ‘MYbarre' on studio class schedules and class/marketing communications. It must be displayed using capital ‘MY’ and lowercase ‘barre’. You must pay your Instructor License Fee to MYbarre to keep the license current, if the annual payment is outstanding longer than 30 days the licence will be revoked and all rights to teach MYbarre as above and access to the logo, name, trademarks is revoked.
-Non Disclosure & Confidential Information: 1. That all rights of copyright in and to the material contained in the Company curriculum documents, lesson plans, training material, marketing materials, audiovisual components, emails, handouts, workshop presentations (oral and written) and anything else with the Company logo will vest exclusively in the Company (MYbarre Fitness) 2. That all rights of ownership in or to any other written or audio-visual material, trademarks, know-how, techniques, devices as well as other intellectual property relating directly or indirectly to MYbarre or the MYbarre method of instructing and teaching, will vest exclusively in the Company. 3. The Material contains confidential and proprietary information of the Company. 4. Recipient hereby agrees that all Materials will be used solely for the purpose of instructing the MYbarre under the MYbarre name , and that such information will be
-kept confidential by Recipient. Recipient agrees to receive and hold the Materials in strict confidence and, except as contemplated herein, not to ever disclose, disseminate, publish, copy, reproduce or otherwise use the Materials in any manner whatsoever.
-Representation: You are not permitted to represent MYbarre in the press without prior written approval from MYbarre Head Office and may not teach or present MYbarre at a conference or fitness convention where continuing education credits are offered or prior approval from the MYbarre Head Office.
-Medical & Health Waiver: I understand and acknowledge that participation in the MYbarre Instructor Training (the “Activity”) may result in injury. I understand that there are risks involved in the use of any equipment/props used for the Activity (the “Equipment”), and that injuries may occur as a result of my use of the Equipment. In recognition of the inherent risks of the Activity that I will engage in, I confirm that I am physically and mentally capable of participating in the Activity and/or using the Equipment. I participate willingly and voluntarily and assume full responsibility for personal injury, accidents, or illness, including death. I also assume responsibility for damage to or loss of personal property as the result of an accident. I assume the risk(s) of personal injury, accidents and/or illness, and acknowledge that during the Activity I may experience fatigue and/or other issues that may increase the risk of an injury. I hereby authorise all medical treatment deemed necessary in the event of any injury while participating in the Activity. I either have appropriate insurance or, in its absence, agree to pay all costs of rescue and/or medical services as may be incurred on my/our behalf.
-Photograph/Media/Use of Images: I acknowledge that during the in person course of the Activity, MYbarre / Z&B Fitness may take my photograph or video. I hereby grant MYbarre permission to use any such photograph or video in materials promoting MYbarre. Such use may include publication in program, general advertising, posters, flyers, television, internet, WeChat and any other media that may be distributed or shown to or otherwise seen by large numbers of individuals and potential patrons of MYbarre. I waive all rights to any financial remuneration of any kind. In consideration of the Activity provided, I, for myself and my heirs, personal representatives or assigns, do hereby waive, release, discharge, hold harmless, and indemnify Z&B Fitness, MYbarre Fitness, MYbarre Training Group, any related entities, and their shareholders, officers, directors, members, managers, agents, employees, and volunteers (the “Releasees”), from any and all liability, claims, cause(s) of action, present or future, and waive any claims for economic damages, personal injury damages, emotional distress damages and all other damages arising from my participation in the Activity, even if they arise from or are increased as a result of the negligence of the Releasees.
-I have had sufficient opportunity to read this entire agreement. I understand it and agree to be bound by its terms. I understand that by signing this document, i may be waiving legal rights. I further agree that i am bound by this agreement by signing it in person or electronically.
-        </label>
+        
 
       </view>
 
 
+      <view wx:if="{{stage == 6}}" class="section">
+
+        <view class="coupon">
+
+          <!-- <label class="title">{{locale.coupon}}</label> -->
+
+          <view class="lrv" >
+            <label class="leftSideKey">{{locale.registrationFee}}</label>
+            <label class="val">¥{{course.price}}</label>
+          </view>
+
+          <view class="lrv" >
+            <label class="leftSideKey">{{locale.mybarreManual}} ({{manualStr}})</label>
+            <label class="val">¥{{form.one.manual_lang === "both" ? extraManualFee : 0}}</label>
+          </view>
+
+          <view class="lrv" wx-if="{{coupon}}">
+            <label class="leftSideKey">{{locale.code}}</label>
+            <label class="val">{{coupon.code}}</label>
+          </view>
+
+          <view class="lrv" wx-if="{{coupon}}">
+            <label class="leftSideKey">{{locale.value}}</label>
+            <label class="val">{{couponValue}}</label>
+          </view>
+
+          <view class="dashedLine"></view>
+
+          <view class="lrv" >
+            <label class="leftSideKey">{{locale.payableAmount}}</label>
+            <label class="val">¥{{payableAmount}}</label>
+          </view>
+
+         
+        </view>
+
+        <view wx-if="{{!coupon}}" class="redeem" bindtap="showRedeemPopup">{{locale.redeemCode}}</view>
+
+      </view>
 
     </view>
 
@@ -215,7 +303,7 @@ I have had sufficient opportunity to read this entire agreement. I understand it
 
 
   <view class="bottom">
-    <view class="bt bold_text" bindtap="next">{{stage === 5 ? locale.acceptAndPay :  locale.next}}</view>
+    <view class="bt bold_text" bindtap="next">{{stage === 5 ? locale.accept :  (stage === 6 ? locale.pay : locale.next)}}</view>
   </view>
 
 
@@ -224,7 +312,12 @@ I have had sufficient opportunity to read this entire agreement. I understand it
 
 
 
-  
+  <couponPopup
+    wx:if="{{showRedeemCouponPopup}}" 
+    bind:onDismissRedeemPopup="onDismissRedeemPopup"
+    bind:onCodeAccepted="onCodeAccepted"
+  >
+  </couponPopup>
 
   <popup 
     wx:if="{{showPopup}}" 

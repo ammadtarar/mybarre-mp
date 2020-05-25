@@ -3,34 +3,44 @@
   <label class="notice">{{locale.pickCourseNotice}}</label>
 
 
-  <view class="courseView" wx:for="{{courses}}" wx:key="index" id="{{index}}" bindtap="onClickCourse">
+  <view class="courseView" wx:for="{{courses}}" wx:if="{{courses.length > 0}}" wx:key="index" id="{{index}}" bindtap="onClickCourse">
+
+    <!-- <view class="soldout_cont" wx:if="{{item.available_seats <= 0}}">
+      <label class="soldout">{{locale.sold_out}}</label>
+    </view>
+
+
+    <view class="soldout_cont" wx:if="{{item.admissions_closed}}">
+      <label class="soldout">{{locale.admissions_closed}}</label>
+    </view> -->
 
     <view class="info">
       <label class="key">{{locale.start}}</label>
-    <label class="val">{{item.start}}</label>
+      <label class="val">{{item.start}}</label>
 
+      <label class="key">{{locale.end}}</label>
+      <label class="val">{{item.end}}</label>
 
-    <label class="key">{{locale.end}}</label>
-    <label class="val">{{item.end}}</label>
+      <label class="key">{{locale.last_signup_date}}</label>
+      <label class="val">{{item.last_signup_date}}</label>
 
+      <label class="key">{{locale.priceCap}}</label>
+      <label class="val">¥ {{item.price}}</label>
 
-    <label class="key">{{locale.priceCap}}</label>
-    <label class="val">¥ {{item.price}}</label>
+      <label class="key">{{locale.venue}}</label>
+      <label class="val">{{item.venue}}</label>
     </view>
-    
-    <view class="soldout_cont" wx-if="{{item.seats <= 0}}">
-      <image class="soldout" src="../../resources/images/img_soldout.png"></image>
-    </view>
-    
-  
+
+
+
   </view>
 
-   <popup 
-  wx:if="{{showPricePopup}}" 
-  bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
-  bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
-  title="{{popupTitle}}"
-  msg="{{msg}}">
+
+  <view class="emptyContainer">
+    <label class="empty" wx:if="{{courses.length <= 0}}">{{locale.no_courses}}</label>
+  </view>
+
+  <popup wx:if="{{showPricePopup}}" bind:onClickPopupPositiveButton="onClickPopupPositiveButton" bind:onClickPopupNegativeButton="onClickPopupNegativeButton" title="{{popupTitle}}" showNegativeBtn="true" msg="{{msg}}">
   </popup>
 
 </view>

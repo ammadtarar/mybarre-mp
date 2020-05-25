@@ -3,7 +3,29 @@
 
   <view class="training">
 
-  <view class="section">
+    <view class="section" wx:if="{{docs.length > 0}}">
+      <label class="title">{{locale.documents}}</label>
+      <view class="all_container" bindtap="onMore" id="doc">
+          <label class="see_all">{{locale.seeAll}}</label>
+          <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
+      </view>
+    </view>
+
+    <view class="items" wx:if="{{docs.length > 0}}">
+      <itemCard
+      wx:if="{{index < 3}}"
+      class="item"
+      wx:for="{{docs}}"
+      wx:key="item"
+      type="doc"
+      mimeType="{{item.mime}}"
+      thumb="../../resources/images/ph_mybarre.png"
+      title="{{item.name}}"
+      url="{{item.url}}"
+      />
+    </view>
+
+  <view class="section" wx:if="{{videos.length > 0}}">
     <label class="title">{{locale.videos}}</label>
     <view class="all_container" bindtap="onMore" id="vid">
         <label class="see_all">{{locale.seeAll}}</label>
@@ -11,21 +33,21 @@
     </view>
   </view>
 
-  <view class="items">
-    <itemCard 
+  <view class="items" wx:if="{{videos.length > 0}}">
+    <itemCard
         wx:for="{{videos}}"
         wx:if="{{index < 3}}"
-        class="item" 
-        wx:key="{{item}}" 
-        type="vid" 
-        thumb="{{item.thumb_url}}" 
-        title="{{item.name}}" 
+        class="item"
+        wx:key="item"
+        type="vid"
+        thumb="{{item.thumb_url}}"
+        title="{{item.name}}"
         url="{{item.url}}"
       />
   </view>
 
 
-  <view class="section">
+  <view class="section" wx:if="{{images.length > 0}}">
     <label class="title">{{locale.images}}</label>
     <view class="all_container" bindtap="onMore" id="img">
         <label class="see_all">{{locale.seeAll}}</label>
@@ -33,40 +55,20 @@
     </view>
   </view>
 
-  <view class="items">
-    <itemCard 
+  <view class="items" wx:if="{{images.length > 0}}">
+    <itemCard
     wx:if="{{index < 3}}"
-    class="item" 
-    wx:for="{{images}}" 
-    wx:key="{{item}}" 
-    type="img" 
-    thumb="{{item.url}}" 
-    title="{{item.name}}" 
+    class="item"
+    wx:for="{{images}}"
+    wx:key="item"
+    type="img"
+    thumb="{{item.url}}"
+    title="{{item.name}}"
     url="{{item.url}}"
     />
   </view>
 
-  <view class="section">
-    <label class="title">{{locale.documents}}</label>
-    <view class="all_container" bindtap="onMore" id="doc">
-        <label class="see_all">{{locale.seeAll}}</label>
-        <image class="arrow" src="../../resources/icons/ic_arrow_right.png"></image>
-    </view>
-  </view>
 
-  <view class="items">
-    <itemCard 
-    wx:if="{{index < 3}}"
-    class="item" 
-    wx:for="{{docs}}" 
-    wx:key="{{item}}" 
-    type="doc" 
-    mimeType="{{item.mime}}" 
-    thumb="../../resources/images/ph_mybarre.png"
-    title="{{item.name}}" 
-    url="{{item.url}}"
-    />
-  </view>
 
 
 </view>

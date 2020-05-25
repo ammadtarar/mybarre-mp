@@ -6,8 +6,8 @@
 }
 
 .certificationsView .key{
-  color: #000000;
-  font-family: 'Avenir';
+  color: #545454;
+  
   font-weight: 600;
   font-size: 12px;
   margin-top: 10px;
@@ -33,12 +33,12 @@
 }
 
 .certificationsView .tags_container .tags .tag label{
-  background: rgba(236, 222, 222, 0.404);
+  background: #d9bdbb;
   padding: 4px 10px 4px 10px;
-  color: #D57578;
+  color: white;
   font-size: 14px;
   font-weight: 600;
-  font-family: 'Avenir';  
+    
   height: 40px;
   line-height: 30px;
   border-radius: 25px;
@@ -99,7 +99,7 @@
   color: #342F2F;
   font-size: 16px;
   margin: 26px;
-  font-family: 'Avenir';
+  
   font-weight: 800;
 }
 
@@ -108,7 +108,6 @@
   margin-right: 26px;
   color: #1C1C1C;
   font-size: 14px;
-  font-family: 'Avenir';
   font-weight: 300;
 }
 
@@ -124,20 +123,20 @@
   width: 50%;
   height: 100%;
   font-size: 16px;
-  font-family: 'Avenir';
+  
   font-weight: 800;
   line-height: 50px;
   text-align: center;
 }
 
 .negative{
-  color: #342F2F;
-  background: #D8D8D8;
+  color: white;
+  background: #a6a6a6;
 }
 
 .positive{
   color: white;
-  background: #D57578;
+  background: #d9bdbb;
 }
 
 .tv{

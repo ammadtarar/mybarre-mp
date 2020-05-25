@@ -30,10 +30,10 @@
 }
 
 .status .titleCont .redBubble{
-  background: #D57578;
+  background: #d9bdbb;
   font-size: 14px;
   color: white;
-  border: 1px solid #D57578;
+  border: 1px solid #d9bdbb;
   font-weight: 500;
   margin-right: 4px;
   width: 20px;
@@ -45,7 +45,7 @@
 
 .status .titleCont .active{
   font-size: 16px;
-  color: #D57578;
+  color: #d9bdbb;
   font-weight: 800;
   display: flex;
   flex-direction: row;
@@ -53,7 +53,7 @@
 }
 .status .titleCont .no{
   font-size: 14px;
-  color: black;
+  color: white;
   border: 1px solid gray;
   font-weight: 500;
   margin-right: 4px;
@@ -66,7 +66,7 @@
 
 .status .titleCont .title{
   font-size: 14px;
-  color: black;
+  color: #a6a6a6;
   font-weight: 500;
 }
 
@@ -75,8 +75,8 @@
   font-size: 10px;
   font-weight: bold;
   color: white;
-  background: #D57578;
-  border: 0.5px solid #D57578;
+  background: #d9bdbb;
+  border: 0.5px solid #d9bdbb;
   margin-left: 8px;
   padding: 1px 2px 1px 2px;
   border-radius: 4px;

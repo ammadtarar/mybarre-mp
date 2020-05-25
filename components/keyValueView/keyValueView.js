@@ -48,10 +48,8 @@ Component({
   },
   observers: {
     'value , formatText': function (value, formatText) {
-      // 在 numberA 或者 numberB 被设置时，执行这个函数
       if (!this.data.formatted && formatText && (value !== undefined && value !== null && value !== "")){
         this.setData({ formattedValue: value.replaceAll("-", " ")})
-        console.log(this.data)
       }
       
     }

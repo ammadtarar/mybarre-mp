@@ -1,5 +1,7 @@
-// const baseUrl = "http://localhost:3001/"
-const baseUrl = "https://api-staging.mybarrefitness.com/"
+const baseUrl = "http://localhost:3001/"
+// const baseUrl = "http://192.168.101.8:3001/"
+// const baseUrl = "https://api-staging.mybarrefitness.com/"
+// const baseUrl = "https://api.mybarrefitness.com/"
 
 let urls = {
   REGISTER: 'user/mp/register',
@@ -25,7 +27,10 @@ let urls = {
   USER_BUNDLES: "user/ce/list/all",
   BUNDLE_BY_ID: "bundle/:id",
   CREATE_USER_BUNDLE: "user/add/bundle/:id",
-  UPLOAD: "file/upload"
+  UPLOAD: "file/upload",
+  COUPON_CHECK: "coupon/check",
+  CONFIGS: "configs",
+  PRODUCT_BY_ID: "store/product/:id"
 }
 
 function getUrl (key){
@@ -33,5 +38,6 @@ function getUrl (key){
 };
 
 module.exports = {
-  getUrl: getUrl
+  getUrl: getUrl,
+  baseUrl: baseUrl
 }

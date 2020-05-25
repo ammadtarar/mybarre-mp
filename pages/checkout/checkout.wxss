@@ -77,8 +77,29 @@
   overflow: hidden;
 }
 
-.title{
+.itemDetails{
   width: calc(100% - 220px);
+  display: flex;
+  flex-direction: column;
+}
+
+.attrsContainer{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.attr{
+  padding: 2px 4px 2px 4px;
+  color: black;
+  border: 1px solid black;
+  font-size: 8px;
+  border-radius: 6px;
+}
+
+.title{
+  width: 100%;
   margin-left: 10px;
   color: black;
   font-size: 12px;
@@ -153,7 +174,7 @@
 .bt{
   width: 100px;
   height: 40px;
-  background: #D57578;
+  background: #d9bdbb;
   margin-left: auto;
   margin-right: 40px;
   color: white;

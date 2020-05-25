@@ -12,7 +12,8 @@ Page({
     popupNegText: "",
     showPopupNegBtn: "",
     popupTitle: "",
-    popupMsg: ""
+    popupMsg: "",
+    coverImgUrl: urls.baseUrl + "download/static/bg_launch.jpg"
   },
 
   /**
@@ -43,36 +44,27 @@ Page({
     const ctx = this;
     var url = "";
     if (openId !== '') {
-      console.log("have openid")
-      ctx.process(urls.getUrl('LOGIN_BY_OPEN_ID'), { open_id: openId });
+      ctx.process(urls.getUrl('LOGIN_BY_OPEN_ID'), { open_id: openId , type : 'full'});
     } else {
-      console.log("dont have openid")
       url = urls.getUrl('REGISTER');
       wx.login({
         success: res => {
-          ctx.process(urls.getUrl('REGISTER'), { jscode: res.code });
+          ctx.process(urls.getUrl('REGISTER'), { jscode: res.code, type: 'full'});
         }
       })
     }
   },
   process: function(url , data){
-    console.log(url)
-    console.log(data)
     const ctx = this;
     wx.request({
       url: url,
       method: 'POST',
       data: data,
       success: regRes => {
-        console.log(regRes)
-        console.log("regRes.statusCode : =>", regRes.statusCode)
         if (regRes.statusCode >= 200 && regRes.statusCode <= 299) {
-          console.log("if")
           ctx.saveData(regRes.data.data);
           wx.hideNavigationBarLoading()
-          const name = regRes.data.data.name || '';
-          console.log("name")
-          console.log(name)
+          const name = regRes.data.data.first_name || '';
           if (name === '') {
             wx.redirectTo({
               url: '/pages/landing/landing',
@@ -83,7 +75,6 @@ Page({
             })
           }
         } else {
-          console.log("else")
           wx.hideNavigationBarLoading()
           const openId = wx.getStorageSync('open_id') || '';
           if(openId !== ''){
@@ -123,9 +114,12 @@ Page({
     wx.setStorageSync('token', data.token);
     wx.setStorageSync('open_id', data.open_id);
     wx.setStorageSync('user_id', data.id);
-    wx.setStorageSync('name', data.name);
+    wx.setStorageSync('first_name', data.first_name);
+    wx.setStorageSync('last_name', data.last_name);
+    wx.setStorageSync('nickname', data.nickname);
     wx.setStorageSync('phone', data.phone);
     wx.setStorageSync('email', data.email);
     wx.setStorageSync('gender', data.gender);
+    wx.setStorageSync('avatar_url', data.avatar_url);
   }
 })

@@ -1,0 +1,36 @@
+<!--pages/launch/launch.wxml-->
+<!--pages/ceLanding/ceLanding.wxml-->
+<view class="mainCont">
+
+
+  <view class="bg">
+    <image class="cover" 
+    style="background-image : url({{coverImgUrl}})"></image>
+  
+  
+  </view>
+
+  <view class="intro">
+    <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
+
+    <label class="loading" style="margin-top : 20px">Please select one mode. Each mode offers unique features.</label>
+
+    <view class="bigBt">
+       <label class="title">Trainer Mode</label>
+       <label class="desc">In trainer mode , you will have to select and enroll into a MYbarre course. You can also access & buy extra training material and you can also access MYbarre store</label>
+    </view>
+
+
+    <view class="bigBt">
+       <label class="title">CE Mode</label>
+       <label class="desc">In CE mode , you can only access MYbarre CE (Continued Education) packages store and buy CE packages</label>
+    </view>
+
+
+  </view>
+
+
+
+
+
+</view>

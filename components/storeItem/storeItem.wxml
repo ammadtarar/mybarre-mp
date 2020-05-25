@@ -9,7 +9,7 @@
   ></view>
 
 
-  <view class="info_container">
+  <view class="info_container" bindtap="addToCart">
     <view class="inner">
       <label class="name">{{json.name}}</label>
       <label class="desc">{{json.description}}</label>
@@ -17,10 +17,15 @@
     <view class="price_container">
       <label class="rmb">¥</label>
       <label class="price">{{json.price}}</label>
-      <image class="cart" src="../../resources/icons/ic_cart.png" bindtap="addToCart"></image>
+      <image class="cart" src="../../resources/icons/ic_cart.png" ></image>
     </view>
   
   </view>
 
+    <productDetail 
+  wx:if="{{showPopup}}" 
+  title="asdasdasdad"
+  msg="d132132d23d3d23d2d3">
+  </productDetail>
 
 </view>

@@ -22,7 +22,8 @@ Component({
     popupNegText: '',
     popupType : '',
     popupPosText: wx.getStorageSync('locale').confirm,
-    showVideoUploadDueWarning : false
+    showVideoUploadDueWarning : false,
+    examPassedStr: ''
   },
 
   pageLifetimes: {
@@ -35,8 +36,11 @@ Component({
     resize: function () { },
   },
   attached: function () {
-    const name = wx.getStorageSync('name')
-    this.setData({ name: name });
+    const first_name = wx.getStorageSync('first_name') || ''
+    const last_name = wx.getStorageSync('lsat_name') || ''
+    const nickname = wx.getStorageSync('nickname') || ''
+    const avatar_url = wx.getStorageSync('avatar_url') || ''
+    this.setData({ first_name: first_name, last_name: last_name, nickname: nickname, avatar_url: avatar_url});
     this.getMemberships()
   },
   /**
@@ -87,7 +91,6 @@ Component({
         },
         data: { out_trade_no: outTrade},
         success: res => {
-          console.log(res.data.data)
           wx.hideLoading()
           ctx.setData({
             popupType: 'licensePaySuccess',
@@ -97,7 +100,6 @@ Component({
           })
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
 
@@ -107,6 +109,16 @@ Component({
       var today = new Date();
       var out_trade_no = "MybUsr" + wx.getStorageSync("user_id") + "Mbr" + this.data.membership.id + "Lc" + today.getMilliseconds();
       const ctx = this;
+      const fee = ctx.data.membership.course.license_fee || 0.0;
+      if(fee === 0.0){
+        ctx.setData({
+          popupType: 'incorrectFeeModal',
+          popupTitle: ctx.data.locale.error,
+          popupMsg: ctx.data.locale.incorrectFeeMsg,
+          showPopup: true
+        })
+        return
+      };
       wx.showLoading({})
       wx.request({
         url: urls.getUrl('PAY'),
@@ -114,7 +126,7 @@ Component({
         header: {
           Authorization: wx.getStorageSync('token')
         },
-        data: { orderCode: out_trade_no, money: 0.01 },
+        data: { orderCode: out_trade_no, money: fee},
         success: res => {
           const payRes = res.data.data;
           wx.requestPayment({
@@ -124,8 +136,6 @@ Component({
             signType: 'MD5',
             paySign: payRes.paySign,
             success: function (successRes) {
-              console.log("successRes")
-              console.log(successRes)
               wx.hideLoading()
               ctx.updateMembershipLicenseOutTrade(out_trade_no)
               // ctx.updateOrderStatus(orderNo, out_trade_no)
@@ -135,7 +145,6 @@ Component({
               console.log(payErr)
             }
           })
-          console.log(res.statusCode)
           wx.hideLoading()
         },
         fail: err => {
@@ -162,8 +171,6 @@ Component({
               })
               return;
             }
-            console.log(ctx.data.membership.course.id)
-            console.log(courseId)
             if (courseId != ctx.data.membership.course.id){
               ctx.setData({
                 popupType : 'incorrectCourse',
@@ -231,11 +238,11 @@ Component({
             wx.hideLoading()
             ctx.setData({
               popupType: 'buyMembership',
-              popupTitle: 'Access Denied',
-              popupMsg: "You don't have a valid membership. Please buy MYBarre membership to continue",
+              popupTitle: ctx.data.locale.accessDenied,
+              popupMsg: ctx.data.locale.noValidMembership,
               showPopupNegBtn: true,
-              popupNegText: 'Exit',
-              popupPosText: 'Buy Membership',
+              popupNegText: ctx.data.locale.exit,
+              popupPosText: ctx.data.locale.buyMembership,
               showPopup: true
             })
             return;
@@ -248,11 +255,11 @@ Component({
           if(expiryDate < today){
             ctx.setData({
               popupType: 'buyMembership',
-              popupTitle: 'Membership Expired',
-              popupMsg: "Your membership has already expired . Please renew your membership before continueing",
+              popupTitle: ctx.data.locale.membershipExpired,
+              popupMsg: ctx.data.locale.membershipExpiredNotice,
               showPopupNegBtn: true,
-              popupNegText: 'Exit',
-              popupPosText: 'Renew Membership',
+              popupNegText: ctx.data.locale.exit,
+              popupPosText: ctx.data.locale.renewMembership,
               showPopup: true
             })
           }
@@ -273,8 +280,29 @@ Component({
           })
           wx.setStorageSync('membership_expiry', expiry);
           wx.setStorageSync('membership_id', membership.id);
-          console.log("wx.getStorageSync('membership_id')")
-          console.log(wx.getStorageSync('membership_id'))
+
+
+          const membershipStatus = membership.status;          
+          wx.setStorageSync('membership_status', membershipStatus);
+          console.log("membershipStatus = ", membershipStatus)
+
+          const course = membership.course || null;
+          console.log(course)
+          if (course !== null){
+            wx.setStorageSync('course_welcome_doc_url', course.welcome_doc_url);
+            if (membershipStatus === "exam-passed") {
+              var str = ctx.data.locale.notif_exam_passed_two;
+              str = str.replace("%price", String(course.license_fee));
+              ctx.setData({
+                examPassedStr : str
+              })
+            }
+          }
+          
+        
+
+          
+
           wx.hideLoading()
         },
         fail : function(err){
@@ -311,25 +339,6 @@ Component({
               })
             }
           })
-
-
-          // wx.saveFile({
-          //   tempFilePath: filePath,
-          //   success: function (res) {
-          //     console.log(res)
-          //     wx.hideLoading()
-          //   },
-          //   fail: function (err) {
-          //     console.log(err)
-          //     wx.hideLoading();
-          //     ctx.setData({
-          //       popupType: 'error',
-          //       popupTitle: ctx.data.locale.error,
-          //       popupMsg: ctx.data.locale.saveFailed,
-          //       showPopup: true
-          //     })
-          //   }
-          // })
         },
         fail: function (err) {
           wx.hideLoading();

@@ -6,8 +6,8 @@
 }
 
 .textview .key{
-  color: #A19999;
-  font-family: 'Avenir';
+  color: #545454;
+  
   font-weight: 400;
   font-size: 12px;
 }
@@ -15,7 +15,7 @@
 .textview .val{
   color: #2A2828;
   font-size: 14px;
-  font-family: 'Avenir';
+  
   font-weight: 600;
   height: 30px;
   line-height: 30px;
@@ -58,7 +58,7 @@
 
 .picker-title-container .title{
   color: #A19999;
-  font-family: 'Avenir';
+  
   font-weight: 800;
   font-size: 16px;
   line-height: 50px;
@@ -95,8 +95,13 @@
   margin: 20px 0px 20px 20px;
   text-align: center;
   line-height: 50px;
-  background: #D57578;
+  background: #d9bdbb;
   border-radius: 25px;
-  box-shadow: 0px 0px 4px 0px lightgray;
+  box-shadow: 0px 0px 10px 4px rgba(211, 211, 211, 0.489);
   color: white;
+}
+
+.info{
+  font-size: 11px;
+  color: #d9bdbb;
 }

@@ -1,0 +1,51 @@
+<!--pages/productDetail/productDetail.wxml-->
+<view class="productContainer">
+
+  <view class="product">
+  
+
+
+    <image class="thumb" src="{{product.thumbnail_url}}"></image>
+
+    <view class="details">
+    
+      <label class="name">{{product.name}}</label>
+
+      <label class="desc">{{product.description}}</label>
+
+
+      <label class="attrTitle">{{locale.colors}}</label>
+      <view class="optionsContainer">
+        <view class="option {{colorId == item.id ? 'selected' : 'notSelected'}}" wx:for="{{product.colors}}" wx:key="{{item.id}}" bindtap="onClickColor" id="{{item.id}}">
+          {{isEnglish ? item.name_en : item.name_zh}}
+        </view>
+      </view>
+
+
+      <label class="attrTitle">{{locale.sizes}}</label>
+       <view class="optionsContainer">
+        <view class="option {{sizeId == item.id ? 'selected' : 'notSelected'}}" wx:for="{{product.sizes}}" wx:key="{{item.id}}" bindtap="onClickSize" id="{{item.id}}">
+          {{isEnglish ? item.name_en : item.name_zh}}
+        </view>
+      </view>
+
+    
+    </view>
+
+  
+  
+  </view>
+
+  <view class="bottom">
+    <view class="price_container">
+      <label class="total">{{locale.price}}</label>
+      <view class="price_inner">
+        <label class="sign">¥</label>
+        <label class="total_amount">{{product.price}}</label>
+      </view>
+    </view>
+    <view class="bt" bindtap="addToCart">{{locale.addToCart}}</view>
+  </view>
+
+
+</view>

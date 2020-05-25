@@ -29,6 +29,9 @@ Component({
     },
     type : {
       type: String
+    },
+    info: {
+      type: String
     }
   },
   data: {

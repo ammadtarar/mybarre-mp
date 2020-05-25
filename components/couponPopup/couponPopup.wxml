@@ -1,0 +1,23 @@
+<!--components/couponPopup/couponPopup.wxml-->
+<view  class="modal" wx-if="{{showModal}}">
+  <view class="cover" >
+
+    <view class="card">
+      <label class="title">{{locale.redeemCode}}</label>
+
+      <label class="msg">{{locale.redeemMsg}}</label>
+
+      <textview class="tv" key="code" title="{{locale.code}}" bind:onTextViewUpdated="onTextViewUpdated" />
+
+      <label class="msg error" wx:if="{{showError}}">{{msg}}</label>
+      
+
+      <view class="buttons_container">
+        <view class="bt negative" bindtap="hideModal">{{locale.cancel}}</view>
+        <view class="bt positive" bindtap="redeemCode">{{locale.redeem}}</view>
+      </view>
+
+    </view>
+  </view>
+  
+  </view>

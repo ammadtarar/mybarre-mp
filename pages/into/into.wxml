@@ -1,24 +1,24 @@
-<!--pages/into/into.wxml-->
-<view class="intro">
-  <!-- <view class="bg" >
-    <image class="background" src="../../resources/images/intro.png"></image>
-  </view> -->
-  <!-- <view class="overlay">
+<!--pages/ceLanding/ceLanding.wxml-->
+<view class="mainCont">
+
+
+  <view class="bg">
+    <image class="cover" 
+    style="background-image : url({{coverImgUrl}})"></image>
+  
+  
+  </view>
+
+  <view class="intro">
     <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
-    <view class="bt" >Loading ...</view>
-  </view> -->
+    <view class="loading">{{locale.wait}}</view>
+  </view>
 
-  <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
-    <view class="bt" >{{locale.wait}}</view>
 
-  <popup 
-    wx:if="{{showPopup}}" 
-    negativeTitle="{{popupNegText}}"
-    showNegativeBtn="{{showPopupNegBtn}}"
-    bind:onClickPopupPositiveButton="onClickPopupPositiveButton"
-    bind:onClickPopupNegativeButton="onClickPopupNegativeButton"
-    title="{{popupTitle}}"
-    msg="{{popupMsg}}">
+
+
+
+  <popup wx:if="{{showPopup}}" negativeTitle="{{popupNegText}}" showNegativeBtn="{{showPopupNegBtn}}" bind:onClickPopupPositiveButton="onClickPopupPositiveButton" bind:onClickPopupNegativeButton="onClickPopupNegativeButton" title="{{popupTitle}}" msg="{{popupMsg}}">
   </popup>
 
 </view>

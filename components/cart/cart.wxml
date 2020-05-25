@@ -6,9 +6,9 @@
 
   <view class="items" wx:if="{{items.length > 0}}">
   
-    <view class="item" wx:for="{{items}}" wx:key="index" >
+    <view class="item" wx:for="{{items}}" wx:key="index" id="{{item.product.id}}" >
 
-      <view class="info">
+      <view class="info" bindtap="goToDetail">
         <!-- <image class="thumb" src="{{item.product.thumbnail_url}}"></image> -->
         <view
         class="thumb"
@@ -17,6 +17,11 @@
         <view class="details">
           <label class="name">{{item.product.name}}</label>
           <label class="desc">{{item.product.description}}</label>
+          <view class="attrsContainer">
+            <label class="attr" wx:if="{{item.color}}">{{isEnglish ? item.color.name_en : item.color.name_zh}}</label>
+            <label class="attr" wx:if="{{item.size}}" style="margin-left : 4px">{{isEnglish ? item.size.name_en : item.size.name_zh}}</label>
+          
+          </view>
         </view>
       </view>
 
@@ -25,9 +30,9 @@
         <label class="price">{{item.product.price}}</label>
         <label class="times">x{{item.count}}</label>
         <view class="counter">
-          <label class="bt_small" bindtap="decreaseItem" id="{{item.product.id}}">-</label>
+          <label class="bt_small" bindtap="decreaseItem" id="{{item.id}}">-</label>
           <label class="count">{{item.count}}</label>
-          <label wx:if="{{item.count < item.product.count}}" class="bt_small" bindtap="increaseItem" id="{{item.product.id}}">+</label>
+          <label wx:if="{{item.count < item.product.count}}" class="bt_small" bindtap="increaseItem" id="{{item.id}}">+</label>
           <label wx:if="{{item.count >= item.product.count}}" class="bt_small neg" >+</label>
 
         </view>

@@ -13,6 +13,7 @@ Component({
    */
   data: {
     locale: wx.getStorageSync('locale'),
+    showPopup: false
   },
 
   /**
@@ -20,10 +21,14 @@ Component({
    */
   methods: {
     addToCart: function(e){
+      wx.navigateTo({
+        url: '/pages/productDetail/productDetail?productId=' + this.properties.json.id,
+      })
+      return
       const ctx = this;
       wx.showLoading({})
       wx.request({
-        url: urls.getUrl('ADD_TO_CART').replace(":id" , this.properties.json.id),
+        url: urls.getUrl('ADD_TO_CART').replace(":id" , this.properties.json.id) + "/-1/-1",
         method : "POST",
         header: {
           Authorization: wx.getStorageSync('token')

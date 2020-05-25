@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "textview": "../../components/textview/textview",
-    "popup": "../../components/popup/popup"
+    "popup": "../../components/popup/popup",
+    "singleOptionView": "../../components/singleOptionView/singleOptionView"
   }
 }

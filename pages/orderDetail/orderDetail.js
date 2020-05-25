@@ -7,17 +7,50 @@ Page({
    * Page initial data
    */
   data: {
-    locale: wx.getStorageSync('locale')
+    locale: wx.getStorageSync('locale'),
+    orderId : -1,
+    isEnglish: true
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    const lang = wx.getStorageSync('lang');
     wx.setNavigationBarTitle({
       title: this.data.locale.orderDetail,
+      isEnglish: lang === 'en' ? true : false
     })
-    this.getOrder(options.id)
+    this.setData({
+      orderId: options.id
+    });
+    this.getOrder(options.id);
+  },
+  goToDetail(e){
+    wx.navigateTo({
+      url: '/pages/productDetail/productDetail?productId=' + e.currentTarget.id,
+    })
+  },
+  confirm: function(){
+    const ctx = this;
+    wx.showLoading();
+    wx.request({
+      url: urls.getUrl('UPDATE_ORDER').replace(":id", ctx.data.orderId),
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync('token')
+      },
+      data: { status: "completed" },
+      success: res => {
+        wx.hideLoading()
+        wx.showToast()
+        ctx.getOrder(ctx.data.orderId)
+      },
+      fail: err => {
+        console.log(err)
+        wx.hideLoading()
+      }
+    })
   },
   getOrder: function(id){
     const ctx = this;
@@ -58,14 +91,16 @@ Page({
     var today = new Date();
     var out_trade_no = "MbStrOrd" + order.id + "" + today.getMilliseconds();
     const ctx = this;
-    wx.showLoading({})
+    wx.showLoading({});
+    var total = order.amount + (order.shipping_fee || 0.0);
+    total = parseFloat(total).toFixed(2)
     wx.request({
       url: urls.getUrl('PAY'),
       method: "POST",
       header: {
         Authorization: wx.getStorageSync('token')
       },
-      data: { orderCode: out_trade_no, money: order.amount },
+      data: { orderCode: out_trade_no, money: total },
       success: res => {
         const payRes = res.data.data;
         wx.requestPayment({

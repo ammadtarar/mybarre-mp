@@ -20,13 +20,57 @@
 }
 
 .help{
-  color: #D57578;
+  color: #d9bdbb;
   margin-left: 70vw;
   margin-top: 8px;
   font-size: 12px;
 }
 
 
+.coupon{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #d9bdbb81;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.coupon .title{
+  color: black;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.coupon .lrv{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 4px;
+  align-items: center;
+  height: 25px;
+}
+
+.coupon .lrv .leftSideKey{
+  font-size: 12px;
+  color: gray;
+}
+
+.coupon .lrv .val{
+  font-size: 12px;
+  color: black;
+  margin-left: auto;
+  font-weight: bold;
+}
+
+
+.dashedLine{
+  width: 100%;
+  height: 1px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  border-bottom: 1px dashed grey;
+}
 
 .progress_container{
   width: 100%;
@@ -46,26 +90,27 @@
 }
 
 .active{
-  background: #D57578;
+  background: #d9bdbb;
   color: white;
   width: 35px;
   height: 35px;
   line-height: 35px;
+  font-weight: bold;
 }
 
 .inactive{
   width: 23px;
   height: 23px;
   background: transparent;
-  color: #D57578;
-  border: 2px dashed #D57578;
+  color: #d9bdbb;
+  border: 2px solid #d9bdbb;
   line-height: 25px;
 }
 
 .line{
   width: 25px;
   height: 2px;
-  background: #D57578;
+  background: #d9bdbb;
 }
 
 .content{
@@ -91,7 +136,7 @@
 }
 
 .title{
-  color: #D57578;
+  color: #d9bdbb;
   font-size: 16px;
   line-height: 16px;
   float: left;
@@ -106,7 +151,7 @@
 }
 
 .description{
-  color: #A19999;
+  color: #a6a6a6;
   font-size: 14px;
   line-height: 16px;
   margin-top: 4px;
@@ -140,7 +185,7 @@
   height: 50px;
   line-height: 50px;
   width: 100%;
-  background: #D57578;
+  background: #d9bdbb;
   color: white;
   font-size: 16px;
   text-align: center;
@@ -165,7 +210,7 @@
    color: #2A2828;
   
   font-size: 14px;
-  font-family: 'Avenir';
+  
   font-weight: 600;
   background: rgba(236, 222, 222, 0.404);
   
@@ -173,8 +218,8 @@
 
 
 .key{
-  color: #000000;
-  font-family: 'Avenir';
+  color: #545454;
+  
   font-weight: 600;
   font-size: 12px;
   margin-top: 10px;
@@ -182,7 +227,7 @@
 }
 
 .disclaimer{
-  color: #A19999;
+  color: #a6a6a6;
   font-size: 14px;
   line-height: 16px;
   width: 100%;
@@ -190,9 +235,119 @@
 }
 
 .tc{
-  font-size: 12px;
-  color: #000000;
-  line-break: strict;
-  font-weight: 400;
-  padding-top: 10px;
+ display: flex;
+ flex-direction: column;
+  padding: 10px;
+  height: 40vh;
+  margin-top: 10px;
+  background: rgba(128, 128, 128, 0.11);
+  overflow-y: scroll
 }
+
+.la{
+  font-size: 11px;
+  color: #000000;
+  line-height: 20px;
+  line-break: loose;
+
+  margin-bottom: 10px;
+}
+
+.redeem{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #d9bdbb;
+}
+
+.topContainer{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.topContainer .namesContainer{
+
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 130px)
+}
+
+.photoContainer{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-right: 10px;
+} 
+
+
+.photoContainer .titleCont{
+  height: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+} 
+
+.photoContainer .titleCont .title{
+  color: #545454;
+  font-weight: 400;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  width: auto;
+} 
+
+.photoContainer .titleCont .info{
+  width: 20px;
+  height: 20px;
+  margin-left: 4px
+} 
+
+.photoContainer .imgContainer{
+  background: lightgray;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 0px 10px 4px rgba(211, 211, 211, 0.489);
+
+} 
+
+.photoContainer .imgContainer .photo{
+  width: 130px;
+  height: 130px;
+} 
+
+.photoContainer .imgContainer .btnOverlay{
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  top: 90px;
+  left: 0px;
+  background: #00000081;
+  box-shadow: 0px 0px 10px 4px rgba(211, 211, 211, 0.489);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center
+} 
+
+.photoContainer .imgContainer .btnOverlay .upload{
+  width: 20px;
+  height: 20px;
+
+
+} 
+

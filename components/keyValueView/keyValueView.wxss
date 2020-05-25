@@ -3,18 +3,19 @@
   width: 100%;
   min-height: 50px;
   height: auto;
-  border-bottom: 0.5px solid #D8D8D8;
+  border-bottom: 0.5px solid #545454;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+
 .kvv .key{
   font-size: 12px;
-  font-weight: 600;
-  color: #776F6F;
+  color: #545454;
   height: auto;
   text-align: left;
+  font-weight: bold;
 }
 
 .valCont{
@@ -25,7 +26,6 @@
 
 .kkvvalContval{
   font-size: 14px;
-  font-weight: bold;
   color: #292824;
   height: auto;
   text-align: right;

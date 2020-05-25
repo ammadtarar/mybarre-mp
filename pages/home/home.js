@@ -26,7 +26,7 @@ Page({
       }
     });
     wx.setNavigationBarTitle({
-      title: 'MYBARRE'
+      title: 'MYbarre'
     });
     this.selectComponent("#tabOne").activate()
   },

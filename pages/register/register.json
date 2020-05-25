@@ -3,6 +3,8 @@
     "textview" : "../../components/textview/textview",
     "singleOptionView": "../../components/singleOptionView/singleOptionView",
     "cerifcationsView": "../../components/cerifcationsView/cerifcationsView",
-    "popup": "../../components/popup/popup"
+    "popup": "../../components/popup/popup",
+    "couponPopup": "../../components/couponPopup/couponPopup",
+    "keyValueView": "../../components/keyValueView/keyValueView"
   }
 }

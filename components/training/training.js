@@ -37,17 +37,31 @@ Component({
       })
     },
     getBundles: function(){
+      const ctx = this;
+      var url = urls.getUrl('BUNDLE_BY_ID').replace(':id', 1);
+      var status = [];
+      status.push(this.data.membership_status);
+      url = url + "?stage=" + JSON.stringify(status);
       wx.request({
-        url: urls.getUrl('BUNDLE_BY_ID').replace(':id', 1),
+        url: url,
         header: {
           Authorization: wx.getStorageSync('token')
         },
         success: res => {
-          console.log(res)
           const data = res.data.data;
           var images = [];
           var vids = [];
           var docs = [];
+          const course_welcome_doc_url = wx.getStorageSync('course_welcome_doc_url') || null;
+          if (course_welcome_doc_url !== null){
+            docs.push({
+              id : -1,
+              name: ctx.data.locale.courseDetails,
+              mime : 'application/pdf',
+              thumb_url: '',
+              url : course_welcome_doc_url
+            });
+          }
           data.files.forEach(function (file) {
             if (file.mime.includes('image') ) {
               images.push(file)
@@ -57,7 +71,7 @@ Component({
               docs.push(file)
             }
           });
-          this.setData({
+          ctx.setData({
             videos: vids,
             images: images,
             docs: docs
@@ -71,6 +85,10 @@ Component({
     }
   },
   attached: function () {
+    this.setData({
+      membership_status: wx.getStorageSync('membership_status')
+    })
     this.getBundles()
+    console.log("training membership_status = ", this.data.membership_status)
   }
 })

@@ -3,8 +3,8 @@
   width: calc(100% - 40px);
   height: 140px;
   margin-left: 20px;
-  background: rgba(219, 197, 198, 0.40);
-  box-shadow: 0px 0px 6px 0px rgba(174, 174, 174, 0.4);
+  background: #d9bdbb;
+  box-shadow: 0px 0px 10px 4px rgba(211, 211, 211, 0.489);
   margin-top: 10px;
   margin-bottom: 20px;
   display: flex;
@@ -97,5 +97,5 @@
   float: right;
   margin-top: 10px;
   border-radius: 20px;
-  box-shadow: 0xp 0px 8px 0px lightgray;
+  box-shadow: 0px 0px 10px 4px rgba(211, 211, 211, 0.489);
 }

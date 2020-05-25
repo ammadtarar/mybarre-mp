@@ -1,18 +1,22 @@
 {
   "pages": [
+    "pages/launch/launch",
+    "pages/ceLanding/ceLanding",
     "pages/into/into",
     "pages/landing/landing",
+    "pages/coursesList/coursesList",
+    "pages/register/register",
     "pages/home/home",
     "pages/videoplayer/videoplayer",
-    "pages/register/register",
     "pages/bundleDetail/bundleDetail",
     "pages/moreMedia/moreMedia",
     "pages/orderAddress/orderAddress",
     "pages/checkout/checkout",
-    "pages/coursesList/coursesList",
     "pages/uploadTrainingVideos/uploadTrainingVideos",
     "pages/membershipStatusRoadmap/membershipStatusRoadmap",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/productDetail/productDetail",
+    "pages/ceHome/ceHome"
   ],
   "window": {
     "backgroundTextStyle": "light",

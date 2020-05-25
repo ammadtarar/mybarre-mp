@@ -3,20 +3,22 @@
   
   <view class="top">
     <!-- <image class="avatar"></image> -->
-    <view class="avatar">
+    <!-- <view class="avatar">
       <open-data type="userAvatarUrl"></open-data>
-    </view>
-    <view class="card_top">
-      <label class="title">{{name}}</label>
+    </view> -->
 
-      <keyValueView 
+    <image class="avatar" src="{{avatar_url}}"></image>
+    <view class="card_top">
+      <label class="title">{{nickname}}</label>
+
+      <!-- <keyValueView 
       key="{{locale.membershipStart}}"
       value="{{membership.start}}"/>
 
 
       <keyValueView 
       key="{{locale.membershipEnd}}"
-      value="{{membership.end}}"/>
+      value="{{membership.end}}"/> -->
 
       <keyValueView 
       bindtap="onClickStatus"
@@ -26,16 +28,31 @@
       value="{{membership.status}}"/>
 
       <keyValueView 
-      wx:if="{{membership.status === 'pre-instructor' || membership.status === 'pre-instructor-tbc'}}"
+      wx:if="{{membership.status === 'pre-instructor-tbc'}}"
+      key="{{locale.courseDate}}"
+      value="TBC"/>
+
+      <keyValueView 
+      wx:if="{{membership.status !== 'pre-instructor-tbc'}}"
       key="{{locale.courseDate}}"
       value="{{membership.course.start}}"/>
 
       <!-- SHOW VIDEO SUBMISSION DEADLINE  -->
       <keyValueView
-      showWarning="{{showVideoUploadDueWarning}}"
-      wx:if="{{membership.status === 'instructor-in-training'}}"
+      wx:if="{{membership.status === 'instructor-in-training' || membership.status === 'training-videos-submitted' || membership.status === 'exam-passed' || membership.status === 'exam-failed'}}"
       key="{{locale.vidSubDate}}"
       value="{{membership.video_submission_date}}"/>
+
+       <keyValueView
+      wx:if="{{membership.status === 'license-fee-paid' || membership.status === 'licensed-instructor'}}"
+      key="{{locale.licVali}}"
+      value="{{membership.license_creation_date || '--'}}"/>
+
+      <keyValueView
+      wx:if="{{membership.status === 'pre-instructor'}}"
+      key="{{locale.venue}}"
+      value="{{membership.course.venue || '--'}}"/>
+
 
 
     </view>
@@ -99,7 +116,7 @@
   <view class="titleCont">
     <label 
     class="title">{{locale.notif_exam_passed}}</label>
-    <label class="title vertical_spacing_small">{{locale.notif_exam_passed_two}}</label>
+    <label class="title vertical_spacing_small">{{examPassedStr}}</label>
   </view>
     <view class="btCheckIn" bindtap="payFee" >
       <image class="ic_qr" src="../../resources/icons/ic_pay.png"></image>

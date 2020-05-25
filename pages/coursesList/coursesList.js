@@ -16,9 +16,8 @@ Page({
     this.setData({
       needRegistration: options.needRegistration === 'true' ? true : false
     })
-    console.log(this.data)
     wx.setNavigationBarTitle({
-      title: 'MYBARRE',
+      title: 'MYbarre',
     })
     this.getCourses();
   },
@@ -35,24 +34,34 @@ Page({
         Authorization: wx.getStorageSync('token')
       },
       success: function(res){
+
+        var courses = res.data.data.rows;
+        var availableCourse = [];
+
+        courses.forEach(function (course) {
+          if (!(new Date() > new Date(course.last_signup_date)) && course.available_seats > 0) {
+            availableCourse.push(course)
+          }
+        });
+
         ctx.setData({
-          courses: res.data.data.rows
+          courses: availableCourse
         })
         wx.hideLoading()
       },
       fail: function(e){
         wx.hideLoading()
-        console.log(e)
       }
     })
   },
   onClickCourse: function(e){
-    const index = e.currentTarget.id;
-    const course = this.data.courses[index];
-    var msg = this.data.locale.preRegistrationFeeNotice;
-    msg = msg.replace("%price" , course.price)
-    this.setData({ popupTitle: this.data.locale.notice, msg: msg, course: course, showPricePopup: true, popupType: 'notice',})
-
+    this.setData({ 
+      popupTitle: this.data.locale.notice, 
+      msg: this.data.locale.preRegistrationFeeNotice, 
+      course: this.data.courses[e.currentTarget.id], 
+      showPricePopup: true, 
+      popupType: 'notice'
+    });
   },
   resetAndHidePopup: function(){
     this.setData({
@@ -66,8 +75,6 @@ Page({
   },
   onClickPopupPositiveButton: function () {
     // 'payError', 'paymentError', 'payApiError', 'success', membershipFail
-    console.log("this.data.popupType = ", this.data.popupType)
-    console.log("this.needRegistration = ", this.data.needRegistration)
     this.resetAndHidePopup();
     if (this.data.popupType === 'success'){
       wx.reLaunch({
@@ -78,7 +85,6 @@ Page({
         url: '/pages/register/register?courseId=' + this.data.course.id
       })
     } else if (this.data.popupType === "notice" && !this.data.needRegistration){
-      console.log("Pay membership")
       this.pay()
     }
     
@@ -96,13 +102,8 @@ Page({
       },
       data: { orderCode: out_trade_no, money: this.data.course.price },
       success: res => {
-        
-        console.log("res.statusCode")
-        console.log(res.statusCode)
-        console.log(res.data)
        
         if (res.statusCode !== 200){
-          console.log(this.data)
           wx.hideLoading()
           ctx.setData({ 
             popupType: 'payError', 
@@ -121,13 +122,9 @@ Page({
           signType: 'MD5',
           paySign: payRes.paySign,
           success: function (successRes) {
-            console.log("successRes")
-            console.log(successRes)
             ctx.createMembership(out_trade_no);
           },
           fail: function (payErr) {
-            console.log("payErr")
-            console.log(payErr)
             ctx.setData({
               popupType: 'paymentError',
               popupTitle: ctx.data.locale.error,
@@ -136,11 +133,9 @@ Page({
             })
           }
         })
-        console.log(res.statusCode)
         wx.hideLoading()
       },
       fail: err => {
-        console.log(err)
         ctx.setData({
           popupType: 'payApiError',
           popupTitle: ctx.data.locale.error,
@@ -167,8 +162,6 @@ Page({
       },
       success: regRes => {
         wx.hideLoading()
-        console.log("MBR SHIP RES")
-        console.log(regRes)
         ctx.setData({
           popupType: 'success',
           popupTitle: ctx.data.locale.allSet,
@@ -184,7 +177,6 @@ Page({
           msg: failRes.errMsg,
           showPricePopup: true
         })
-        console.log(failRes)
       }
     })
   }

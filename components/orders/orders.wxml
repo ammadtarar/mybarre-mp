@@ -3,26 +3,24 @@
 
 <view class="nothing" wx:if="{{orders.length <= 0}}">{{locale.noOrders}}</view>
 
-<view class="orders" wx:for="{{orders}}" wx:key="{{index}}" wx:if="{{orders.length > 0}}">
+<view class="orders" wx:for="{{orders}}" wx:key="index" wx:if="{{orders.length > 0}}">
   <view class="order" id="{{item.id}}" bindtap="onClickOrder">
     <view class="top">
-      <label class="key">{{locale.orderNo}}</label>
-      <label class="val">{{item.id}}</label>
+      <label class="key">{{locale.orderNo}} {{item.id}}</label>
       <image class="address_icon" src="../../resources/icons/ic_arrow_right_gray.png"></image>
-      <!-- <view class="btPay" wx:if="{{item.status === 'pending_payment'}}" bindtap="pay" id="{{index}}">{{locale.pay}}</view> -->
     </view>
     <view class="center">
-      <view wx:for="{{item.items}}" key="index">
-        <keyValueView  key="{{item.product.name}} x{{item.count}}" value="¥{{item.product.price}}"> </keyValueView>
+      <view wx:for="{{item.items}}" key="index" wx:key="index">
+        <view class="item">
+          <label class="product">{{item.product.name}}</label>
+          <label class="price">¥{{item.product.price}}</label>
+        </view>
       </view>
     
     </view>
     <view class="bottom">
-      <label class="status">{{item.statusStr}}</label>
-      <view class="price_container">
         <label class="key">{{locale.total}}</label>
-      <label class="val">¥{{item.amount}}</label>
-      </view>
+        <label class="val">¥{{item.amount}}</label>
     </view>
   </view>
 </view>

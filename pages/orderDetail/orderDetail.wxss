@@ -1,5 +1,21 @@
 /* pages/orderDetail/orderDetail.wxss */
 
+.container{
+  width: 100vw;
+  position: relative;
+}
+
+.upper{
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+   display: flex;
+  flex-direction: column;
+
+}
+
+
 .cont{
   display: flex;
   flex-direction: column;
@@ -33,7 +49,7 @@
   height: 30px;
   line-height: 30px;
   font-size: 14px;
-  color: #D57578;
+  color: #d9bdbb;
   font-weight: 800;
   float: left;
   margin-left: auto;
@@ -44,10 +60,10 @@
   border-top: 0.5px solid lightgray;
   padding: 10px 20px 10px 20px;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  height: auto;
 }
 .address_container{
-  min-height: 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -72,18 +88,18 @@
 
 .select_address{
   font-size: 12px;
-  color: gray;
+  color: #a6a6a6;
   font-weight: 800;
 }
 
 .user{
-  color: black;
+  color: #545454;
   font-size: 14px;
   font-weight: bold;
 }
 
 .address{
-  color: darkgray;
+  color: #545454;
   font-size: 12px;
   font-weight: 600;
 }
@@ -109,8 +125,29 @@
   overflow: hidden;
 }
 
+.itemDetails{
+  width: calc(100% - 260px);
+  display: flex;
+  flex-direction: column;
+}
+
+.attrsContainer{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.attr{
+  padding: 2px 4px 2px 4px;
+  color: black;
+  border: 1px solid black;
+  font-size: 8px;
+  border-radius: 6px;
+}
+
 .title{
-  width: calc(100% - 220px);
+  width: 100%;
   margin-left: 10px;
   color: black;
   font-size: 12px;
@@ -121,15 +158,15 @@
   width: 40px;
   margin-left: 10px;
   text-align: right;
-  color: gray;
+  color: #a6a6a6;
   font-size: 10px;
 }
 
 .price{
-  width: 60px;
+  width: 50px;
   margin-left: 10px;
   text-align: right;
-  color: black;
+  color: #545454;
   font-size: 14px;
   font-weight: bold;
 }
@@ -137,7 +174,7 @@
 .section_title{
   font-size: 12px;
   font-weight: 800;
-  color: #776F6F;
+  color: #a6a6a6;
   padding: 10px 20px 10px 20px;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -145,20 +182,26 @@
 
 
 
+.bottom{
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.btPay{
-  width: calc(100% - 40px);
-  margin-left: 20px;
+.bottom .bt{
+  width: calc(100% - 44px);
   height: 50px;
-  border-radius: 25px;
-  box-shadow: 0px 0px 10px 0px lightgray;
-  font-size: 16px;
+  background: #d9bdbb;
   color: white;
-  background: #D57578;
+  font-weight: bold;
+  font-size: 16px;
   text-align: center;
   line-height: 50px;
-  font-weight: bold;
-  position: absolute;
-  bottom: 10px;
-
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px 0px #a6a6a6;
 }

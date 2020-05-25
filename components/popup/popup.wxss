@@ -26,7 +26,7 @@
 }
 
 .title{
-  color: #342F2F;
+  color: #545454;
   font-size: 16px;
   padding: 26px 26px 10px 26px;
   font-weight: bold;
@@ -40,7 +40,7 @@
   margin-right: 26px;
   color: #1C1C1C;
   font-size: 14px;
-  font-family: 'Avenir';
+  
   font-weight: 300;
   text-align: left
 }
@@ -57,7 +57,7 @@
 
 .bt{
   font-size: 16px;
-  font-family: 'Avenir';
+  
   font-weight: 800;
   text-align: center;
   padding: 4px 20px 4px 20px;
@@ -68,13 +68,12 @@
   margin-top: 12px;
 }
 
-
 .negative{
-  color: White;
-  background: gray;
+  color: white;
+  background: #a6a6a6;
 }
 
 .positive{
   color: white;
-  background: #D57578;
+  background: #d9bdbb;
 }
