@@ -26,7 +26,7 @@ Component({
     }
   },
   attached() {
-
+    console.log(this.properties)
   },
   methods: {
     onClickNegativeButton(){

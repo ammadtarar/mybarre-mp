@@ -36,8 +36,20 @@ Page({
   onCloseCart: function(e){
     this.setData({ showCart: false })
   },
+  onClickPopupPositiveButton: function(e){
+    this.setData({
+      showRestrictedPopup: false
+    })
+  },
   onClickTab: function(e){
     var id = e.currentTarget.id;
+    const membership_status = wx.getStorageSync('membership_status');
+    if (id === "tabThree" && (membership_status !== "license-fee-paid" && membership_status !== "licensed-instructor")){
+      this.setData({
+        showRestrictedPopup : true
+      })
+      return;
+    }
     var tabOne = this.selectComponent("#tabOne");
     var tabTwo = this.selectComponent("#tabTwo");
     var tabThree = this.selectComponent("#tabThree");

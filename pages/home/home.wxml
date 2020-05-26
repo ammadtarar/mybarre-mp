@@ -48,4 +48,12 @@
   </view>
 
 
+
+  <popup 
+  wx:if="{{showRestrictedPopup}}" 
+  bind:onClickPopupPositiveButton="onClickPopupPositiveButton" 
+  title="{{locale.restricted}}" 
+  bind:showNegativeBtn="false" 
+  msg="{{locale.restricted_msg}}">
+  </popup>
 </view>

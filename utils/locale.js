@@ -252,7 +252,9 @@ let localList = {
     "sold_out": "卖完了",
     "admissions_closed": "录取结束",
     "last_signup_date": "入学截止日期",
-    "no_courses": "目前没有课程。请稍后再核对"
+    "no_courses": "目前没有课程。请稍后再核对",
+    "restricted": "限制区",
+    "restricted_msg": "只有获得许可的讲师才能访问该区域"
   },
   'en': {
     "welcomeTo": "WELCOME TO",
@@ -507,7 +509,9 @@ let localList = {
     "sold_out" : "SOLD OUT",
     "admissions_closed" : "ADMISSIONS CLOSED",
     "last_signup_date": "ADMISSIONS DEADLINE",
-    "no_courses" : "No courses available at this time. Please check back again later"
+    "no_courses" : "No courses available at this time. Please check back again later",
+    "restricted" : "Restricted Area",
+    "restricted_msg" : "Only licensed instructors can access this area"
 
   }
 }

@@ -4,6 +4,7 @@
     "profile" : "../../components/profile/profile",
     "training": "../../components/training/training",
     "ce": "../../components/ce/ce",
-    "store": "../../components/store/store"
+    "store": "../../components/store/store",
+    "popup": "../../components/popup/popup"
   }
 }

@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/launch/launch",
-    "pages/ceLanding/ceLanding",
     "pages/into/into",
     "pages/landing/landing",
     "pages/coursesList/coursesList",

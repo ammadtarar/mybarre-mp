@@ -44,12 +44,12 @@ Page({
     const ctx = this;
     var url = "";
     if (openId !== '') {
-      ctx.process(urls.getUrl('LOGIN_BY_OPEN_ID'), { open_id: openId , type : 'full'});
+      ctx.process(urls.getUrl('LOGIN_BY_OPEN_ID'), { open_id: openId });
     } else {
       url = urls.getUrl('REGISTER');
       wx.login({
         success: res => {
-          ctx.process(urls.getUrl('REGISTER'), { jscode: res.code, type: 'full'});
+          ctx.process(urls.getUrl('REGISTER'), { jscode: res.code});
         }
       })
     }
