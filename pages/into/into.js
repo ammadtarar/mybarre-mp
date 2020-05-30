@@ -1,6 +1,5 @@
 // pages/into/into.js
 const urls = require('../../utils/urls.js');
-
 Page({
 
   /**

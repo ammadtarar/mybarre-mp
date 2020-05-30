@@ -113,6 +113,17 @@ Page({
             docs.push(file);
           }
         });
+
+        imgs.sort(function(a, b) {
+          return a.index - b.index;
+        });
+        vids.sort(function(a, b) {
+          return a.index - b.index;
+        });
+        docs.sort(function(a, b) {
+          return a.index - b.index;
+        });
+
         ctx.setData({
           bundle: res.data.data,
           videos: vids,

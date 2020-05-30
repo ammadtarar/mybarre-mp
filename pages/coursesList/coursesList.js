@@ -39,6 +39,14 @@ Page({
         var availableCourse = [];
 
         courses.forEach(function (course) {
+          console.log("")
+          console.log("")
+          console.log("")
+          console.log("last signup date => " , new Date(course.last_signup_date));
+          console.log("today => " , new Date())
+          console.log("")
+          console.log("")
+          console.log("")
           if (!(new Date() > new Date(course.last_signup_date)) && course.available_seats > 0) {
             availableCourse.push(course)
           }

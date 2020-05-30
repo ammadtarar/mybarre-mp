@@ -2,10 +2,6 @@
 const urls = require('../../utils/urls.js');
 const date = new Date()
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
     locale: wx.getStorageSync('locale'),
     stage : 1,
@@ -29,16 +25,6 @@ Page({
     shoulderShotUrl : null,
     extraManualFee : 199,
     showRedeemCouponPopup: false
-
-  },
-  getSettingInfo: function () {
-    // 登录
-    wx.login({
-      success: res => {
-        //todo 发送 res.code 到后台换取 openId, sessionKey, unionId
-
-      }
-    })
   },
   bindGetUserInfo(e) {
 
@@ -83,7 +69,6 @@ Page({
         payableAmount = 0;
       }
     }
-
     this.setData({
       coupon : coupon,
       couponValue: couponValue,
@@ -120,9 +105,6 @@ Page({
       },
     })
   },
-  /**
-   * Lifecycle function--Called when page load
-   */
   onClickPopupPositiveButton: function () {
     if(this.data.popupType === 'success'){
       this.resetAndHideModal()
@@ -151,8 +133,6 @@ Page({
       title: this.data.locale.signUp,
     })
     this.setData({
-
-      
       courseId : options.courseId,
       genderValues: [{ key: this.data.locale.female, value: 'female' }, { key: this.data.locale.male, value: 'male' }],
       shirtSizes: [{ key: this.data.locale.small, value: 'small' }, { key: this.data.locale.medium, value: 'medium' }, { key: this.data.locale.large, value: 'large' }],
@@ -167,9 +147,7 @@ Page({
       ['form.four.chest_pain_or_blackouts']: true,
       ['form.four.meds_for_bp']: true,
       ['form.one.dob']: date.getFullYear() + '/' + date.getMonth() + '/' + date.getDay(),
-    });
-
-    
+    });    
     this.processSectionTitleAndDescription();
     this.getCourse()
     this.getConfigs()
@@ -216,7 +194,6 @@ Page({
           form[innerKey] = innerOject
         }
       }
-
       ctx.uploadPhoto(ctx.data.headShot)
       .then(function(headUrl){
         form['avatar_url'] = headUrl;
@@ -247,13 +224,7 @@ Page({
             wx.hideLoading()
           }
         })
-
       })
-
-   
-
-
-      
     }else{
       var keys = { 1: ['one', 15], 2: ['two', 0], 3: ['three', 0], 4: ['four', 3], 5: ['five', 0] };
       if (!this.allValuesEntered(keys[stage][0], keys[stage][1])) {
@@ -276,9 +247,7 @@ Page({
         })
         return
       }
-
       var amount = ctx.data.course.price;
-
       if(stage === 5){
         var manualStr = "";
         if (ctx.data.form.one.manual_lang === "both") {
@@ -289,13 +258,11 @@ Page({
         } else if (ctx.data.form.one.manual_lang === "mandarin") {
           manualStr = ctx.data.locale.mandarin
         }
-        
         ctx.setData({
           manualStr: manualStr,
           payableAmount: amount
         })
       }
-
       stage = stage + 1;
       this.setData({ stage: stage })
       this.processSectionTitleAndDescription();
@@ -325,6 +292,9 @@ Page({
   allValuesEntered: function(stage , len){
     if (stage === 'five'){
       return true
+    }
+    if(len <= 0){
+      return true;
     }
     const form = this.data.form[stage] || null;
     if(form === null){
@@ -368,8 +338,6 @@ Page({
     }
   },
   onClickSectionBack: function(e){
-    console.log("onClickSectionBack");
-
     var stage = this.data.stage;
     if (stage <= 1) {
       stage = 1;
@@ -378,7 +346,6 @@ Page({
     }
     this.setData({ stage: stage })
     this.processSectionTitleAndDescription();
-
   },
   getConfigs: function(){
     const ctx = this;
@@ -455,9 +422,6 @@ Page({
     var out_trade_no = "MybMbrUsr" + wx.getStorageSync("user_id") + "Crs" + this.data.course.id + "" + today.getMilliseconds();
     const ctx = this;
     wx.showLoading({})
-
-    
-    
     wx.request({
       url: urls.getUrl('PAY'),
       method: "POST",
@@ -466,8 +430,6 @@ Page({
       },
       data: { orderCode: out_trade_no, money: price },
       success: res => {
-        
-
         if (res.statusCode !== 200) {
           wx.hideLoading()
           ctx.setData({
@@ -479,8 +441,6 @@ Page({
           })
           return;
         }
-
-
         const payRes = res.data.data;
         wx.requestPayment({
           timeStamp: payRes.timeStamp,
@@ -499,12 +459,10 @@ Page({
       fail: err => {
         wx.hideLoading()
       }
-
     })
   },
   createMembership: function (out_trade_no , price){
     const ctx = this;
-
     wx.showLoading();
     wx.request({
       url: urls.getUrl('CREATE_MEMBERSHIP'),

@@ -71,6 +71,18 @@ Component({
               docs.push(file)
             }
           });
+
+
+          images.sort(function(a, b) {
+            return a.index - b.index;
+          });
+          vids.sort(function(a, b) {
+            return a.index - b.index;
+          });
+          docs.sort(function(a, b) {
+            return a.index - b.index;
+          });
+
           ctx.setData({
             videos: vids,
             images: images,
