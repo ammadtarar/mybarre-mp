@@ -30,7 +30,6 @@ Component({
     // 组件所在页面的生命周期函数
     show: function () {
       this.getMemberships()
-      console.log("showing profile")
      },
     hide: function () { },
     resize: function () { },
@@ -141,14 +140,12 @@ Component({
               // ctx.updateOrderStatus(orderNo, out_trade_no)
             },
             fail: function (payErr) {
-              console.log("payErr")
-              console.log(payErr)
+
             }
           })
           wx.hideLoading()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
 
@@ -197,14 +194,13 @@ Component({
                 })
               },
               fail: function (err) {
-                console.log(err)
                 wx.hideLoading()
               }
             })
 
 
           }catch(e){
-            console.log(e)
+
             ctx.setData({
               popupType: 'invalidQr',
               popupTitle: ctx.data.locale.error,
@@ -220,7 +216,6 @@ Component({
             popupMsg: ctx.data.locale.invalidQr,
             showPopup: true
           })
-          console.log(err)
         }
       })
     },
@@ -284,10 +279,8 @@ Component({
 
           const membershipStatus = membership.status;          
           wx.setStorageSync('membership_status', membershipStatus);
-          console.log("membershipStatus = ", membershipStatus)
 
           const course = membership.course || null;
-          console.log(course)
           if (course !== null){
             wx.setStorageSync('course_welcome_doc_url', course.welcome_doc_url);
             if (membershipStatus === "exam-passed") {
@@ -306,7 +299,6 @@ Component({
           wx.hideLoading()
         },
         fail : function(err){
-          console.log(err)
           wx.hideLoading()
         }
       })
@@ -329,7 +321,6 @@ Component({
               wx.hideLoading()
             },
             fail: function (err) {
-              console.log(err)
               wx.hideLoading();
               ctx.setData({
                 popupType: 'error',

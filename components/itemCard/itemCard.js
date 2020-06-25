@@ -40,7 +40,6 @@ Component({
     onClick:function(e){
       const ctx = this;
       if (!this.properties.allowClick){
-        console.log("cannot click")
         this.triggerEvent('onClickLockedItem');
         return;
       }
@@ -63,7 +62,6 @@ Component({
             wx.openDocument({
               filePath: filePath,
               success: function (res) {
-                console.log('打开文档成功')
                 wx.hideLoading()
               },
               fail: function (openError) {

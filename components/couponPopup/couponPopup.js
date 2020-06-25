@@ -57,10 +57,6 @@ Component({
             })
             return;
           }
-
-          console.log("success")
-          console.log(res)
-
           ctx.setData({ showModal: false })
           ctx.triggerEvent('onCodeAccepted', { coupon: res.data.data });
           
@@ -73,7 +69,6 @@ Component({
       })
     },
     hideModal: function(e){
-      console.log("hideModal")
       this.setData({ showModal: false })
       this.triggerEvent('onDismissRedeemPopup', { visible: false });
     },

@@ -6,7 +6,6 @@ App({
     const that = this;
     wx.getSystemInfo({
       success: function (res) {
-        console.log(res.language)
         const lang = res.language || 'en';
         wx.setStorageSync('lang', lang)
         if (lang.includes('zh')) {

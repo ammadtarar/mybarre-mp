@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/into/into",
     "pages/landing/landing",
     "pages/coursesList/coursesList",

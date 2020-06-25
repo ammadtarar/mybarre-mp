@@ -43,12 +43,9 @@ Component({
           } else {
             wx.showToast({ icon: 'success', })
           }
-          // console.log(res)
-          // wx.showToast({})
           wx.hideLoading()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
 
