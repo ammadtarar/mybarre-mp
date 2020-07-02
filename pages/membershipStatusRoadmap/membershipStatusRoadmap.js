@@ -3,7 +3,13 @@ const locale = wx.getStorageSync('locale');
 Page({
   data: {
     locale: locale,
-    statues: [{
+    statues: [
+      {
+        status: 'temporary-freeze',
+        title: 'Temporary Freeze',
+        detail: locale.tf_desc
+      },
+      {
         status: 'pre-instructor',
         title: 'Pre Course Instructor',
         detail: locale.pi_desc

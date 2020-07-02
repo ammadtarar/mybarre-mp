@@ -1,20 +1,10 @@
 /* pages/moreMedia/moreMedia.wxss */
-.store{
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
+.gridview{
+  margin: 5rpx 10rpx 5rpx 10rpx;
 }
-.container {
-  display: flex;
-  width: 99%;
-  height: auto;
-}
-.col {
-  display: flex;
-  flex-direction: column;
-}
-.item-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.gridview-item{
+  margin: 1%;
+  width: 48%;
+  float: left;
 }

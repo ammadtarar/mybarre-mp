@@ -5,11 +5,11 @@ Page({
    * Page initial data
    */
   data: {
-    items: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+    items: [],
     cols: 2,
     cardWidth : '',
     type : 'vid',
-    locale: wx.getStorageSync('locale')
+    locale: wx.getStorageSync('locale'),
   },
 
   /**
@@ -35,65 +35,6 @@ Page({
     });
     
     const data = options.data;
-    const d = JSON.parse(data);
-    this.setData({ items: d })
-
-
-    let columns = []
-    let mid = Math.ceil(this.data.items.length / this.data.cols)
-    for (let col = 0; col < this.data.cols; col++) {
-      columns.push(this.data.items.slice(col * mid, col * mid + mid))
-    }
-    this.setData({ columns: columns });
-
-
-  },
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+    this.setData({ items: JSON.parse(data) })
   }
 })
