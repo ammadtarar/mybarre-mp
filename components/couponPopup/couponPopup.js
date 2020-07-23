@@ -49,18 +49,13 @@ Component({
             return;
           }
 
-          if (code === 403) {
-            const msg = res.data.message;
+          if (code === 403 || code === 402) {
             ctx.setData({
               msg: ctx.data.locale.codeExpired,
               showError: true
             })
             return;
           }
-
-          console.log("success")
-          console.log(res)
-
           ctx.setData({ showModal: false })
           ctx.triggerEvent('onCodeAccepted', { coupon: res.data.data });
           
