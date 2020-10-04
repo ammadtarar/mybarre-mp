@@ -33,7 +33,6 @@ Component({
           wx.hideLoading()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
 

@@ -36,13 +36,11 @@ Component({
       })
     },
     onClickMyBundle: function(e){
-      console.log("onClickMyBundle");
       wx.navigateTo({
         url: '/pages/bundleDetail/bundleDetail?type=mybundle&id=' + e.target.id,
       })
     },
     onClickBundle: function(e){
-      console.log("onClickBundle")
       wx.navigateTo({
         url: '/pages/bundleDetail/bundleDetail?type=store&id=' + e.target.id,
       })
@@ -61,7 +59,6 @@ Component({
           wx.hideLoading()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
       })
@@ -80,7 +77,6 @@ Component({
           wx.hideLoading()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
       })

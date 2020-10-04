@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/orderAddress/orderAddress",
     "pages/into/into",
+    "pages/orderAddress/orderAddress",
     "pages/landing/landing",
     "pages/coursesList/coursesList",
     "pages/register/register",

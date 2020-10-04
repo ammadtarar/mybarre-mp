@@ -263,14 +263,12 @@ Component({
               // ctx.updateOrderStatus(orderNo, out_trade_no)
             },
             fail: function (payErr) {
-              console.log("payErr")
-              console.log(payErr)
+
             }
           })
           wx.hideLoading()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
 
@@ -319,14 +317,13 @@ Component({
                 })
               },
               fail: function (err) {
-                console.log(err)
                 wx.hideLoading()
               }
             })
 
 
           }catch(e){
-            console.log(e)
+
             ctx.setData({
               popupType: 'invalidQr',
               popupTitle: ctx.data.locale.error,
@@ -342,7 +339,6 @@ Component({
             popupMsg: ctx.data.locale.invalidQr,
             showPopup: true
           })
-          console.log(err)
         }
       })
     },
@@ -432,7 +428,6 @@ Component({
           wx.hideLoading()
         },
         fail : function(err){
-          console.log(err)
           wx.hideLoading()
         }
       })
@@ -455,7 +450,6 @@ Component({
               wx.hideLoading()
             },
             fail: function (err) {
-              console.log(err)
               wx.hideLoading();
               ctx.setData({
                 popupType: 'error',

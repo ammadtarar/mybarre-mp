@@ -86,7 +86,6 @@ Component({
           ctx.getCart()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
 
@@ -133,7 +132,6 @@ Component({
           ctx.getCart()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
       })
@@ -157,7 +155,6 @@ Component({
           wx.hideLoading()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
       })

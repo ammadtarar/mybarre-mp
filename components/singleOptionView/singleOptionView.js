@@ -29,7 +29,6 @@ Component({
   },
   observers: {
     'preSelectedIndex': function (preSelectedIndex) {
-      console.log("preSelectedIndex = ", preSelectedIndex);
       this.setData({
         index: preSelectedIndex
       })

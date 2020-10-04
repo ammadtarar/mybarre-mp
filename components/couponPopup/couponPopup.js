@@ -68,7 +68,6 @@ Component({
       })
     },
     hideModal: function(e){
-      console.log("hideModal")
       this.setData({ showModal: false })
       this.triggerEvent('onDismissRedeemPopup', { visible: false });
     },

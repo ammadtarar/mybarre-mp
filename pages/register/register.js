@@ -226,7 +226,7 @@ Page({
         })
       })
     }else{
-      var keys = { 1: ['one', 15], 2: ['two', 0], 3: ['three', 0], 4: ['four', 3], 5: ['five', 0] };
+      var keys = { 1: ['one', 16], 2: ['two', 0], 3: ['three', 0], 4: ['four', 3], 5: ['five', 0] };
       if (!this.allValuesEntered(keys[stage][0], keys[stage][1])) {
         ctx.setData({
           showPopupNegBtn: false,

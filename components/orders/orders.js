@@ -28,7 +28,6 @@ Component({
       })
     },
     getStatus: function(status){
-      console.log(status);
       var newStatus = status.replace("_" , " ")
       return newStatus
     },
@@ -62,7 +61,6 @@ Component({
           wx.hideLoading()
         },
         fail: err =>{
-          console.log(err)
           wx.hideLoading()
         }
       })
@@ -95,14 +93,11 @@ Component({
               ctx.updateOrderStatus(order.id, out_trade_no)
             },
             fail: function (payErr) {
-              console.log("payErr")
-              console.log(payErr)
             }
           })
           wx.hideLoading()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
 
@@ -124,7 +119,6 @@ Component({
           ctx.getOrders()
         },
         fail: err => {
-          console.log(err)
           wx.hideLoading()
         }
       })
