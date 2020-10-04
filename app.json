@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/orderAddress/orderAddress",
     "pages/into/into",
     "pages/landing/landing",
     "pages/coursesList/coursesList",
@@ -8,13 +9,15 @@
     "pages/videoplayer/videoplayer",
     "pages/bundleDetail/bundleDetail",
     "pages/moreMedia/moreMedia",
-    "pages/orderAddress/orderAddress",
+    
     "pages/checkout/checkout",
     "pages/uploadTrainingVideos/uploadTrainingVideos",
     "pages/membershipStatusRoadmap/membershipStatusRoadmap",
     "pages/orderDetail/orderDetail",
     "pages/productDetail/productDetail",
-    "pages/ceHome/ceHome"
+    "pages/ceHome/ceHome",
+    "pages/legacyRegister/legacyRegister",
+    "pages/userApprovalPending/userApprovalPending"
   ],
   "window": {
     "backgroundTextStyle": "light",

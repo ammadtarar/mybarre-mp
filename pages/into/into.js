@@ -19,13 +19,30 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    this.getConfigs();
     this.loginOrRegister();
+    // wx.redirectTo({
+    //   url: '/pages/landing/landing',
+    // });
   },
   onClickPopupPositiveButton: function () {
     this.resetAndHideModal()
   },
   onClickPopupNegativeButton: function () {
     this.resetAndHideModal()
+  },
+  getConfigs: function(){
+    let ctx = this;
+    wx.request({
+      url: urls.getUrl('CONFIGS'),
+      success(res){
+        wx.setStorageSync('production_ready', res.data.data.production_ready)
+      },
+      fail(err){
+        console.log(err);
+        wx.setStorageSync('production_ready', true)
+      }
+    })
   },
   resetAndHideModal: function () {
     this.setData({
@@ -67,11 +84,23 @@ Page({
           if (name === '') {
             wx.redirectTo({
               url: '/pages/landing/landing',
-            })
+            });
           } else {
-            wx.redirectTo({
-              url: '/pages/home/home',
-            })
+
+
+            if(regRes.data.data.status === 'pending' && regRes.data.data.type === 'legacy'){
+              wx.redirectTo({
+                url: '/pages/userApprovalPending/userApprovalPending',
+              })
+            }else if(regRes.data.data.status === 'rejected' && regRes.data.data.type === 'legacy'){
+              wx.redirectTo({
+                url: '/pages/userApprovalPending/userApprovalPending?message=' + regRes.data.data.message,
+              })
+            }else{
+              wx.redirectTo({
+                url: '/pages/home/home',
+              })
+            }
           }
         } else {
           wx.hideNavigationBarLoading()

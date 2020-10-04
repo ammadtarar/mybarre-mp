@@ -117,3 +117,17 @@
   font-size: 14px;
   color: #1C1C1C;
 }
+
+.legacy-container{
+  width: calc(100% - 40px);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.legacy-container .bt{
+  font-size: 14px;
+  color: #d9bdbb;
+  font-weight: bold;
+}

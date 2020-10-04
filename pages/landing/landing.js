@@ -12,17 +12,19 @@ Page({
     wx.hideHomeButton();
     wx.setNavigationBarTitle({
       title: 'MYbarre'
-    })
-    
+    });
   },
   goToRegister: function(e){
-    
     wx.navigateTo({
       url: '/pages/coursesList/coursesList?needRegistration=true'
-    })
-    
+    });
   },
   goToLogin: function (e) {
   },
+  onClickLegacyMember: function(){
+    wx.navigateTo({
+      url: '/pages/legacyRegister/legacyRegister',
+    })
+  }
   
 })

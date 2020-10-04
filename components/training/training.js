@@ -62,15 +62,18 @@ Component({
               url : course_welcome_doc_url
             });
           }
-          data.files.forEach(function (file) {
-            if (file.mime.includes('image') ) {
-              images.push(file)
-            } else if (file.mime.includes('vid') ) {
-              vids.push(file)
-            } else {
-              docs.push(file)
-            }
-          });
+          if(data && data.files){
+            data.files.forEach(function (file) {
+              if (file.mime.includes('image') ) {
+                images.push(file)
+              } else if (file.mime.includes('vid') ) {
+                vids.push(file)
+              } else {
+                docs.push(file)
+              }
+            });
+          }
+          
 
 
           images.sort(function(a, b) {

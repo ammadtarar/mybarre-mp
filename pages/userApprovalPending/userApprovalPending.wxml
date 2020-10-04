@@ -1,0 +1,11 @@
+<!--pages/userApprovalPending/userApprovalPending.wxml-->
+<view class="mainCont">
+  <view class="bg">
+    <image class="cover" 
+    style="background-image : url({{coverImgUrl}})"></image>
+  </view>
+  <view class="intro">
+    <image class="logo" src="../../resources/images/mybarree_transparent_logo.png"></image>
+    <view class="desc">{{msg ? msg : locale.accUnderAudit}}</view>
+  </view>
+</view>

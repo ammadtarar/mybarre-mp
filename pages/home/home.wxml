@@ -1,6 +1,5 @@
 <!--pages/home/home.wxml-->
 <view class="home">
-
   <view class="content" style="height: calc(100% - {{diff + 64}}px)">
     <profile wx:if="{{index === 1}}"/>
     <training wx:if="{{index === 2}}"/>
@@ -8,9 +7,10 @@
     <store wx:if="{{index === 4}}" bind:onShowCart="onShowCart"/>
   </view>
 
-
-  <view class="tabs_container" style="padding-bottom : {{diff}}px">
+  
+  <view class="tabs_container" style="padding-bottom : {{diff}}px; justify-content : {{!production_ready ? 'center' : ''}}">
     <tab 
+      class="{{!production_ready ? 'half' : ''}}"
       activeIcon="../../resources/icons/ic_profile_active.png"
       inActiveIcon="../../resources/icons/ic_profile_inactive.png"
       title="{{locale.profile}}" 
@@ -20,6 +20,7 @@
     </tab>
 
     <tab 
+      wx:if="{{production_ready}}"
       activeIcon="../../resources/icons/ic_exercise_active.png"
       inActiveIcon="../../resources/icons/ic_exercise_inactive.png"
       title="{{locale.training}}" 
@@ -29,6 +30,7 @@
     </tab>
 
     <tab 
+      wx:if="{{production_ready}}"
       activeIcon="../../resources/icons/ic_ce_active.png"
       inActiveIcon="../../resources/icons/ic_ce_inactive.png"
       title="{{locale.ce}}" 
@@ -38,6 +40,7 @@
     </tab>
     
     <tab 
+      class="{{!production_ready ? 'half' : ''}}"
       activeIcon="../../resources/icons/ic_shop_active.png"
       inActiveIcon="../../resources/icons/ic_shop_inactive.png"
       title="{{locale.store}}" 

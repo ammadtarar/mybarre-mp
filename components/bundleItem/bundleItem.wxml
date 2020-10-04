@@ -36,7 +36,7 @@
   </view>
 
   <view class="bottom">
-    <label class="title">{{json.name}} </label>
+    <label class="title">{{json.name}}</label>
     <label class="desc">{{json.description}}</label>
   
   </view>

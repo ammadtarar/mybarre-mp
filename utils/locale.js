@@ -98,7 +98,7 @@ let localList = {
     "notif_exam_failed": "感谢您的提交，我们经过审核后很遗憾地告知您：您本次未能通过考核。请查看您的邮件获得更多信息，以及再次提交的相关反馈。",
     "notif_exam_passed": "祝贺您！我们已观看您的训练视频，很高兴通知您：您已经通过了培训考核.",
     "notif_exam_passed_two": "现在您还需支付会员费用 ¥%price 即可成为认证教练。支付成功后，我们将为您指派一名MYbarre教练，您将收到相关邮件，也可通过小程序进行查看/下载",
-    "pay_membership_fee": "支付会员费用",
+    "pay_membership_fee": "支付证书费用",
     "notif_license_fee_paid": "感谢您完成MYbarre培训并支付MYbarre教练证书费用。我们将很快通过邮件发送您的新证书，您也可在此查看和下载证书。",
     "invalidQr": "二维码无效.请扫描有效的MYbarre培训签到二维码",
     "incorrectCourseQr": "课程错误. 您还未加入该培训课程",
@@ -255,7 +255,12 @@ let localList = {
     "last_signup_date": "入学截止日期",
     "no_courses": "目前没有课程。请稍后再核对",
     "restricted": "限制区",
-    "restricted_msg": "只有获得许可的讲师才能访问该区域"
+    "restricted_msg": "只有获得许可的讲师才能访问该区域",
+    "membershipExpired" : "证书已过期",
+    "expiredLicense" : "您的MYbarre证书已过期。请为您的证书续费以继续使用MYbarre小程序",
+    "renewLicnese" : "续费证书",
+    "thanks" : "感谢您。。。",
+    "licenseRenewed" : "您的许可证已成功续订。现在您可以继续使用MYbarre迷你程序"
   },
   'en': {
     "welcomeTo": "WELCOME TO",
@@ -354,9 +359,9 @@ let localList = {
     "upload_vids": "UPLOAD TRAINING VIDEOS",
     "notif_videos_submitted": "Thank you for your video submission. We will be in touch in the next 30 days with your results.",
     "notif_exam_failed": "Thank you for your submission, we have reviewed this and unfortunately you have not passed on this occation. Please check your email for more information and feedback to re-submit.",
-    "notif_exam_passed": "CONGRATULATIONS! We have reviewed your training videos and we are pleased to inform you that you have passed the training exam.",
+    "notif_exam_passed": "Congratulations you have passed your MYbarre Instructor Exam. To join our MYbarre Licensed Instructor Programme please pay your annual license within 7 days of receiving this. This will give you access to the CE Videos for choreography and class ideas that are uploaded every quarter for the next year.",
     "notif_exam_passed_two": "Now you need to pay membership fee of ¥%price to become a licensed instructor. Once you have paid the membership fee , we will issue a MYbarre instructor for you and you will recieve it via email and you can also view/download it using this MiniProgram",
-    "pay_membership_fee": "PAY MEMBERSHIP FEE",
+    "pay_membership_fee": "PAY LICNESE FEE",
     "notif_license_fee_paid": "Thank you for completing the MYbarre training and paying for the MYbarre trainer license fee. We will email you your new license very soon and you will also be able to view and download the license here.",
     "invalidQr": "Invalid QR code. Please make sure to scan a valid MYbarre training checkin QR code",
     "incorrectCourseQr": "Incorrect course. You are not enrolled for ths training course",
@@ -513,8 +518,16 @@ let localList = {
     "last_signup_date": "ADMISSIONS DEADLINE",
     "no_courses" : "No courses available at this time. Please check back again later",
     "restricted" : "Restricted Area",
-    "restricted_msg" : "Only licensed instructors can access this area"
-
+    "restricted_msg" : "This is the Continuing Education (CE) area for licensed instructors, you will have access to this when you join the MYbarre Licenced Instructor Programme.",
+    "areYouLegacyUser" : "Existing MYbarre Instructor",
+    "legacyRegistrationDoneTitle" : "All done ...",
+    "legacyRegistrationDoneDesc" : "Thanks for filling in all your details. Once you click the button below, all your information will be uploaded to our servers. We will check your information and process within 7 working days. You will recieve an email once your account is ready.",
+    "accUnderAudit" : "Thank you for submitting your information. Your account is now under review and we will notify you by email within 7 working days when the review is complete. Thank you for your patience. ",
+    "membershipExpired" : "License Expired",
+    "expiredLicense" : "Your MYbarre license has expired. Please renew your license in order to continue using MYbarre MiniProgram.",
+    "renewLicnese" : "Renew License",
+    "thanks" : "Thank You...",
+    "licenseRenewed" : "Your license has been renewed successfully. You can now continue using the MYbarre MiniProgram"
   }
 }
 

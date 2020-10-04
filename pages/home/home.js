@@ -14,6 +14,9 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    this.setData({
+      production_ready : wx.getStorageSync('production_ready')
+    });
     wx.hideHomeButton();
     const ctx = this;
     wx.getSystemInfo({
@@ -22,7 +25,6 @@ Page({
         if (diff > 20) {
           ctx.setData({ diff: diff - 20})
         }
-        console.log(diff)
       }
     });
     wx.setNavigationBarTitle({
@@ -51,13 +53,20 @@ Page({
       return;
     }
     var tabOne = this.selectComponent("#tabOne");
-    var tabTwo = this.selectComponent("#tabTwo");
-    var tabThree = this.selectComponent("#tabThree");
     var tabFour = this.selectComponent("#tabFour")
     tabOne.deactivate();
-    tabTwo.deactivate();
-    tabThree.deactivate();
     tabFour.deactivate();
+    
+    var tabTwo , tabThree;
+    
+    if(this.data.production_ready){
+      tabTwo = this.selectComponent("#tabTwo");
+      tabThree = this.selectComponent("#tabThree");
+      tabTwo.deactivate();
+      tabThree.deactivate();
+    }
+    
+    
     if (id === "tabOne"){
       tabOne.activate();
       this.setData({index : 1})

@@ -15,6 +15,9 @@
       <view class="bt_register bold_text" bindtap="goToRegister">{{locale.becomeInstructor}}</view>
     </view>
 
+    <view class="legacy-container" bindtap="onClickLegacyMember">
+      <label class="bt">{{locale.areYouLegacyUser}}</label>
+    </view>
 
     <!-- <view class="login_container" bindtap="goToLogin">
       <label class="already light_text">{{locale.alreadyMember}}</label>

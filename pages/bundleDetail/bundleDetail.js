@@ -130,7 +130,7 @@ Page({
           images: imgs,
           docs: docs,
           price: "¥ " + res.data.data.price,
-          expiry: wx.getStorageSync('membership_expiry')
+          expiry: wx.getStorageSync('license_expiry')
         })
         wx.hideLoading()
       },

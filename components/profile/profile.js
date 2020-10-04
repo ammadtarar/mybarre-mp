@@ -30,7 +30,6 @@ Component({
     // 组件所在页面的生命周期函数
     show: function () {
       this.getMemberships()
-      console.log("showing profile")
      },
     hide: function () { },
     resize: function () { },
@@ -58,12 +57,135 @@ Component({
         popupPosText: this.data.locale.confirm
       })
     },
-    onClickPopupPositiveButton: function(){
-      if (this.data.popupType === 'buyMembership') {
-        wx.navigateTo({
-          url: '/pages/coursesList/coursesList?needRegistration=false',
+    getLicenseFee:  function(){
+      return new Promise(function(resolve , reject){
+        let ctx = this;
+        wx.request({
+          url: urls.getUrl('CONFIGS'),
+          success(res){
+            resolve(res.data.data.license_fee || 1000)
+          },
+          fail(err){
+            resolve(res.data.data.license_fee || 1000)
+          }
         })
+      });
+      
+    },
+    processRenewal: function(){
+      let ctx = this;
+      ctx.getLicenseFee()
+      .then(function(fee){
+        ctx.pay(fee)
+      })
+    },
+    pay: function (fee) {
+      var today = new Date();
+      var out_trade_no = "MybMbrUsr" + wx.getStorageSync("user_id") + "LicRnw" + today.getMilliseconds();
+      const ctx = this;
+      wx.showLoading({})
+      wx.request({
+        url: urls.getUrl('PAY'),
+        method: "POST",
+        header: {
+          Authorization: wx.getStorageSync('token')
+        },
+        data: { orderCode: out_trade_no, money: fee },
+        success: res => {
+         
+          if (res.statusCode !== 200){
+            wx.hideLoading()
+            ctx.setData({ 
+              popupType: 'payError', 
+              popupTitle: ctx.data.locale.error, 
+              msg: ctx.data.locale.payError + res.data.message, 
+              showPricePopup: true 
+            })
+            return;
+          }
+          
+          const payRes = res.data.data;
+          wx.requestPayment({
+            timeStamp: payRes.timeStamp,
+            nonceStr: payRes.nonceStr,
+            package: 'prepay_id=' + payRes.prepayId,
+            signType: 'MD5',
+            paySign: payRes.paySign,
+            success: function (successRes) {
+              ctx.renewLicnese(out_trade_no , fee);
+            },
+            fail: function (payErr) {
+              ctx.setData({
+                popupType: 'paymentError',
+                popupTitle: ctx.data.locale.error,
+                popupMsg: payErr.errMsg,
+                showPopup: true
+              })
+            }
+          })
+          wx.hideLoading()
+        },
+        fail: err => {
+          ctx.setData({
+            popupType: 'payApiError',
+            popupTitle: ctx.data.locale.error,
+            msg: 'Something went wrong',
+            showPricePopup: true
+          })
+          wx.hideLoading()
+        }
+  
+      })
+    },
+    renewLicnese: function(out_trade_no , fee){
+      const ctx = this;
+      wx.showLoading({})
+      wx.request({
+        url: urls.getUrl('RENEW_LICENSE'),
+        method: "POST",
+        header: {
+          Authorization: wx.getStorageSync('token')
+        },
+        data: { out_trade_no: out_trade_no , amount : fee},
+        success: res => {
+          wx.hideLoading()
+          ctx.setData({
+            popupType: 'renewSuccess',
+            popupTitle: this.data.locale.thanks,
+            popupMsg: this.data.locale.licenseRenewed,
+            popupPosText: this.data.locale.positiveTitle,
+            showPopup: true
+          })
+          
+        },
+        fail: err => {
+          wx.hideLoading()
+        }
+
+      })
+    },
+    onClickPopupPositiveButton: function(){
+      if(this.data.popupType === 'renewSuccess'){
         this.resetAndHideModal();
+        wx.reLaunch({
+          url: '/pages/into/into',
+        })
+        return
+      }
+      if (this.data.popupType === 'paymentError') {
+        this.resetAndHideModal();
+        this.setData({
+          popupType: 'buyMembership',
+          popupTitle: this.data.locale.membershipExpired,
+          popupMsg: this.data.locale.expiredLicense,
+          popupPosText: this.data.locale.renewLicnese,
+          showPopup: true
+        })
+        return;
+      }
+      if (this.data.popupType === 'buyMembership') {
+        this.resetAndHideModal();
+        this.processRenewal();
         return;
       }
       if (this.data.popupType === 'checkinSuccess' || this.data.popupType === 'licensePaySuccess') {
@@ -240,26 +362,32 @@ Component({
               popupType: 'buyMembership',
               popupTitle: ctx.data.locale.accessDenied,
               popupMsg: ctx.data.locale.noValidMembership,
-              showPopupNegBtn: true,
-              popupNegText: ctx.data.locale.exit,
               popupPosText: ctx.data.locale.buyMembership,
               showPopup: true
             })
             return;
           }
-          const expiry = membership.end || '';
-          const expiryDate = new Date(expiry);
-          const today = new Date()
+
+
+
+          console.log(membership);
+
 
           
-          if(expiryDate < today){
+          let licneseDateRange = membership.license_creation_date;
+          let licenseStart = licneseDateRange.substring(0 , licneseDateRange.indexOf('-'));
+          let licenseEnd = licneseDateRange.substring(licneseDateRange.indexOf('-') + 2, licneseDateRange.length);
+
+          wx.setStorageSync('license_start', licenseStart);
+          wx.setStorageSync('license_expiry', licenseEnd);
+
+          let today = new Date()
+          if(new Date(licenseEnd) < today){
             ctx.setData({
               popupType: 'buyMembership',
               popupTitle: ctx.data.locale.membershipExpired,
-              popupMsg: ctx.data.locale.membershipExpiredNotice,
-              showPopupNegBtn: true,
-              popupNegText: ctx.data.locale.exit,
-              popupPosText: ctx.data.locale.renewMembership,
+              popupMsg: ctx.data.locale.expiredLicense,
+              popupPosText: ctx.data.locale.renewLicnese,
               showPopup: true
             })
           }
@@ -278,16 +406,14 @@ Component({
           ctx.setData({
             membership: membership
           })
-          wx.setStorageSync('membership_expiry', expiry);
+
+          
           wx.setStorageSync('membership_id', membership.id);
 
 
           const membershipStatus = membership.status;          
           wx.setStorageSync('membership_status', membershipStatus);
-          console.log("membershipStatus = ", membershipStatus)
-
           const course = membership.course || null;
-          console.log(course)
           if (course !== null){
             wx.setStorageSync('course_welcome_doc_url', course.welcome_doc_url);
             if (membershipStatus === "exam-passed") {

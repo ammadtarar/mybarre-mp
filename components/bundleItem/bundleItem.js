@@ -31,7 +31,7 @@ Component({
       var imgs = 0;
       var vids = 0;
       var docs = 0;
-      if (json){
+      if (json && json.files){
         json.files.forEach(function(file){
           if(file.mime.includes("image")){
             imgs = imgs + 1;
