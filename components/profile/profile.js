@@ -184,8 +184,12 @@ Component({
         return;
       }
       if (this.data.popupType === 'buyMembership') {
+        console.log("trying to renew");
         this.resetAndHideModal();
-        this.processRenewal();
+        wx.navigateTo({
+          url: '/pages/coursesList/coursesList?needRegistration=false'
+        });
+        // this.processRenewal();
         return;
       }
       if (this.data.popupType === 'checkinSuccess' || this.data.popupType === 'licensePaySuccess') {
@@ -354,6 +358,8 @@ Component({
           const membership = res.data.data || null;
           if(membership === null){
             wx.hideLoading()
+            console.log("SHOW ACCESS DENIED");
+            
             ctx.setData({
               popupType: 'buyMembership',
               popupTitle: ctx.data.locale.accessDenied,
