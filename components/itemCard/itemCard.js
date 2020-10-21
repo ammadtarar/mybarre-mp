@@ -14,7 +14,12 @@ Component({
     },
     thumb : {
       type : String,
-      value : null
+      value : null,
+      observer: function(newVal, oldVal) {
+        this.setData({
+          parsedThumb : newVal.replace(new RegExp(this.escapeRegExp(" "), 'g'), "%20")
+        })
+      }
     },
     title : {
       type : String,
@@ -26,7 +31,10 @@ Component({
     },
     url : {
       type : String,
-      value : null
+      value : null,
+      observer: function(newVal, oldVal) {
+        
+      }
     },
     allowClick : {
       type : Boolean,
@@ -34,9 +42,13 @@ Component({
     }
   },
   data: {
-    height : '125px'
+    height : '125px',
+    parsedThumb : ''
   },
   methods: {
+    escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+    },
     onClick:function(e){
       const ctx = this;
       if (!this.properties.allowClick){

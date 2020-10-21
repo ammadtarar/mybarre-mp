@@ -6,7 +6,7 @@
     <view
         wx:if="{{type !== 'doc'}}"
         class="img"
-        style="background-image : url({{thumb}}) !important"
+        style="background-image : url({{parsedThumb}}) !important"
     ></view>
 
     <image class="img" src="../../resources/images/ph_mybarre.png" wx:if="{{type === 'doc'}}"></image>

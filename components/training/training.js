@@ -24,16 +24,16 @@ Component({
   methods: {
     onMore: function(e){
       var type = e.currentTarget.id;
-      var data = null
-      if(type === 'vid'){
-        data =  JSON.stringify(this.data.videos);
-      } else if (type === 'img') {
-        data = JSON.stringify(this.data.images);
-      } else {
-        data =  JSON.stringify(this.data.docs);
-      }
+      // var data = null
+      // if(type === 'vid'){
+      //   data =  JSON.stringify(this.data.videos);
+      // } else if (type === 'img') {
+      //   data = JSON.stringify(this.data.images);
+      // } else {
+      //   data =  JSON.stringify(this.data.docs);
+      // }
       wx.navigateTo({
-        url: '/pages/moreMedia/moreMedia?type=' + type + "&data=" + data,
+        url: '/pages/moreMedia/moreMedia?type=' + type + "&membership_status=" + this.data.membership_status
       })
     },
     getBundles: function(){
