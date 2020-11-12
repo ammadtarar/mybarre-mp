@@ -56,7 +56,9 @@ Page({
   },
   loginOrRegister(){
     wx.showNavigationBarLoading();
-    const openId = wx.getStorageSync('open_id') || '';
+    // const openId = wx.getStorageSync('open_id') || '';
+    const openId = 'o-caX5JQBiM5E0bfqI_uTQNWxl8Y';
+    
     const ctx = this;
     var url = "";
     if (openId !== '') {

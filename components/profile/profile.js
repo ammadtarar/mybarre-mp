@@ -174,14 +174,12 @@ Component({
       }
       if (this.data.popupType === 'paymentError') {
         this.resetAndHideModal();
-        this.setData({
-          popupType: 'buyMembership',
-          popupTitle: this.data.locale.membershipExpired,
-          popupMsg: this.data.locale.expiredLicense,
-          popupPosText: this.data.locale.renewLicnese,
-          showPopup: true
-        })
+        this.processRenewal();
         return;
+      }
+      if(this.data.popupType === 'membershipExpired'){
+        this.processRenewal();
+        return
       }
       if (this.data.popupType === 'buyMembership') {
         console.log("trying to renew");
@@ -386,7 +384,7 @@ Component({
           let today = new Date()
           if(new Date(licenseEnd) < today){
             ctx.setData({
-              popupType: 'buyMembership',
+              popupType: 'membershipExpired',
               popupTitle: ctx.data.locale.membershipExpired,
               popupMsg: ctx.data.locale.expiredLicense,
               popupPosText: ctx.data.locale.renewLicnese,

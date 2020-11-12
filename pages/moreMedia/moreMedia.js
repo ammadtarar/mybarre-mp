@@ -19,6 +19,14 @@ Page({
    */
   onLoad: function (options) {
 
+    var id = options.id;
+    if(!id){
+      id = 1;
+    }
+    this.setData({
+      id : id
+    })
+
     const type = options.type;
     this.setData({ type: type})
     var title = "";
@@ -66,7 +74,7 @@ Page({
   },
   getBundles: function(){
     const ctx = this;
-    var url = urls.getUrl('BUNDLE_BY_ID').replace(':id', 1);
+    var url = urls.getUrl('BUNDLE_BY_ID').replace(':id', this.data.id);
     var status = [];
     status.push(this.data.membership_status);
     url = url + "?stage=" + JSON.stringify(status);
@@ -78,6 +86,22 @@ Page({
       success: res => {
         const data = res.data.data;
         var items = [];
+
+
+        if(ctx.data.type == 'doc'){
+          const course_welcome_doc_url = wx.getStorageSync('course_welcome_doc_url') || null;
+          if (course_welcome_doc_url !== null){
+            items.push({
+              id : -1,
+              name: ctx.data.locale.courseDetails,
+              mime : 'application/pdf',
+              thumb_url: '',
+              url : course_welcome_doc_url
+            });
+          }
+        }
+      
+
         if(data && data.files){
           data.files.forEach(function (file) {
             if(ctx.data.type == 'vid' && file.mime.includes('vid')){

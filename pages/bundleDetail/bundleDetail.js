@@ -33,6 +33,9 @@ Page({
         buyable: true,
       })
     }
+    this.setData({
+      id : options.id
+    })
     this.getBundleDetail(options.id)
     wx.setNavigationBarTitle({
       title: this.data.locale.bundleDetail
@@ -89,7 +92,7 @@ Page({
       data = JSON.stringify(this.data.docs);
     }
     wx.navigateTo({
-      url: '/pages/moreMedia/moreMedia?type=' + type + "&data=" + data,
+      url: '/pages/moreMedia/moreMedia?type=' + type + "&id=" + this.data.id,
     })
   },
   getBundleDetail: function(id){
