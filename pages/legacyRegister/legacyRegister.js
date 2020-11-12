@@ -266,7 +266,6 @@ Page({
         Authorization: wx.getStorageSync('token')
       },
       data: {
-        courseId: ctx.data.course.id,
         out_trade_no: out_trade_no || null,
         price: price,
         couponId: this.data.coupon ? this.data.coupon.id : null

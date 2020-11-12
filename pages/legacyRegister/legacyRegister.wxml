@@ -49,7 +49,7 @@
               <image class="info" src="../../resources/icons/ic_info.png"></image>
             </view>
             <view class="imgContainer" bindtap="onClickHeadShot">
-              <image class="photo" src="{{headShot}}"></image>
+              <image class="photo" mode="aspectFill" src="{{headShot}}"></image>
               <view class="btnOverlay">
                 <image class="upload" src="../../resources/icons/ic_upload.png"></image>
               </view>
