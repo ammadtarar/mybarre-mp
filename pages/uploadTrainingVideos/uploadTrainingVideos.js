@@ -91,6 +91,16 @@ Page({
   uploadFiles: function(){
     const ctx = this;
     const files = this.data.files;
+    if(files.length <= 0){
+      this.setData({
+        popupType: 'noFiles',
+        popupTitle: this.data.locale.warning,
+        popupMsg: this.data.locale.selectFile,
+        showPopup: true
+      })
+      return
+    }
+    
     this.setData({
       totalFiles : files.length
     })
@@ -118,6 +128,9 @@ Page({
     })
   },
   onClickPopupPositiveButton: function () {
+    if(this.data.popupType !== 'noFiles'){
+      wx.navigateBack({})
+    }
     this.setData({
       showPopup: false,
       popupTitle: '',
@@ -126,7 +139,7 @@ Page({
       popupNegText: '',
       popupType: ''
     })
-    wx.navigateBack({})
+    
   },
   onClickPopupNegativeButton: function () {
 

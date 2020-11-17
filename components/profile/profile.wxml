@@ -7,7 +7,7 @@
       <open-data type="userAvatarUrl"></open-data>
     </view> -->
 
-    <image class="avatar" src="{{avatar_url}}"></image>
+    <image class="avatar" mode="aspectFill" src="{{avatar_url}}"></image>
     <view class="card_top">
       <label class="title">{{nickname}}</label>
 
