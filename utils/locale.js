@@ -261,7 +261,11 @@ let localList = {
     "expiredLicense" : "您的MYbarre证书已过期。请为您的证书续费以继续使用MYbarre小程序",
     "renewLicnese" : "续费证书",
     "thanks" : "感谢您。。。",
-    "licenseRenewed" : "您的许可证已成功续订。现在您可以继续使用MYbarre迷你程序"
+    "licenseRenewed" : "您的许可证已成功续订。现在您可以继续使用MYbarre迷你程序",
+    "areYouLegacyUser" : "现有MYbarre教练",
+    "legacyRegistrationDoneTitle" : "全部完成。。。",
+    "legacyRegistrationDoneDesc" : "谢谢你填写了所有的细节。一旦您点击下面的按钮，您的所有信息将上传到我们的服务器。我们将在7个工作日内检查您的信息和流程。一旦您的帐户准备好，您将收到一封电子邮件。",
+    "accUnderAudit" : "感谢您提交您的信息。您的帐户正在审核中，审核完成后，我们将在7个工作日内通过电子邮件通知您。谢谢你的耐心。",
   },
   'en': {
     "welcomeTo": "WELCOME TO",
