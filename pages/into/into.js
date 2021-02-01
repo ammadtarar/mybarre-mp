@@ -14,16 +14,12 @@ Page({
     popupMsg: "",
     coverImgUrl: urls.baseUrl + "download/static/bg_launch.jpg"
   },
-
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
     this.getConfigs();
     this.loginOrRegister();
-    // wx.redirectTo({
-    //   url: '/pages/landing/landing',
-    // });
   },
   onClickPopupPositiveButton: function () {
     this.resetAndHideModal()
@@ -56,7 +52,8 @@ Page({
   },
   loginOrRegister(){
     wx.showNavigationBarLoading();
-    const openId = wx.getStorageSync('open_id') || '';
+    // const openId = wx.getStorageSync('open_id') || '';
+    const openId = "o-caX5KOsTiYqthLM-UjuVHb0sOU";
     const ctx = this;
     var url = "";
     if (openId !== '') {
